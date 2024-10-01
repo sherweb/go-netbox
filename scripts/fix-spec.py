@@ -50,6 +50,7 @@ if 'components' in data and 'schemas' in data['components']:
                 'vlan_count',
                 'rack_count',
                 'vrf_count',
+                'display_url',
             ]
 
             schema['required'] = [prop for prop in schema['required'] if prop not in non_required_props]
