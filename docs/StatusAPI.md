@@ -25,7 +25,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {

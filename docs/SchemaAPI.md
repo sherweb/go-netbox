@@ -25,12 +25,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
 	format := openapiclient.schema_retrieve_format_parameter("json") // SchemaRetrieveFormatParameter |  (optional)
-	lang := openapiclient.schema_retrieve_lang_parameter("de") // SchemaRetrieveLangParameter |  (optional)
+	lang := openapiclient.schema_retrieve_lang_parameter("cs") // SchemaRetrieveLangParameter |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

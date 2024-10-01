@@ -79,7 +79,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -143,7 +143,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -209,7 +209,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -275,7 +275,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -341,7 +341,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -410,14 +410,14 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
 	contact := []int32{int32(123)} // []int32 | Contact (optional)
 	contactN := []int32{int32(123)} // []int32 | Contact (optional)
-	contactGroup := []int32{int32(123)} // []int32 | Contact group (optional)
-	contactGroupN := []int32{int32(123)} // []int32 | Contact group (optional)
+	contactGroup := []string{"Inner_example"} // []string |  (optional)
+	contactGroupN := []string{"Inner_example"} // []string |  (optional)
 	contactRole := []int32{int32(123)} // []int32 | Contact Role (optional)
 	contactRoleN := []int32{int32(123)} // []int32 | Contact Role (optional)
 	created := []time.Time{time.Now()} // []time.Time |  (optional)
@@ -509,8 +509,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contact** | **[]int32** | Contact | 
  **contactN** | **[]int32** | Contact | 
- **contactGroup** | **[]int32** | Contact group | 
- **contactGroupN** | **[]int32** | Contact group | 
+ **contactGroup** | **[]string** |  | 
+ **contactGroupN** | **[]string** |  | 
  **contactRole** | **[]int32** | Contact Role | 
  **contactRoleN** | **[]int32** | Contact Role | 
  **created** | [**[]time.Time**](time.Time.md) |  | 
@@ -612,7 +612,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -684,7 +684,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -754,7 +754,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -826,7 +826,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -890,7 +890,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -956,7 +956,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1022,7 +1022,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1088,7 +1088,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1157,7 +1157,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1347,7 +1347,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1419,7 +1419,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1489,7 +1489,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1561,11 +1561,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	clusterRequest := []openapiclient.ClusterRequest{*openapiclient.NewClusterRequest("Name_example")} // []ClusterRequest | 
+	clusterRequest := []openapiclient.ClusterRequest{*openapiclient.NewClusterRequest("Name_example", *openapiclient.NewBriefClusterTypeRequest("Name_example", "Slug_example"))} // []ClusterRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1625,11 +1625,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	clusterRequest := []openapiclient.ClusterRequest{*openapiclient.NewClusterRequest("Name_example")} // []ClusterRequest | 
+	clusterRequest := []openapiclient.ClusterRequest{*openapiclient.NewClusterRequest("Name_example", *openapiclient.NewBriefClusterTypeRequest("Name_example", "Slug_example"))} // []ClusterRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1691,11 +1691,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	clusterRequest := []openapiclient.ClusterRequest{*openapiclient.NewClusterRequest("Name_example")} // []ClusterRequest | 
+	clusterRequest := []openapiclient.ClusterRequest{*openapiclient.NewClusterRequest("Name_example", *openapiclient.NewBriefClusterTypeRequest("Name_example", "Slug_example"))} // []ClusterRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1757,11 +1757,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	writableClusterRequest := *openapiclient.NewWritableClusterRequest("Name_example", *openapiclient.NewClusterTypeRequest("Name_example", "Slug_example")) // WritableClusterRequest | 
+	writableClusterRequest := *openapiclient.NewWritableClusterRequest("Name_example", *openapiclient.NewBriefClusterTypeRequest("Name_example", "Slug_example")) // WritableClusterRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1823,7 +1823,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1876,7 +1876,7 @@ Name | Type | Description  | Notes
 
 ## VirtualizationClustersList
 
-> PaginatedClusterList VirtualizationClustersList(ctx).Contact(contact).ContactN(contactN).ContactGroup(contactGroup).ContactGroupN(contactGroupN).ContactRole(contactRole).ContactRoleN(contactRoleN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Description(description).DescriptionEmpty(descriptionEmpty).DescriptionIc(descriptionIc).DescriptionIe(descriptionIe).DescriptionIew(descriptionIew).DescriptionIsw(descriptionIsw).DescriptionN(descriptionN).DescriptionNic(descriptionNic).DescriptionNie(descriptionNie).DescriptionNiew(descriptionNiew).DescriptionNisw(descriptionNisw).Group(group).GroupN(groupN).GroupId(groupId).GroupIdN(groupIdN).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).ModifiedByRequest(modifiedByRequest).Name(name).NameEmpty(nameEmpty).NameIc(nameIc).NameIe(nameIe).NameIew(nameIew).NameIsw(nameIsw).NameN(nameN).NameNic(nameNic).NameNie(nameNie).NameNiew(nameNiew).NameNisw(nameNisw).Offset(offset).Ordering(ordering).Q(q).Region(region).RegionN(regionN).RegionId(regionId).RegionIdN(regionIdN).Site(site).SiteN(siteN).SiteGroup(siteGroup).SiteGroupN(siteGroupN).SiteGroupId(siteGroupId).SiteGroupIdN(siteGroupIdN).SiteId(siteId).SiteIdN(siteIdN).Status(status).StatusN(statusN).Tag(tag).TagN(tagN).Tenant(tenant).TenantN(tenantN).TenantGroup(tenantGroup).TenantGroupN(tenantGroupN).TenantGroupId(tenantGroupId).TenantGroupIdN(tenantGroupIdN).TenantId(tenantId).TenantIdN(tenantIdN).Type_(type_).TypeN(typeN).TypeId(typeId).TypeIdN(typeIdN).UpdatedByRequest(updatedByRequest).Execute()
+> PaginatedClusterList VirtualizationClustersList(ctx).Contact(contact).ContactN(contactN).ContactGroup(contactGroup).ContactGroupN(contactGroupN).ContactRole(contactRole).ContactRoleN(contactRoleN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Description(description).DescriptionEmpty(descriptionEmpty).DescriptionIc(descriptionIc).DescriptionIe(descriptionIe).DescriptionIew(descriptionIew).DescriptionIsw(descriptionIsw).DescriptionN(descriptionN).DescriptionNic(descriptionNic).DescriptionNie(descriptionNie).DescriptionNiew(descriptionNiew).DescriptionNisw(descriptionNisw).Group(group).GroupN(groupN).GroupId(groupId).GroupIdN(groupIdN).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).ModifiedByRequest(modifiedByRequest).Name(name).NameEmpty(nameEmpty).NameIc(nameIc).NameIe(nameIe).NameIew(nameIew).NameIsw(nameIsw).NameN(nameN).NameNic(nameNic).NameNie(nameNie).NameNiew(nameNiew).NameNisw(nameNisw).Offset(offset).Ordering(ordering).Q(q).Region(region).RegionN(regionN).RegionId(regionId).RegionIdN(regionIdN).Site(site).SiteN(siteN).SiteGroup(siteGroup).SiteGroupN(siteGroupN).SiteGroupId(siteGroupId).SiteGroupIdN(siteGroupIdN).SiteId(siteId).SiteIdN(siteIdN).Status(status).StatusEmpty(statusEmpty).StatusIc(statusIc).StatusIe(statusIe).StatusIew(statusIew).StatusIsw(statusIsw).StatusN(statusN).StatusNic(statusNic).StatusNie(statusNie).StatusNiew(statusNiew).StatusNisw(statusNisw).Tag(tag).TagN(tagN).Tenant(tenant).TenantN(tenantN).TenantGroup(tenantGroup).TenantGroupN(tenantGroupN).TenantGroupId(tenantGroupId).TenantGroupIdN(tenantGroupIdN).TenantId(tenantId).TenantIdN(tenantIdN).Type_(type_).TypeN(typeN).TypeId(typeId).TypeIdN(typeIdN).UpdatedByRequest(updatedByRequest).Execute()
 
 
 
@@ -1892,14 +1892,14 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
 	contact := []int32{int32(123)} // []int32 | Contact (optional)
 	contactN := []int32{int32(123)} // []int32 | Contact (optional)
-	contactGroup := []int32{int32(123)} // []int32 | Contact group (optional)
-	contactGroupN := []int32{int32(123)} // []int32 | Contact group (optional)
+	contactGroup := []string{"Inner_example"} // []string |  (optional)
+	contactGroupN := []string{"Inner_example"} // []string |  (optional)
 	contactRole := []int32{int32(123)} // []int32 | Contact Role (optional)
 	contactRoleN := []int32{int32(123)} // []int32 | Contact Role (optional)
 	created := []time.Time{time.Now()} // []time.Time |  (optional)
@@ -1955,28 +1955,37 @@ func main() {
 	offset := int32(56) // int32 | The initial index from which to return the results. (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
 	q := "q_example" // string | Search (optional)
-	region := []int32{int32(123)} // []int32 | Region (slug) (optional)
-	regionN := []int32{int32(123)} // []int32 | Region (slug) (optional)
-	regionId := []int32{int32(123)} // []int32 | Region (ID) (optional)
-	regionIdN := []int32{int32(123)} // []int32 | Region (ID) (optional)
+	region := []string{"Inner_example"} // []string |  (optional)
+	regionN := []string{"Inner_example"} // []string |  (optional)
+	regionId := []string{"Inner_example"} // []string |  (optional)
+	regionIdN := []string{"Inner_example"} // []string |  (optional)
 	site := []string{"Inner_example"} // []string | Site (slug) (optional)
 	siteN := []string{"Inner_example"} // []string | Site (slug) (optional)
-	siteGroup := []int32{int32(123)} // []int32 | Site group (slug) (optional)
-	siteGroupN := []int32{int32(123)} // []int32 | Site group (slug) (optional)
-	siteGroupId := []int32{int32(123)} // []int32 | Site group (ID) (optional)
-	siteGroupIdN := []int32{int32(123)} // []int32 | Site group (ID) (optional)
+	siteGroup := []string{"Inner_example"} // []string |  (optional)
+	siteGroupN := []string{"Inner_example"} // []string |  (optional)
+	siteGroupId := []string{"Inner_example"} // []string |  (optional)
+	siteGroupIdN := []string{"Inner_example"} // []string |  (optional)
 	siteId := []*int32{int32(123)} // []*int32 | Site (ID) (optional)
 	siteIdN := []*int32{int32(123)} // []*int32 | Site (ID) (optional)
 	status := []string{"Inner_example"} // []string |  (optional)
-	statusN := []string{"Inner_example"} // []string |  (optional)
+	statusEmpty := true // bool |  (optional)
+	statusIc := []openapiclient.VirtualizationClustersListStatusIcParameterInner{openapiclient.virtualization_clusters_list_status__ic_parameter_inner("active")} // []VirtualizationClustersListStatusIcParameterInner | * `planned` - Planned * `staging` - Staging * `active` - Active * `decommissioning` - Decommissioning * `offline` - Offline (optional)
+	statusIe := []openapiclient.VirtualizationClustersListStatusIcParameterInner{openapiclient.virtualization_clusters_list_status__ic_parameter_inner("active")} // []VirtualizationClustersListStatusIcParameterInner | * `planned` - Planned * `staging` - Staging * `active` - Active * `decommissioning` - Decommissioning * `offline` - Offline (optional)
+	statusIew := []openapiclient.VirtualizationClustersListStatusIcParameterInner{openapiclient.virtualization_clusters_list_status__ic_parameter_inner("active")} // []VirtualizationClustersListStatusIcParameterInner | * `planned` - Planned * `staging` - Staging * `active` - Active * `decommissioning` - Decommissioning * `offline` - Offline (optional)
+	statusIsw := []openapiclient.VirtualizationClustersListStatusIcParameterInner{openapiclient.virtualization_clusters_list_status__ic_parameter_inner("active")} // []VirtualizationClustersListStatusIcParameterInner | * `planned` - Planned * `staging` - Staging * `active` - Active * `decommissioning` - Decommissioning * `offline` - Offline (optional)
+	statusN := []openapiclient.VirtualizationClustersListStatusIcParameterInner{openapiclient.virtualization_clusters_list_status__ic_parameter_inner("active")} // []VirtualizationClustersListStatusIcParameterInner | * `planned` - Planned * `staging` - Staging * `active` - Active * `decommissioning` - Decommissioning * `offline` - Offline (optional)
+	statusNic := []openapiclient.VirtualizationClustersListStatusIcParameterInner{openapiclient.virtualization_clusters_list_status__ic_parameter_inner("active")} // []VirtualizationClustersListStatusIcParameterInner | * `planned` - Planned * `staging` - Staging * `active` - Active * `decommissioning` - Decommissioning * `offline` - Offline (optional)
+	statusNie := []openapiclient.VirtualizationClustersListStatusIcParameterInner{openapiclient.virtualization_clusters_list_status__ic_parameter_inner("active")} // []VirtualizationClustersListStatusIcParameterInner | * `planned` - Planned * `staging` - Staging * `active` - Active * `decommissioning` - Decommissioning * `offline` - Offline (optional)
+	statusNiew := []openapiclient.VirtualizationClustersListStatusIcParameterInner{openapiclient.virtualization_clusters_list_status__ic_parameter_inner("active")} // []VirtualizationClustersListStatusIcParameterInner | * `planned` - Planned * `staging` - Staging * `active` - Active * `decommissioning` - Decommissioning * `offline` - Offline (optional)
+	statusNisw := []openapiclient.VirtualizationClustersListStatusIcParameterInner{openapiclient.virtualization_clusters_list_status__ic_parameter_inner("active")} // []VirtualizationClustersListStatusIcParameterInner | * `planned` - Planned * `staging` - Staging * `active` - Active * `decommissioning` - Decommissioning * `offline` - Offline (optional)
 	tag := []string{"Inner_example"} // []string |  (optional)
 	tagN := []string{"Inner_example"} // []string |  (optional)
 	tenant := []string{"Inner_example"} // []string | Tenant (slug) (optional)
 	tenantN := []string{"Inner_example"} // []string | Tenant (slug) (optional)
-	tenantGroup := []int32{int32(123)} // []int32 | Tenant Group (slug) (optional)
-	tenantGroupN := []int32{int32(123)} // []int32 | Tenant Group (slug) (optional)
-	tenantGroupId := []int32{int32(123)} // []int32 | Tenant Group (ID) (optional)
-	tenantGroupIdN := []int32{int32(123)} // []int32 | Tenant Group (ID) (optional)
+	tenantGroup := []string{"Inner_example"} // []string |  (optional)
+	tenantGroupN := []string{"Inner_example"} // []string |  (optional)
+	tenantGroupId := []string{"Inner_example"} // []string |  (optional)
+	tenantGroupIdN := []string{"Inner_example"} // []string |  (optional)
 	tenantId := []*int32{int32(123)} // []*int32 | Tenant (ID) (optional)
 	tenantIdN := []*int32{int32(123)} // []*int32 | Tenant (ID) (optional)
 	type_ := []string{"Inner_example"} // []string | Cluster type (slug) (optional)
@@ -1987,7 +1996,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VirtualizationAPI.VirtualizationClustersList(context.Background()).Contact(contact).ContactN(contactN).ContactGroup(contactGroup).ContactGroupN(contactGroupN).ContactRole(contactRole).ContactRoleN(contactRoleN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Description(description).DescriptionEmpty(descriptionEmpty).DescriptionIc(descriptionIc).DescriptionIe(descriptionIe).DescriptionIew(descriptionIew).DescriptionIsw(descriptionIsw).DescriptionN(descriptionN).DescriptionNic(descriptionNic).DescriptionNie(descriptionNie).DescriptionNiew(descriptionNiew).DescriptionNisw(descriptionNisw).Group(group).GroupN(groupN).GroupId(groupId).GroupIdN(groupIdN).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).ModifiedByRequest(modifiedByRequest).Name(name).NameEmpty(nameEmpty).NameIc(nameIc).NameIe(nameIe).NameIew(nameIew).NameIsw(nameIsw).NameN(nameN).NameNic(nameNic).NameNie(nameNie).NameNiew(nameNiew).NameNisw(nameNisw).Offset(offset).Ordering(ordering).Q(q).Region(region).RegionN(regionN).RegionId(regionId).RegionIdN(regionIdN).Site(site).SiteN(siteN).SiteGroup(siteGroup).SiteGroupN(siteGroupN).SiteGroupId(siteGroupId).SiteGroupIdN(siteGroupIdN).SiteId(siteId).SiteIdN(siteIdN).Status(status).StatusN(statusN).Tag(tag).TagN(tagN).Tenant(tenant).TenantN(tenantN).TenantGroup(tenantGroup).TenantGroupN(tenantGroupN).TenantGroupId(tenantGroupId).TenantGroupIdN(tenantGroupIdN).TenantId(tenantId).TenantIdN(tenantIdN).Type_(type_).TypeN(typeN).TypeId(typeId).TypeIdN(typeIdN).UpdatedByRequest(updatedByRequest).Execute()
+	resp, r, err := apiClient.VirtualizationAPI.VirtualizationClustersList(context.Background()).Contact(contact).ContactN(contactN).ContactGroup(contactGroup).ContactGroupN(contactGroupN).ContactRole(contactRole).ContactRoleN(contactRoleN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Description(description).DescriptionEmpty(descriptionEmpty).DescriptionIc(descriptionIc).DescriptionIe(descriptionIe).DescriptionIew(descriptionIew).DescriptionIsw(descriptionIsw).DescriptionN(descriptionN).DescriptionNic(descriptionNic).DescriptionNie(descriptionNie).DescriptionNiew(descriptionNiew).DescriptionNisw(descriptionNisw).Group(group).GroupN(groupN).GroupId(groupId).GroupIdN(groupIdN).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).ModifiedByRequest(modifiedByRequest).Name(name).NameEmpty(nameEmpty).NameIc(nameIc).NameIe(nameIe).NameIew(nameIew).NameIsw(nameIsw).NameN(nameN).NameNic(nameNic).NameNie(nameNie).NameNiew(nameNiew).NameNisw(nameNisw).Offset(offset).Ordering(ordering).Q(q).Region(region).RegionN(regionN).RegionId(regionId).RegionIdN(regionIdN).Site(site).SiteN(siteN).SiteGroup(siteGroup).SiteGroupN(siteGroupN).SiteGroupId(siteGroupId).SiteGroupIdN(siteGroupIdN).SiteId(siteId).SiteIdN(siteIdN).Status(status).StatusEmpty(statusEmpty).StatusIc(statusIc).StatusIe(statusIe).StatusIew(statusIew).StatusIsw(statusIsw).StatusN(statusN).StatusNic(statusNic).StatusNie(statusNie).StatusNiew(statusNiew).StatusNisw(statusNisw).Tag(tag).TagN(tagN).Tenant(tenant).TenantN(tenantN).TenantGroup(tenantGroup).TenantGroupN(tenantGroupN).TenantGroupId(tenantGroupId).TenantGroupIdN(tenantGroupIdN).TenantId(tenantId).TenantIdN(tenantIdN).Type_(type_).TypeN(typeN).TypeId(typeId).TypeIdN(typeIdN).UpdatedByRequest(updatedByRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualizationAPI.VirtualizationClustersList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2010,8 +2019,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contact** | **[]int32** | Contact | 
  **contactN** | **[]int32** | Contact | 
- **contactGroup** | **[]int32** | Contact group | 
- **contactGroupN** | **[]int32** | Contact group | 
+ **contactGroup** | **[]string** |  | 
+ **contactGroupN** | **[]string** |  | 
  **contactRole** | **[]int32** | Contact Role | 
  **contactRoleN** | **[]int32** | Contact Role | 
  **created** | [**[]time.Time**](time.Time.md) |  | 
@@ -2067,28 +2076,37 @@ Name | Type | Description  | Notes
  **offset** | **int32** | The initial index from which to return the results. | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **q** | **string** | Search | 
- **region** | **[]int32** | Region (slug) | 
- **regionN** | **[]int32** | Region (slug) | 
- **regionId** | **[]int32** | Region (ID) | 
- **regionIdN** | **[]int32** | Region (ID) | 
+ **region** | **[]string** |  | 
+ **regionN** | **[]string** |  | 
+ **regionId** | **[]string** |  | 
+ **regionIdN** | **[]string** |  | 
  **site** | **[]string** | Site (slug) | 
  **siteN** | **[]string** | Site (slug) | 
- **siteGroup** | **[]int32** | Site group (slug) | 
- **siteGroupN** | **[]int32** | Site group (slug) | 
- **siteGroupId** | **[]int32** | Site group (ID) | 
- **siteGroupIdN** | **[]int32** | Site group (ID) | 
+ **siteGroup** | **[]string** |  | 
+ **siteGroupN** | **[]string** |  | 
+ **siteGroupId** | **[]string** |  | 
+ **siteGroupIdN** | **[]string** |  | 
  **siteId** | **[]int32** | Site (ID) | 
  **siteIdN** | **[]int32** | Site (ID) | 
  **status** | **[]string** |  | 
- **statusN** | **[]string** |  | 
+ **statusEmpty** | **bool** |  | 
+ **statusIc** | [**[]VirtualizationClustersListStatusIcParameterInner**](VirtualizationClustersListStatusIcParameterInner.md) | * &#x60;planned&#x60; - Planned * &#x60;staging&#x60; - Staging * &#x60;active&#x60; - Active * &#x60;decommissioning&#x60; - Decommissioning * &#x60;offline&#x60; - Offline | 
+ **statusIe** | [**[]VirtualizationClustersListStatusIcParameterInner**](VirtualizationClustersListStatusIcParameterInner.md) | * &#x60;planned&#x60; - Planned * &#x60;staging&#x60; - Staging * &#x60;active&#x60; - Active * &#x60;decommissioning&#x60; - Decommissioning * &#x60;offline&#x60; - Offline | 
+ **statusIew** | [**[]VirtualizationClustersListStatusIcParameterInner**](VirtualizationClustersListStatusIcParameterInner.md) | * &#x60;planned&#x60; - Planned * &#x60;staging&#x60; - Staging * &#x60;active&#x60; - Active * &#x60;decommissioning&#x60; - Decommissioning * &#x60;offline&#x60; - Offline | 
+ **statusIsw** | [**[]VirtualizationClustersListStatusIcParameterInner**](VirtualizationClustersListStatusIcParameterInner.md) | * &#x60;planned&#x60; - Planned * &#x60;staging&#x60; - Staging * &#x60;active&#x60; - Active * &#x60;decommissioning&#x60; - Decommissioning * &#x60;offline&#x60; - Offline | 
+ **statusN** | [**[]VirtualizationClustersListStatusIcParameterInner**](VirtualizationClustersListStatusIcParameterInner.md) | * &#x60;planned&#x60; - Planned * &#x60;staging&#x60; - Staging * &#x60;active&#x60; - Active * &#x60;decommissioning&#x60; - Decommissioning * &#x60;offline&#x60; - Offline | 
+ **statusNic** | [**[]VirtualizationClustersListStatusIcParameterInner**](VirtualizationClustersListStatusIcParameterInner.md) | * &#x60;planned&#x60; - Planned * &#x60;staging&#x60; - Staging * &#x60;active&#x60; - Active * &#x60;decommissioning&#x60; - Decommissioning * &#x60;offline&#x60; - Offline | 
+ **statusNie** | [**[]VirtualizationClustersListStatusIcParameterInner**](VirtualizationClustersListStatusIcParameterInner.md) | * &#x60;planned&#x60; - Planned * &#x60;staging&#x60; - Staging * &#x60;active&#x60; - Active * &#x60;decommissioning&#x60; - Decommissioning * &#x60;offline&#x60; - Offline | 
+ **statusNiew** | [**[]VirtualizationClustersListStatusIcParameterInner**](VirtualizationClustersListStatusIcParameterInner.md) | * &#x60;planned&#x60; - Planned * &#x60;staging&#x60; - Staging * &#x60;active&#x60; - Active * &#x60;decommissioning&#x60; - Decommissioning * &#x60;offline&#x60; - Offline | 
+ **statusNisw** | [**[]VirtualizationClustersListStatusIcParameterInner**](VirtualizationClustersListStatusIcParameterInner.md) | * &#x60;planned&#x60; - Planned * &#x60;staging&#x60; - Staging * &#x60;active&#x60; - Active * &#x60;decommissioning&#x60; - Decommissioning * &#x60;offline&#x60; - Offline | 
  **tag** | **[]string** |  | 
  **tagN** | **[]string** |  | 
  **tenant** | **[]string** | Tenant (slug) | 
  **tenantN** | **[]string** | Tenant (slug) | 
- **tenantGroup** | **[]int32** | Tenant Group (slug) | 
- **tenantGroupN** | **[]int32** | Tenant Group (slug) | 
- **tenantGroupId** | **[]int32** | Tenant Group (ID) | 
- **tenantGroupIdN** | **[]int32** | Tenant Group (ID) | 
+ **tenantGroup** | **[]string** |  | 
+ **tenantGroupN** | **[]string** |  | 
+ **tenantGroupId** | **[]string** |  | 
+ **tenantGroupIdN** | **[]string** |  | 
  **tenantId** | **[]int32** | Tenant (ID) | 
  **tenantIdN** | **[]int32** | Tenant (ID) | 
  **type_** | **[]string** | Cluster type (slug) | 
@@ -2132,7 +2150,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2204,7 +2222,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2274,12 +2292,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this cluster.
-	writableClusterRequest := *openapiclient.NewWritableClusterRequest("Name_example", *openapiclient.NewClusterTypeRequest("Name_example", "Slug_example")) // WritableClusterRequest | 
+	writableClusterRequest := *openapiclient.NewWritableClusterRequest("Name_example", *openapiclient.NewBriefClusterTypeRequest("Name_example", "Slug_example")) // WritableClusterRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2346,11 +2364,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	vMInterfaceRequest := []openapiclient.VMInterfaceRequest{*openapiclient.NewVMInterfaceRequest(*openapiclient.NewVirtualMachineRequest("Name_example"), "Name_example")} // []VMInterfaceRequest | 
+	vMInterfaceRequest := []openapiclient.VMInterfaceRequest{*openapiclient.NewVMInterfaceRequest(*openapiclient.NewBriefVirtualMachineRequest("Name_example"), "Name_example")} // []VMInterfaceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2410,11 +2428,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	vMInterfaceRequest := []openapiclient.VMInterfaceRequest{*openapiclient.NewVMInterfaceRequest(*openapiclient.NewVirtualMachineRequest("Name_example"), "Name_example")} // []VMInterfaceRequest | 
+	vMInterfaceRequest := []openapiclient.VMInterfaceRequest{*openapiclient.NewVMInterfaceRequest(*openapiclient.NewBriefVirtualMachineRequest("Name_example"), "Name_example")} // []VMInterfaceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2476,11 +2494,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	vMInterfaceRequest := []openapiclient.VMInterfaceRequest{*openapiclient.NewVMInterfaceRequest(*openapiclient.NewVirtualMachineRequest("Name_example"), "Name_example")} // []VMInterfaceRequest | 
+	vMInterfaceRequest := []openapiclient.VMInterfaceRequest{*openapiclient.NewVMInterfaceRequest(*openapiclient.NewBriefVirtualMachineRequest("Name_example"), "Name_example")} // []VMInterfaceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2542,11 +2560,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	writableVMInterfaceRequest := *openapiclient.NewWritableVMInterfaceRequest(*openapiclient.NewVirtualMachineRequest("Name_example"), "Name_example") // WritableVMInterfaceRequest | 
+	writableVMInterfaceRequest := *openapiclient.NewWritableVMInterfaceRequest(*openapiclient.NewBriefVirtualMachineRequest("Name_example"), "Name_example") // WritableVMInterfaceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2608,7 +2626,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2661,7 +2679,7 @@ Name | Type | Description  | Notes
 
 ## VirtualizationInterfacesList
 
-> PaginatedVMInterfaceList VirtualizationInterfacesList(ctx).BridgeId(bridgeId).BridgeIdN(bridgeIdN).Cluster(cluster).ClusterN(clusterN).ClusterId(clusterId).ClusterIdN(clusterIdN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Description(description).DescriptionEmpty(descriptionEmpty).DescriptionIc(descriptionIc).DescriptionIe(descriptionIe).DescriptionIew(descriptionIew).DescriptionIsw(descriptionIsw).DescriptionN(descriptionN).DescriptionNic(descriptionNic).DescriptionNie(descriptionNie).DescriptionNiew(descriptionNiew).DescriptionNisw(descriptionNisw).Enabled(enabled).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).L2vpn(l2vpn).L2vpnN(l2vpnN).L2vpnId(l2vpnId).L2vpnIdN(l2vpnIdN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).MacAddress(macAddress).MacAddressIc(macAddressIc).MacAddressIe(macAddressIe).MacAddressIew(macAddressIew).MacAddressIsw(macAddressIsw).MacAddressN(macAddressN).MacAddressNic(macAddressNic).MacAddressNie(macAddressNie).MacAddressNiew(macAddressNiew).MacAddressNisw(macAddressNisw).Mode(mode).ModeN(modeN).ModifiedByRequest(modifiedByRequest).Mtu(mtu).MtuEmpty(mtuEmpty).MtuGt(mtuGt).MtuGte(mtuGte).MtuLt(mtuLt).MtuLte(mtuLte).MtuN(mtuN).Name(name).NameEmpty(nameEmpty).NameIc(nameIc).NameIe(nameIe).NameIew(nameIew).NameIsw(nameIsw).NameN(nameN).NameNic(nameNic).NameNie(nameNie).NameNiew(nameNiew).NameNisw(nameNisw).Offset(offset).Ordering(ordering).ParentId(parentId).ParentIdN(parentIdN).Q(q).Tag(tag).TagN(tagN).UpdatedByRequest(updatedByRequest).VirtualMachine(virtualMachine).VirtualMachineN(virtualMachineN).VirtualMachineId(virtualMachineId).VirtualMachineIdN(virtualMachineIdN).Vlan(vlan).VlanId(vlanId).Vrf(vrf).VrfN(vrfN).VrfId(vrfId).VrfIdN(vrfIdN).Execute()
+> PaginatedVMInterfaceList VirtualizationInterfacesList(ctx).BridgeId(bridgeId).BridgeIdN(bridgeIdN).Cluster(cluster).ClusterN(clusterN).ClusterId(clusterId).ClusterIdN(clusterIdN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Description(description).DescriptionEmpty(descriptionEmpty).DescriptionIc(descriptionIc).DescriptionIe(descriptionIe).DescriptionIew(descriptionIew).DescriptionIsw(descriptionIsw).DescriptionN(descriptionN).DescriptionNic(descriptionNic).DescriptionNie(descriptionNie).DescriptionNiew(descriptionNiew).DescriptionNisw(descriptionNisw).Enabled(enabled).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).L2vpn(l2vpn).L2vpnN(l2vpnN).L2vpnId(l2vpnId).L2vpnIdN(l2vpnIdN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).MacAddress(macAddress).MacAddressIc(macAddressIc).MacAddressIe(macAddressIe).MacAddressIew(macAddressIew).MacAddressIsw(macAddressIsw).MacAddressN(macAddressN).MacAddressNic(macAddressNic).MacAddressNie(macAddressNie).MacAddressNiew(macAddressNiew).MacAddressNisw(macAddressNisw).Mode(mode).ModifiedByRequest(modifiedByRequest).Mtu(mtu).MtuEmpty(mtuEmpty).MtuGt(mtuGt).MtuGte(mtuGte).MtuLt(mtuLt).MtuLte(mtuLte).MtuN(mtuN).Name(name).NameEmpty(nameEmpty).NameIc(nameIc).NameIe(nameIe).NameIew(nameIew).NameIsw(nameIsw).NameN(nameN).NameNic(nameNic).NameNie(nameNie).NameNiew(nameNiew).NameNisw(nameNisw).Offset(offset).Ordering(ordering).ParentId(parentId).ParentIdN(parentIdN).Q(q).Tag(tag).TagN(tagN).UpdatedByRequest(updatedByRequest).VirtualMachine(virtualMachine).VirtualMachineN(virtualMachineN).VirtualMachineId(virtualMachineId).VirtualMachineIdN(virtualMachineIdN).Vlan(vlan).VlanId(vlanId).Vrf(vrf).VrfN(vrfN).VrfId(vrfId).VrfIdN(vrfIdN).Execute()
 
 
 
@@ -2677,7 +2695,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2737,7 +2755,6 @@ func main() {
 	macAddressNiew := []string{"Inner_example"} // []string |  (optional)
 	macAddressNisw := []string{"Inner_example"} // []string |  (optional)
 	mode := openapiclient.dcim_interfaces_list_mode_parameter("access") // DcimInterfacesListModeParameter | IEEE 802.1Q tagging strategy  * `access` - Access * `tagged` - Tagged * `tagged-all` - Tagged (All) (optional)
-	modeN := openapiclient.dcim_interfaces_list_mode_parameter("access") // DcimInterfacesListModeParameter | IEEE 802.1Q tagging strategy  * `access` - Access * `tagged` - Tagged * `tagged-all` - Tagged (All) (optional)
 	modifiedByRequest := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 	mtu := []int32{int32(123)} // []int32 |  (optional)
 	mtuEmpty := true // bool |  (optional)
@@ -2778,7 +2795,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VirtualizationAPI.VirtualizationInterfacesList(context.Background()).BridgeId(bridgeId).BridgeIdN(bridgeIdN).Cluster(cluster).ClusterN(clusterN).ClusterId(clusterId).ClusterIdN(clusterIdN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Description(description).DescriptionEmpty(descriptionEmpty).DescriptionIc(descriptionIc).DescriptionIe(descriptionIe).DescriptionIew(descriptionIew).DescriptionIsw(descriptionIsw).DescriptionN(descriptionN).DescriptionNic(descriptionNic).DescriptionNie(descriptionNie).DescriptionNiew(descriptionNiew).DescriptionNisw(descriptionNisw).Enabled(enabled).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).L2vpn(l2vpn).L2vpnN(l2vpnN).L2vpnId(l2vpnId).L2vpnIdN(l2vpnIdN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).MacAddress(macAddress).MacAddressIc(macAddressIc).MacAddressIe(macAddressIe).MacAddressIew(macAddressIew).MacAddressIsw(macAddressIsw).MacAddressN(macAddressN).MacAddressNic(macAddressNic).MacAddressNie(macAddressNie).MacAddressNiew(macAddressNiew).MacAddressNisw(macAddressNisw).Mode(mode).ModeN(modeN).ModifiedByRequest(modifiedByRequest).Mtu(mtu).MtuEmpty(mtuEmpty).MtuGt(mtuGt).MtuGte(mtuGte).MtuLt(mtuLt).MtuLte(mtuLte).MtuN(mtuN).Name(name).NameEmpty(nameEmpty).NameIc(nameIc).NameIe(nameIe).NameIew(nameIew).NameIsw(nameIsw).NameN(nameN).NameNic(nameNic).NameNie(nameNie).NameNiew(nameNiew).NameNisw(nameNisw).Offset(offset).Ordering(ordering).ParentId(parentId).ParentIdN(parentIdN).Q(q).Tag(tag).TagN(tagN).UpdatedByRequest(updatedByRequest).VirtualMachine(virtualMachine).VirtualMachineN(virtualMachineN).VirtualMachineId(virtualMachineId).VirtualMachineIdN(virtualMachineIdN).Vlan(vlan).VlanId(vlanId).Vrf(vrf).VrfN(vrfN).VrfId(vrfId).VrfIdN(vrfIdN).Execute()
+	resp, r, err := apiClient.VirtualizationAPI.VirtualizationInterfacesList(context.Background()).BridgeId(bridgeId).BridgeIdN(bridgeIdN).Cluster(cluster).ClusterN(clusterN).ClusterId(clusterId).ClusterIdN(clusterIdN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Description(description).DescriptionEmpty(descriptionEmpty).DescriptionIc(descriptionIc).DescriptionIe(descriptionIe).DescriptionIew(descriptionIew).DescriptionIsw(descriptionIsw).DescriptionN(descriptionN).DescriptionNic(descriptionNic).DescriptionNie(descriptionNie).DescriptionNiew(descriptionNiew).DescriptionNisw(descriptionNisw).Enabled(enabled).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).L2vpn(l2vpn).L2vpnN(l2vpnN).L2vpnId(l2vpnId).L2vpnIdN(l2vpnIdN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).MacAddress(macAddress).MacAddressIc(macAddressIc).MacAddressIe(macAddressIe).MacAddressIew(macAddressIew).MacAddressIsw(macAddressIsw).MacAddressN(macAddressN).MacAddressNic(macAddressNic).MacAddressNie(macAddressNie).MacAddressNiew(macAddressNiew).MacAddressNisw(macAddressNisw).Mode(mode).ModifiedByRequest(modifiedByRequest).Mtu(mtu).MtuEmpty(mtuEmpty).MtuGt(mtuGt).MtuGte(mtuGte).MtuLt(mtuLt).MtuLte(mtuLte).MtuN(mtuN).Name(name).NameEmpty(nameEmpty).NameIc(nameIc).NameIe(nameIe).NameIew(nameIew).NameIsw(nameIsw).NameN(nameN).NameNic(nameNic).NameNie(nameNie).NameNiew(nameNiew).NameNisw(nameNisw).Offset(offset).Ordering(ordering).ParentId(parentId).ParentIdN(parentIdN).Q(q).Tag(tag).TagN(tagN).UpdatedByRequest(updatedByRequest).VirtualMachine(virtualMachine).VirtualMachineN(virtualMachineN).VirtualMachineId(virtualMachineId).VirtualMachineIdN(virtualMachineIdN).Vlan(vlan).VlanId(vlanId).Vrf(vrf).VrfN(vrfN).VrfId(vrfId).VrfIdN(vrfIdN).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualizationAPI.VirtualizationInterfacesList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2855,7 +2872,6 @@ Name | Type | Description  | Notes
  **macAddressNiew** | **[]string** |  | 
  **macAddressNisw** | **[]string** |  | 
  **mode** | [**DcimInterfacesListModeParameter**](DcimInterfacesListModeParameter.md) | IEEE 802.1Q tagging strategy  * &#x60;access&#x60; - Access * &#x60;tagged&#x60; - Tagged * &#x60;tagged-all&#x60; - Tagged (All) | 
- **modeN** | [**DcimInterfacesListModeParameter**](DcimInterfacesListModeParameter.md) | IEEE 802.1Q tagging strategy  * &#x60;access&#x60; - Access * &#x60;tagged&#x60; - Tagged * &#x60;tagged-all&#x60; - Tagged (All) | 
  **modifiedByRequest** | **string** |  | 
  **mtu** | **[]int32** |  | 
  **mtuEmpty** | **bool** |  | 
@@ -2929,7 +2945,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3001,7 +3017,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3071,12 +3087,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this interface.
-	writableVMInterfaceRequest := *openapiclient.NewWritableVMInterfaceRequest(*openapiclient.NewVirtualMachineRequest("Name_example"), "Name_example") // WritableVMInterfaceRequest | 
+	writableVMInterfaceRequest := *openapiclient.NewWritableVMInterfaceRequest(*openapiclient.NewBriefVirtualMachineRequest("Name_example"), "Name_example") // WritableVMInterfaceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -3143,11 +3159,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	virtualDiskRequest := []openapiclient.VirtualDiskRequest{*openapiclient.NewVirtualDiskRequest(*openapiclient.NewVirtualMachineRequest("Name_example"), "Name_example", int32(123))} // []VirtualDiskRequest | 
+	virtualDiskRequest := []openapiclient.VirtualDiskRequest{*openapiclient.NewVirtualDiskRequest(*openapiclient.NewBriefVirtualMachineRequest("Name_example"), "Name_example", int32(123))} // []VirtualDiskRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -3207,11 +3223,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	virtualDiskRequest := []openapiclient.VirtualDiskRequest{*openapiclient.NewVirtualDiskRequest(*openapiclient.NewVirtualMachineRequest("Name_example"), "Name_example", int32(123))} // []VirtualDiskRequest | 
+	virtualDiskRequest := []openapiclient.VirtualDiskRequest{*openapiclient.NewVirtualDiskRequest(*openapiclient.NewBriefVirtualMachineRequest("Name_example"), "Name_example", int32(123))} // []VirtualDiskRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -3273,11 +3289,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	virtualDiskRequest := []openapiclient.VirtualDiskRequest{*openapiclient.NewVirtualDiskRequest(*openapiclient.NewVirtualMachineRequest("Name_example"), "Name_example", int32(123))} // []VirtualDiskRequest | 
+	virtualDiskRequest := []openapiclient.VirtualDiskRequest{*openapiclient.NewVirtualDiskRequest(*openapiclient.NewBriefVirtualMachineRequest("Name_example"), "Name_example", int32(123))} // []VirtualDiskRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -3339,11 +3355,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	virtualDiskRequest := *openapiclient.NewVirtualDiskRequest(*openapiclient.NewVirtualMachineRequest("Name_example"), "Name_example", int32(123)) // VirtualDiskRequest | 
+	virtualDiskRequest := *openapiclient.NewVirtualDiskRequest(*openapiclient.NewBriefVirtualMachineRequest("Name_example"), "Name_example", int32(123)) // VirtualDiskRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -3405,7 +3421,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3474,7 +3490,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3664,7 +3680,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3736,7 +3752,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3806,12 +3822,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this virtual disk.
-	virtualDiskRequest := *openapiclient.NewVirtualDiskRequest(*openapiclient.NewVirtualMachineRequest("Name_example"), "Name_example", int32(123)) // VirtualDiskRequest | 
+	virtualDiskRequest := *openapiclient.NewVirtualDiskRequest(*openapiclient.NewBriefVirtualMachineRequest("Name_example"), "Name_example", int32(123)) // VirtualDiskRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -3878,7 +3894,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3942,7 +3958,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -4008,7 +4024,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -4074,7 +4090,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -4140,7 +4156,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -4193,7 +4209,7 @@ Name | Type | Description  | Notes
 
 ## VirtualizationVirtualMachinesList
 
-> PaginatedVirtualMachineWithConfigContextList VirtualizationVirtualMachinesList(ctx).Cluster(cluster).ClusterN(clusterN).ClusterGroup(clusterGroup).ClusterGroupN(clusterGroupN).ClusterGroupId(clusterGroupId).ClusterGroupIdN(clusterGroupIdN).ClusterId(clusterId).ClusterIdN(clusterIdN).ClusterType(clusterType).ClusterTypeN(clusterTypeN).ClusterTypeId(clusterTypeId).ClusterTypeIdN(clusterTypeIdN).ConfigTemplateId(configTemplateId).ConfigTemplateIdN(configTemplateIdN).Contact(contact).ContactN(contactN).ContactGroup(contactGroup).ContactGroupN(contactGroupN).ContactRole(contactRole).ContactRoleN(contactRoleN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Description(description).DescriptionEmpty(descriptionEmpty).DescriptionIc(descriptionIc).DescriptionIe(descriptionIe).DescriptionIew(descriptionIew).DescriptionIsw(descriptionIsw).DescriptionN(descriptionN).DescriptionNic(descriptionNic).DescriptionNie(descriptionNie).DescriptionNiew(descriptionNiew).DescriptionNisw(descriptionNisw).Device(device).DeviceN(deviceN).DeviceId(deviceId).DeviceIdN(deviceIdN).Disk(disk).DiskEmpty(diskEmpty).DiskGt(diskGt).DiskGte(diskGte).DiskLt(diskLt).DiskLte(diskLte).DiskN(diskN).HasPrimaryIp(hasPrimaryIp).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).InterfaceCount(interfaceCount).InterfaceCountEmpty(interfaceCountEmpty).InterfaceCountGt(interfaceCountGt).InterfaceCountGte(interfaceCountGte).InterfaceCountLt(interfaceCountLt).InterfaceCountLte(interfaceCountLte).InterfaceCountN(interfaceCountN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).LocalContextData(localContextData).MacAddress(macAddress).MacAddressIc(macAddressIc).MacAddressIe(macAddressIe).MacAddressIew(macAddressIew).MacAddressIsw(macAddressIsw).MacAddressN(macAddressN).MacAddressNic(macAddressNic).MacAddressNie(macAddressNie).MacAddressNiew(macAddressNiew).MacAddressNisw(macAddressNisw).Memory(memory).MemoryEmpty(memoryEmpty).MemoryGt(memoryGt).MemoryGte(memoryGte).MemoryLt(memoryLt).MemoryLte(memoryLte).MemoryN(memoryN).ModifiedByRequest(modifiedByRequest).Name(name).NameEmpty(nameEmpty).NameIc(nameIc).NameIe(nameIe).NameIew(nameIew).NameIsw(nameIsw).NameN(nameN).NameNic(nameNic).NameNie(nameNie).NameNiew(nameNiew).NameNisw(nameNisw).Offset(offset).Ordering(ordering).Platform(platform).PlatformN(platformN).PlatformId(platformId).PlatformIdN(platformIdN).PrimaryIp4Id(primaryIp4Id).PrimaryIp4IdN(primaryIp4IdN).PrimaryIp6Id(primaryIp6Id).PrimaryIp6IdN(primaryIp6IdN).Q(q).Region(region).RegionN(regionN).RegionId(regionId).RegionIdN(regionIdN).Role(role).RoleN(roleN).RoleId(roleId).RoleIdN(roleIdN).Site(site).SiteN(siteN).SiteGroup(siteGroup).SiteGroupN(siteGroupN).SiteGroupId(siteGroupId).SiteGroupIdN(siteGroupIdN).SiteId(siteId).SiteIdN(siteIdN).Status(status).StatusN(statusN).Tag(tag).TagN(tagN).Tenant(tenant).TenantN(tenantN).TenantGroup(tenantGroup).TenantGroupN(tenantGroupN).TenantGroupId(tenantGroupId).TenantGroupIdN(tenantGroupIdN).TenantId(tenantId).TenantIdN(tenantIdN).UpdatedByRequest(updatedByRequest).Vcpus(vcpus).VcpusEmpty(vcpusEmpty).VcpusGt(vcpusGt).VcpusGte(vcpusGte).VcpusLt(vcpusLt).VcpusLte(vcpusLte).VcpusN(vcpusN).VirtualDiskCount(virtualDiskCount).VirtualDiskCountEmpty(virtualDiskCountEmpty).VirtualDiskCountGt(virtualDiskCountGt).VirtualDiskCountGte(virtualDiskCountGte).VirtualDiskCountLt(virtualDiskCountLt).VirtualDiskCountLte(virtualDiskCountLte).VirtualDiskCountN(virtualDiskCountN).Execute()
+> PaginatedVirtualMachineWithConfigContextList VirtualizationVirtualMachinesList(ctx).Cluster(cluster).ClusterN(clusterN).ClusterGroup(clusterGroup).ClusterGroupN(clusterGroupN).ClusterGroupId(clusterGroupId).ClusterGroupIdN(clusterGroupIdN).ClusterId(clusterId).ClusterIdN(clusterIdN).ClusterType(clusterType).ClusterTypeN(clusterTypeN).ClusterTypeId(clusterTypeId).ClusterTypeIdN(clusterTypeIdN).ConfigTemplateId(configTemplateId).ConfigTemplateIdN(configTemplateIdN).Contact(contact).ContactN(contactN).ContactGroup(contactGroup).ContactGroupN(contactGroupN).ContactRole(contactRole).ContactRoleN(contactRoleN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Description(description).DescriptionEmpty(descriptionEmpty).DescriptionIc(descriptionIc).DescriptionIe(descriptionIe).DescriptionIew(descriptionIew).DescriptionIsw(descriptionIsw).DescriptionN(descriptionN).DescriptionNic(descriptionNic).DescriptionNie(descriptionNie).DescriptionNiew(descriptionNiew).DescriptionNisw(descriptionNisw).Device(device).DeviceN(deviceN).DeviceId(deviceId).DeviceIdN(deviceIdN).Disk(disk).DiskEmpty(diskEmpty).DiskGt(diskGt).DiskGte(diskGte).DiskLt(diskLt).DiskLte(diskLte).DiskN(diskN).HasPrimaryIp(hasPrimaryIp).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).InterfaceCount(interfaceCount).InterfaceCountEmpty(interfaceCountEmpty).InterfaceCountGt(interfaceCountGt).InterfaceCountGte(interfaceCountGte).InterfaceCountLt(interfaceCountLt).InterfaceCountLte(interfaceCountLte).InterfaceCountN(interfaceCountN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).LocalContextData(localContextData).MacAddress(macAddress).MacAddressIc(macAddressIc).MacAddressIe(macAddressIe).MacAddressIew(macAddressIew).MacAddressIsw(macAddressIsw).MacAddressN(macAddressN).MacAddressNic(macAddressNic).MacAddressNie(macAddressNie).MacAddressNiew(macAddressNiew).MacAddressNisw(macAddressNisw).Memory(memory).MemoryEmpty(memoryEmpty).MemoryGt(memoryGt).MemoryGte(memoryGte).MemoryLt(memoryLt).MemoryLte(memoryLte).MemoryN(memoryN).ModifiedByRequest(modifiedByRequest).Name(name).NameEmpty(nameEmpty).NameIc(nameIc).NameIe(nameIe).NameIew(nameIew).NameIsw(nameIsw).NameN(nameN).NameNic(nameNic).NameNie(nameNie).NameNiew(nameNiew).NameNisw(nameNisw).Offset(offset).Ordering(ordering).Platform(platform).PlatformN(platformN).PlatformId(platformId).PlatformIdN(platformIdN).PrimaryIp4Id(primaryIp4Id).PrimaryIp4IdN(primaryIp4IdN).PrimaryIp6Id(primaryIp6Id).PrimaryIp6IdN(primaryIp6IdN).Q(q).Region(region).RegionN(regionN).RegionId(regionId).RegionIdN(regionIdN).Role(role).RoleN(roleN).RoleId(roleId).RoleIdN(roleIdN).Serial(serial).SerialEmpty(serialEmpty).SerialIc(serialIc).SerialIe(serialIe).SerialIew(serialIew).SerialIsw(serialIsw).SerialN(serialN).SerialNic(serialNic).SerialNie(serialNie).SerialNiew(serialNiew).SerialNisw(serialNisw).Site(site).SiteN(siteN).SiteGroup(siteGroup).SiteGroupN(siteGroupN).SiteGroupId(siteGroupId).SiteGroupIdN(siteGroupIdN).SiteId(siteId).SiteIdN(siteIdN).Status(status).StatusEmpty(statusEmpty).StatusIc(statusIc).StatusIe(statusIe).StatusIew(statusIew).StatusIsw(statusIsw).StatusN(statusN).StatusNic(statusNic).StatusNie(statusNie).StatusNiew(statusNiew).StatusNisw(statusNisw).Tag(tag).TagN(tagN).Tenant(tenant).TenantN(tenantN).TenantGroup(tenantGroup).TenantGroupN(tenantGroupN).TenantGroupId(tenantGroupId).TenantGroupIdN(tenantGroupIdN).TenantId(tenantId).TenantIdN(tenantIdN).UpdatedByRequest(updatedByRequest).Vcpus(vcpus).VcpusEmpty(vcpusEmpty).VcpusGt(vcpusGt).VcpusGte(vcpusGte).VcpusLt(vcpusLt).VcpusLte(vcpusLte).VcpusN(vcpusN).VirtualDiskCount(virtualDiskCount).VirtualDiskCountEmpty(virtualDiskCountEmpty).VirtualDiskCountGt(virtualDiskCountGt).VirtualDiskCountGte(virtualDiskCountGte).VirtualDiskCountLt(virtualDiskCountLt).VirtualDiskCountLte(virtualDiskCountLte).VirtualDiskCountN(virtualDiskCountN).Execute()
 
 
 
@@ -4209,7 +4225,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -4229,8 +4245,8 @@ func main() {
 	configTemplateIdN := []*int32{int32(123)} // []*int32 | Config template (ID) (optional)
 	contact := []int32{int32(123)} // []int32 | Contact (optional)
 	contactN := []int32{int32(123)} // []int32 | Contact (optional)
-	contactGroup := []int32{int32(123)} // []int32 | Contact group (optional)
-	contactGroupN := []int32{int32(123)} // []int32 | Contact group (optional)
+	contactGroup := []string{"Inner_example"} // []string |  (optional)
+	contactGroupN := []string{"Inner_example"} // []string |  (optional)
 	contactRole := []int32{int32(123)} // []int32 | Contact Role (optional)
 	contactRoleN := []int32{int32(123)} // []int32 | Contact Role (optional)
 	created := []time.Time{time.Now()} // []time.Time |  (optional)
@@ -4327,32 +4343,52 @@ func main() {
 	primaryIp6Id := []int32{int32(123)} // []int32 | Primary IPv6 (ID) (optional)
 	primaryIp6IdN := []int32{int32(123)} // []int32 | Primary IPv6 (ID) (optional)
 	q := "q_example" // string | Search (optional)
-	region := []int32{int32(123)} // []int32 | Region (slug) (optional)
-	regionN := []int32{int32(123)} // []int32 | Region (slug) (optional)
-	regionId := []int32{int32(123)} // []int32 | Region (ID) (optional)
-	regionIdN := []int32{int32(123)} // []int32 | Region (ID) (optional)
+	region := []string{"Inner_example"} // []string |  (optional)
+	regionN := []string{"Inner_example"} // []string |  (optional)
+	regionId := []string{"Inner_example"} // []string |  (optional)
+	regionIdN := []string{"Inner_example"} // []string |  (optional)
 	role := []string{"Inner_example"} // []string | Role (slug) (optional)
 	roleN := []string{"Inner_example"} // []string | Role (slug) (optional)
 	roleId := []*int32{int32(123)} // []*int32 | Role (ID) (optional)
 	roleIdN := []*int32{int32(123)} // []*int32 | Role (ID) (optional)
+	serial := []string{"Inner_example"} // []string |  (optional)
+	serialEmpty := true // bool |  (optional)
+	serialIc := []string{"Inner_example"} // []string |  (optional)
+	serialIe := []string{"Inner_example"} // []string |  (optional)
+	serialIew := []string{"Inner_example"} // []string |  (optional)
+	serialIsw := []string{"Inner_example"} // []string |  (optional)
+	serialN := []string{"Inner_example"} // []string |  (optional)
+	serialNic := []string{"Inner_example"} // []string |  (optional)
+	serialNie := []string{"Inner_example"} // []string |  (optional)
+	serialNiew := []string{"Inner_example"} // []string |  (optional)
+	serialNisw := []string{"Inner_example"} // []string |  (optional)
 	site := []string{"Inner_example"} // []string | Site (slug) (optional)
 	siteN := []string{"Inner_example"} // []string | Site (slug) (optional)
-	siteGroup := []int32{int32(123)} // []int32 | Site group (slug) (optional)
-	siteGroupN := []int32{int32(123)} // []int32 | Site group (slug) (optional)
-	siteGroupId := []int32{int32(123)} // []int32 | Site group (ID) (optional)
-	siteGroupIdN := []int32{int32(123)} // []int32 | Site group (ID) (optional)
+	siteGroup := []string{"Inner_example"} // []string |  (optional)
+	siteGroupN := []string{"Inner_example"} // []string |  (optional)
+	siteGroupId := []string{"Inner_example"} // []string |  (optional)
+	siteGroupIdN := []string{"Inner_example"} // []string |  (optional)
 	siteId := []*int32{int32(123)} // []*int32 | Site (ID) (optional)
 	siteIdN := []*int32{int32(123)} // []*int32 | Site (ID) (optional)
 	status := []string{"Inner_example"} // []string |  (optional)
-	statusN := []string{"Inner_example"} // []string |  (optional)
+	statusEmpty := true // bool |  (optional)
+	statusIc := []openapiclient.DcimModulesListStatusIcParameterInner{openapiclient.dcim_modules_list_status__ic_parameter_inner("active")} // []DcimModulesListStatusIcParameterInner | * `offline` - Offline * `active` - Active * `planned` - Planned * `staged` - Staged * `failed` - Failed * `decommissioning` - Decommissioning (optional)
+	statusIe := []openapiclient.DcimModulesListStatusIcParameterInner{openapiclient.dcim_modules_list_status__ic_parameter_inner("active")} // []DcimModulesListStatusIcParameterInner | * `offline` - Offline * `active` - Active * `planned` - Planned * `staged` - Staged * `failed` - Failed * `decommissioning` - Decommissioning (optional)
+	statusIew := []openapiclient.DcimModulesListStatusIcParameterInner{openapiclient.dcim_modules_list_status__ic_parameter_inner("active")} // []DcimModulesListStatusIcParameterInner | * `offline` - Offline * `active` - Active * `planned` - Planned * `staged` - Staged * `failed` - Failed * `decommissioning` - Decommissioning (optional)
+	statusIsw := []openapiclient.DcimModulesListStatusIcParameterInner{openapiclient.dcim_modules_list_status__ic_parameter_inner("active")} // []DcimModulesListStatusIcParameterInner | * `offline` - Offline * `active` - Active * `planned` - Planned * `staged` - Staged * `failed` - Failed * `decommissioning` - Decommissioning (optional)
+	statusN := []openapiclient.DcimModulesListStatusIcParameterInner{openapiclient.dcim_modules_list_status__ic_parameter_inner("active")} // []DcimModulesListStatusIcParameterInner | * `offline` - Offline * `active` - Active * `planned` - Planned * `staged` - Staged * `failed` - Failed * `decommissioning` - Decommissioning (optional)
+	statusNic := []openapiclient.DcimModulesListStatusIcParameterInner{openapiclient.dcim_modules_list_status__ic_parameter_inner("active")} // []DcimModulesListStatusIcParameterInner | * `offline` - Offline * `active` - Active * `planned` - Planned * `staged` - Staged * `failed` - Failed * `decommissioning` - Decommissioning (optional)
+	statusNie := []openapiclient.DcimModulesListStatusIcParameterInner{openapiclient.dcim_modules_list_status__ic_parameter_inner("active")} // []DcimModulesListStatusIcParameterInner | * `offline` - Offline * `active` - Active * `planned` - Planned * `staged` - Staged * `failed` - Failed * `decommissioning` - Decommissioning (optional)
+	statusNiew := []openapiclient.DcimModulesListStatusIcParameterInner{openapiclient.dcim_modules_list_status__ic_parameter_inner("active")} // []DcimModulesListStatusIcParameterInner | * `offline` - Offline * `active` - Active * `planned` - Planned * `staged` - Staged * `failed` - Failed * `decommissioning` - Decommissioning (optional)
+	statusNisw := []openapiclient.DcimModulesListStatusIcParameterInner{openapiclient.dcim_modules_list_status__ic_parameter_inner("active")} // []DcimModulesListStatusIcParameterInner | * `offline` - Offline * `active` - Active * `planned` - Planned * `staged` - Staged * `failed` - Failed * `decommissioning` - Decommissioning (optional)
 	tag := []string{"Inner_example"} // []string |  (optional)
 	tagN := []string{"Inner_example"} // []string |  (optional)
 	tenant := []string{"Inner_example"} // []string | Tenant (slug) (optional)
 	tenantN := []string{"Inner_example"} // []string | Tenant (slug) (optional)
-	tenantGroup := []int32{int32(123)} // []int32 | Tenant Group (slug) (optional)
-	tenantGroupN := []int32{int32(123)} // []int32 | Tenant Group (slug) (optional)
-	tenantGroupId := []int32{int32(123)} // []int32 | Tenant Group (ID) (optional)
-	tenantGroupIdN := []int32{int32(123)} // []int32 | Tenant Group (ID) (optional)
+	tenantGroup := []string{"Inner_example"} // []string |  (optional)
+	tenantGroupN := []string{"Inner_example"} // []string |  (optional)
+	tenantGroupId := []string{"Inner_example"} // []string |  (optional)
+	tenantGroupIdN := []string{"Inner_example"} // []string |  (optional)
 	tenantId := []*int32{int32(123)} // []*int32 | Tenant (ID) (optional)
 	tenantIdN := []*int32{int32(123)} // []*int32 | Tenant (ID) (optional)
 	updatedByRequest := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
@@ -4373,7 +4409,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VirtualizationAPI.VirtualizationVirtualMachinesList(context.Background()).Cluster(cluster).ClusterN(clusterN).ClusterGroup(clusterGroup).ClusterGroupN(clusterGroupN).ClusterGroupId(clusterGroupId).ClusterGroupIdN(clusterGroupIdN).ClusterId(clusterId).ClusterIdN(clusterIdN).ClusterType(clusterType).ClusterTypeN(clusterTypeN).ClusterTypeId(clusterTypeId).ClusterTypeIdN(clusterTypeIdN).ConfigTemplateId(configTemplateId).ConfigTemplateIdN(configTemplateIdN).Contact(contact).ContactN(contactN).ContactGroup(contactGroup).ContactGroupN(contactGroupN).ContactRole(contactRole).ContactRoleN(contactRoleN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Description(description).DescriptionEmpty(descriptionEmpty).DescriptionIc(descriptionIc).DescriptionIe(descriptionIe).DescriptionIew(descriptionIew).DescriptionIsw(descriptionIsw).DescriptionN(descriptionN).DescriptionNic(descriptionNic).DescriptionNie(descriptionNie).DescriptionNiew(descriptionNiew).DescriptionNisw(descriptionNisw).Device(device).DeviceN(deviceN).DeviceId(deviceId).DeviceIdN(deviceIdN).Disk(disk).DiskEmpty(diskEmpty).DiskGt(diskGt).DiskGte(diskGte).DiskLt(diskLt).DiskLte(diskLte).DiskN(diskN).HasPrimaryIp(hasPrimaryIp).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).InterfaceCount(interfaceCount).InterfaceCountEmpty(interfaceCountEmpty).InterfaceCountGt(interfaceCountGt).InterfaceCountGte(interfaceCountGte).InterfaceCountLt(interfaceCountLt).InterfaceCountLte(interfaceCountLte).InterfaceCountN(interfaceCountN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).LocalContextData(localContextData).MacAddress(macAddress).MacAddressIc(macAddressIc).MacAddressIe(macAddressIe).MacAddressIew(macAddressIew).MacAddressIsw(macAddressIsw).MacAddressN(macAddressN).MacAddressNic(macAddressNic).MacAddressNie(macAddressNie).MacAddressNiew(macAddressNiew).MacAddressNisw(macAddressNisw).Memory(memory).MemoryEmpty(memoryEmpty).MemoryGt(memoryGt).MemoryGte(memoryGte).MemoryLt(memoryLt).MemoryLte(memoryLte).MemoryN(memoryN).ModifiedByRequest(modifiedByRequest).Name(name).NameEmpty(nameEmpty).NameIc(nameIc).NameIe(nameIe).NameIew(nameIew).NameIsw(nameIsw).NameN(nameN).NameNic(nameNic).NameNie(nameNie).NameNiew(nameNiew).NameNisw(nameNisw).Offset(offset).Ordering(ordering).Platform(platform).PlatformN(platformN).PlatformId(platformId).PlatformIdN(platformIdN).PrimaryIp4Id(primaryIp4Id).PrimaryIp4IdN(primaryIp4IdN).PrimaryIp6Id(primaryIp6Id).PrimaryIp6IdN(primaryIp6IdN).Q(q).Region(region).RegionN(regionN).RegionId(regionId).RegionIdN(regionIdN).Role(role).RoleN(roleN).RoleId(roleId).RoleIdN(roleIdN).Site(site).SiteN(siteN).SiteGroup(siteGroup).SiteGroupN(siteGroupN).SiteGroupId(siteGroupId).SiteGroupIdN(siteGroupIdN).SiteId(siteId).SiteIdN(siteIdN).Status(status).StatusN(statusN).Tag(tag).TagN(tagN).Tenant(tenant).TenantN(tenantN).TenantGroup(tenantGroup).TenantGroupN(tenantGroupN).TenantGroupId(tenantGroupId).TenantGroupIdN(tenantGroupIdN).TenantId(tenantId).TenantIdN(tenantIdN).UpdatedByRequest(updatedByRequest).Vcpus(vcpus).VcpusEmpty(vcpusEmpty).VcpusGt(vcpusGt).VcpusGte(vcpusGte).VcpusLt(vcpusLt).VcpusLte(vcpusLte).VcpusN(vcpusN).VirtualDiskCount(virtualDiskCount).VirtualDiskCountEmpty(virtualDiskCountEmpty).VirtualDiskCountGt(virtualDiskCountGt).VirtualDiskCountGte(virtualDiskCountGte).VirtualDiskCountLt(virtualDiskCountLt).VirtualDiskCountLte(virtualDiskCountLte).VirtualDiskCountN(virtualDiskCountN).Execute()
+	resp, r, err := apiClient.VirtualizationAPI.VirtualizationVirtualMachinesList(context.Background()).Cluster(cluster).ClusterN(clusterN).ClusterGroup(clusterGroup).ClusterGroupN(clusterGroupN).ClusterGroupId(clusterGroupId).ClusterGroupIdN(clusterGroupIdN).ClusterId(clusterId).ClusterIdN(clusterIdN).ClusterType(clusterType).ClusterTypeN(clusterTypeN).ClusterTypeId(clusterTypeId).ClusterTypeIdN(clusterTypeIdN).ConfigTemplateId(configTemplateId).ConfigTemplateIdN(configTemplateIdN).Contact(contact).ContactN(contactN).ContactGroup(contactGroup).ContactGroupN(contactGroupN).ContactRole(contactRole).ContactRoleN(contactRoleN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Description(description).DescriptionEmpty(descriptionEmpty).DescriptionIc(descriptionIc).DescriptionIe(descriptionIe).DescriptionIew(descriptionIew).DescriptionIsw(descriptionIsw).DescriptionN(descriptionN).DescriptionNic(descriptionNic).DescriptionNie(descriptionNie).DescriptionNiew(descriptionNiew).DescriptionNisw(descriptionNisw).Device(device).DeviceN(deviceN).DeviceId(deviceId).DeviceIdN(deviceIdN).Disk(disk).DiskEmpty(diskEmpty).DiskGt(diskGt).DiskGte(diskGte).DiskLt(diskLt).DiskLte(diskLte).DiskN(diskN).HasPrimaryIp(hasPrimaryIp).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).InterfaceCount(interfaceCount).InterfaceCountEmpty(interfaceCountEmpty).InterfaceCountGt(interfaceCountGt).InterfaceCountGte(interfaceCountGte).InterfaceCountLt(interfaceCountLt).InterfaceCountLte(interfaceCountLte).InterfaceCountN(interfaceCountN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).LocalContextData(localContextData).MacAddress(macAddress).MacAddressIc(macAddressIc).MacAddressIe(macAddressIe).MacAddressIew(macAddressIew).MacAddressIsw(macAddressIsw).MacAddressN(macAddressN).MacAddressNic(macAddressNic).MacAddressNie(macAddressNie).MacAddressNiew(macAddressNiew).MacAddressNisw(macAddressNisw).Memory(memory).MemoryEmpty(memoryEmpty).MemoryGt(memoryGt).MemoryGte(memoryGte).MemoryLt(memoryLt).MemoryLte(memoryLte).MemoryN(memoryN).ModifiedByRequest(modifiedByRequest).Name(name).NameEmpty(nameEmpty).NameIc(nameIc).NameIe(nameIe).NameIew(nameIew).NameIsw(nameIsw).NameN(nameN).NameNic(nameNic).NameNie(nameNie).NameNiew(nameNiew).NameNisw(nameNisw).Offset(offset).Ordering(ordering).Platform(platform).PlatformN(platformN).PlatformId(platformId).PlatformIdN(platformIdN).PrimaryIp4Id(primaryIp4Id).PrimaryIp4IdN(primaryIp4IdN).PrimaryIp6Id(primaryIp6Id).PrimaryIp6IdN(primaryIp6IdN).Q(q).Region(region).RegionN(regionN).RegionId(regionId).RegionIdN(regionIdN).Role(role).RoleN(roleN).RoleId(roleId).RoleIdN(roleIdN).Serial(serial).SerialEmpty(serialEmpty).SerialIc(serialIc).SerialIe(serialIe).SerialIew(serialIew).SerialIsw(serialIsw).SerialN(serialN).SerialNic(serialNic).SerialNie(serialNie).SerialNiew(serialNiew).SerialNisw(serialNisw).Site(site).SiteN(siteN).SiteGroup(siteGroup).SiteGroupN(siteGroupN).SiteGroupId(siteGroupId).SiteGroupIdN(siteGroupIdN).SiteId(siteId).SiteIdN(siteIdN).Status(status).StatusEmpty(statusEmpty).StatusIc(statusIc).StatusIe(statusIe).StatusIew(statusIew).StatusIsw(statusIsw).StatusN(statusN).StatusNic(statusNic).StatusNie(statusNie).StatusNiew(statusNiew).StatusNisw(statusNisw).Tag(tag).TagN(tagN).Tenant(tenant).TenantN(tenantN).TenantGroup(tenantGroup).TenantGroupN(tenantGroupN).TenantGroupId(tenantGroupId).TenantGroupIdN(tenantGroupIdN).TenantId(tenantId).TenantIdN(tenantIdN).UpdatedByRequest(updatedByRequest).Vcpus(vcpus).VcpusEmpty(vcpusEmpty).VcpusGt(vcpusGt).VcpusGte(vcpusGte).VcpusLt(vcpusLt).VcpusLte(vcpusLte).VcpusN(vcpusN).VirtualDiskCount(virtualDiskCount).VirtualDiskCountEmpty(virtualDiskCountEmpty).VirtualDiskCountGt(virtualDiskCountGt).VirtualDiskCountGte(virtualDiskCountGte).VirtualDiskCountLt(virtualDiskCountLt).VirtualDiskCountLte(virtualDiskCountLte).VirtualDiskCountN(virtualDiskCountN).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualizationAPI.VirtualizationVirtualMachinesList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4410,8 +4446,8 @@ Name | Type | Description  | Notes
  **configTemplateIdN** | **[]int32** | Config template (ID) | 
  **contact** | **[]int32** | Contact | 
  **contactN** | **[]int32** | Contact | 
- **contactGroup** | **[]int32** | Contact group | 
- **contactGroupN** | **[]int32** | Contact group | 
+ **contactGroup** | **[]string** |  | 
+ **contactGroupN** | **[]string** |  | 
  **contactRole** | **[]int32** | Contact Role | 
  **contactRoleN** | **[]int32** | Contact Role | 
  **created** | [**[]time.Time**](time.Time.md) |  | 
@@ -4508,32 +4544,52 @@ Name | Type | Description  | Notes
  **primaryIp6Id** | **[]int32** | Primary IPv6 (ID) | 
  **primaryIp6IdN** | **[]int32** | Primary IPv6 (ID) | 
  **q** | **string** | Search | 
- **region** | **[]int32** | Region (slug) | 
- **regionN** | **[]int32** | Region (slug) | 
- **regionId** | **[]int32** | Region (ID) | 
- **regionIdN** | **[]int32** | Region (ID) | 
+ **region** | **[]string** |  | 
+ **regionN** | **[]string** |  | 
+ **regionId** | **[]string** |  | 
+ **regionIdN** | **[]string** |  | 
  **role** | **[]string** | Role (slug) | 
  **roleN** | **[]string** | Role (slug) | 
  **roleId** | **[]int32** | Role (ID) | 
  **roleIdN** | **[]int32** | Role (ID) | 
+ **serial** | **[]string** |  | 
+ **serialEmpty** | **bool** |  | 
+ **serialIc** | **[]string** |  | 
+ **serialIe** | **[]string** |  | 
+ **serialIew** | **[]string** |  | 
+ **serialIsw** | **[]string** |  | 
+ **serialN** | **[]string** |  | 
+ **serialNic** | **[]string** |  | 
+ **serialNie** | **[]string** |  | 
+ **serialNiew** | **[]string** |  | 
+ **serialNisw** | **[]string** |  | 
  **site** | **[]string** | Site (slug) | 
  **siteN** | **[]string** | Site (slug) | 
- **siteGroup** | **[]int32** | Site group (slug) | 
- **siteGroupN** | **[]int32** | Site group (slug) | 
- **siteGroupId** | **[]int32** | Site group (ID) | 
- **siteGroupIdN** | **[]int32** | Site group (ID) | 
+ **siteGroup** | **[]string** |  | 
+ **siteGroupN** | **[]string** |  | 
+ **siteGroupId** | **[]string** |  | 
+ **siteGroupIdN** | **[]string** |  | 
  **siteId** | **[]int32** | Site (ID) | 
  **siteIdN** | **[]int32** | Site (ID) | 
  **status** | **[]string** |  | 
- **statusN** | **[]string** |  | 
+ **statusEmpty** | **bool** |  | 
+ **statusIc** | [**[]DcimModulesListStatusIcParameterInner**](DcimModulesListStatusIcParameterInner.md) | * &#x60;offline&#x60; - Offline * &#x60;active&#x60; - Active * &#x60;planned&#x60; - Planned * &#x60;staged&#x60; - Staged * &#x60;failed&#x60; - Failed * &#x60;decommissioning&#x60; - Decommissioning | 
+ **statusIe** | [**[]DcimModulesListStatusIcParameterInner**](DcimModulesListStatusIcParameterInner.md) | * &#x60;offline&#x60; - Offline * &#x60;active&#x60; - Active * &#x60;planned&#x60; - Planned * &#x60;staged&#x60; - Staged * &#x60;failed&#x60; - Failed * &#x60;decommissioning&#x60; - Decommissioning | 
+ **statusIew** | [**[]DcimModulesListStatusIcParameterInner**](DcimModulesListStatusIcParameterInner.md) | * &#x60;offline&#x60; - Offline * &#x60;active&#x60; - Active * &#x60;planned&#x60; - Planned * &#x60;staged&#x60; - Staged * &#x60;failed&#x60; - Failed * &#x60;decommissioning&#x60; - Decommissioning | 
+ **statusIsw** | [**[]DcimModulesListStatusIcParameterInner**](DcimModulesListStatusIcParameterInner.md) | * &#x60;offline&#x60; - Offline * &#x60;active&#x60; - Active * &#x60;planned&#x60; - Planned * &#x60;staged&#x60; - Staged * &#x60;failed&#x60; - Failed * &#x60;decommissioning&#x60; - Decommissioning | 
+ **statusN** | [**[]DcimModulesListStatusIcParameterInner**](DcimModulesListStatusIcParameterInner.md) | * &#x60;offline&#x60; - Offline * &#x60;active&#x60; - Active * &#x60;planned&#x60; - Planned * &#x60;staged&#x60; - Staged * &#x60;failed&#x60; - Failed * &#x60;decommissioning&#x60; - Decommissioning | 
+ **statusNic** | [**[]DcimModulesListStatusIcParameterInner**](DcimModulesListStatusIcParameterInner.md) | * &#x60;offline&#x60; - Offline * &#x60;active&#x60; - Active * &#x60;planned&#x60; - Planned * &#x60;staged&#x60; - Staged * &#x60;failed&#x60; - Failed * &#x60;decommissioning&#x60; - Decommissioning | 
+ **statusNie** | [**[]DcimModulesListStatusIcParameterInner**](DcimModulesListStatusIcParameterInner.md) | * &#x60;offline&#x60; - Offline * &#x60;active&#x60; - Active * &#x60;planned&#x60; - Planned * &#x60;staged&#x60; - Staged * &#x60;failed&#x60; - Failed * &#x60;decommissioning&#x60; - Decommissioning | 
+ **statusNiew** | [**[]DcimModulesListStatusIcParameterInner**](DcimModulesListStatusIcParameterInner.md) | * &#x60;offline&#x60; - Offline * &#x60;active&#x60; - Active * &#x60;planned&#x60; - Planned * &#x60;staged&#x60; - Staged * &#x60;failed&#x60; - Failed * &#x60;decommissioning&#x60; - Decommissioning | 
+ **statusNisw** | [**[]DcimModulesListStatusIcParameterInner**](DcimModulesListStatusIcParameterInner.md) | * &#x60;offline&#x60; - Offline * &#x60;active&#x60; - Active * &#x60;planned&#x60; - Planned * &#x60;staged&#x60; - Staged * &#x60;failed&#x60; - Failed * &#x60;decommissioning&#x60; - Decommissioning | 
  **tag** | **[]string** |  | 
  **tagN** | **[]string** |  | 
  **tenant** | **[]string** | Tenant (slug) | 
  **tenantN** | **[]string** | Tenant (slug) | 
- **tenantGroup** | **[]int32** | Tenant Group (slug) | 
- **tenantGroupN** | **[]int32** | Tenant Group (slug) | 
- **tenantGroupId** | **[]int32** | Tenant Group (ID) | 
- **tenantGroupIdN** | **[]int32** | Tenant Group (ID) | 
+ **tenantGroup** | **[]string** |  | 
+ **tenantGroupN** | **[]string** |  | 
+ **tenantGroupId** | **[]string** |  | 
+ **tenantGroupIdN** | **[]string** |  | 
  **tenantId** | **[]int32** | Tenant (ID) | 
  **tenantIdN** | **[]int32** | Tenant (ID) | 
  **updatedByRequest** | **string** |  | 
@@ -4587,7 +4643,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -4659,7 +4715,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -4733,7 +4789,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -4803,7 +4859,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {

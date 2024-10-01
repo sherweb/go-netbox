@@ -78,11 +78,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	contactAssignmentRequest := []openapiclient.ContactAssignmentRequest{*openapiclient.NewContactAssignmentRequest("ObjectType_example", int64(123), *openapiclient.NewContactRequest("Name_example"))} // []ContactAssignmentRequest | 
+	contactAssignmentRequest := []openapiclient.ContactAssignmentRequest{*openapiclient.NewContactAssignmentRequest("ObjectType_example", int64(123), *openapiclient.NewBriefContactRequest("Name_example"))} // []ContactAssignmentRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -142,11 +142,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	contactAssignmentRequest := []openapiclient.ContactAssignmentRequest{*openapiclient.NewContactAssignmentRequest("ObjectType_example", int64(123), *openapiclient.NewContactRequest("Name_example"))} // []ContactAssignmentRequest | 
+	contactAssignmentRequest := []openapiclient.ContactAssignmentRequest{*openapiclient.NewContactAssignmentRequest("ObjectType_example", int64(123), *openapiclient.NewBriefContactRequest("Name_example"))} // []ContactAssignmentRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -208,11 +208,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	contactAssignmentRequest := []openapiclient.ContactAssignmentRequest{*openapiclient.NewContactAssignmentRequest("ObjectType_example", int64(123), *openapiclient.NewContactRequest("Name_example"))} // []ContactAssignmentRequest | 
+	contactAssignmentRequest := []openapiclient.ContactAssignmentRequest{*openapiclient.NewContactAssignmentRequest("ObjectType_example", int64(123), *openapiclient.NewBriefContactRequest("Name_example"))} // []ContactAssignmentRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -274,11 +274,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	writableContactAssignmentRequest := *openapiclient.NewWritableContactAssignmentRequest("ObjectType_example", int64(123), *openapiclient.NewContactRequest("Name_example")) // WritableContactAssignmentRequest | 
+	writableContactAssignmentRequest := *openapiclient.NewWritableContactAssignmentRequest("ObjectType_example", int64(123), *openapiclient.NewBriefContactRequest("Name_example")) // WritableContactAssignmentRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -340,7 +340,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -393,7 +393,7 @@ Name | Type | Description  | Notes
 
 ## TenancyContactAssignmentsList
 
-> PaginatedContactAssignmentList TenancyContactAssignmentsList(ctx).ContactId(contactId).ContactIdN(contactIdN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Group(group).GroupN(groupN).GroupId(groupId).GroupIdN(groupIdN).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).ModifiedByRequest(modifiedByRequest).ObjectId(objectId).ObjectIdEmpty(objectIdEmpty).ObjectIdGt(objectIdGt).ObjectIdGte(objectIdGte).ObjectIdLt(objectIdLt).ObjectIdLte(objectIdLte).ObjectIdN(objectIdN).ObjectType(objectType).ObjectTypeN(objectTypeN).ObjectTypeId(objectTypeId).ObjectTypeIdN(objectTypeIdN).Offset(offset).Ordering(ordering).Priority(priority).PriorityN(priorityN).Q(q).Role(role).RoleN(roleN).RoleId(roleId).RoleIdN(roleIdN).Tag(tag).TagN(tagN).UpdatedByRequest(updatedByRequest).Execute()
+> PaginatedContactAssignmentList TenancyContactAssignmentsList(ctx).ContactId(contactId).ContactIdN(contactIdN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Group(group).GroupN(groupN).GroupId(groupId).GroupIdN(groupIdN).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).ModifiedByRequest(modifiedByRequest).ObjectId(objectId).ObjectIdEmpty(objectIdEmpty).ObjectIdGt(objectIdGt).ObjectIdGte(objectIdGte).ObjectIdLt(objectIdLt).ObjectIdLte(objectIdLte).ObjectIdN(objectIdN).ObjectType(objectType).ObjectTypeN(objectTypeN).ObjectTypeId(objectTypeId).ObjectTypeIdN(objectTypeIdN).Offset(offset).Ordering(ordering).Priority(priority).Q(q).Role(role).RoleN(roleN).RoleId(roleId).RoleIdN(roleIdN).Tag(tag).TagN(tagN).UpdatedByRequest(updatedByRequest).Execute()
 
 
 
@@ -409,7 +409,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -423,10 +423,10 @@ func main() {
 	createdLte := []time.Time{time.Now()} // []time.Time |  (optional)
 	createdN := []time.Time{time.Now()} // []time.Time |  (optional)
 	createdByRequest := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	group := []int32{int32(123)} // []int32 | Contact group (slug) (optional)
-	groupN := []int32{int32(123)} // []int32 | Contact group (slug) (optional)
-	groupId := []int32{int32(123)} // []int32 | Contact group (ID) (optional)
-	groupIdN := []int32{int32(123)} // []int32 | Contact group (ID) (optional)
+	group := []string{"Inner_example"} // []string |  (optional)
+	groupN := []string{"Inner_example"} // []string |  (optional)
+	groupId := []string{"Inner_example"} // []string |  (optional)
+	groupIdN := []string{"Inner_example"} // []string |  (optional)
 	id := []int32{int32(123)} // []int32 |  (optional)
 	idEmpty := true // bool |  (optional)
 	idGt := []int32{int32(123)} // []int32 |  (optional)
@@ -456,8 +456,7 @@ func main() {
 	objectTypeIdN := int32(56) // int32 |  (optional)
 	offset := int32(56) // int32 | The initial index from which to return the results. (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	priority := openapiclient.tenancy_contact_assignments_list_priority_parameter("inactive") // TenancyContactAssignmentsListPriorityParameter | * `primary` - Primary * `secondary` - Secondary * `tertiary` - Tertiary * `inactive` - Inactive (optional)
-	priorityN := openapiclient.tenancy_contact_assignments_list_priority_parameter("inactive") // TenancyContactAssignmentsListPriorityParameter | * `primary` - Primary * `secondary` - Secondary * `tertiary` - Tertiary * `inactive` - Inactive (optional)
+	priority := openapiclient.circuits_circuit_group_assignments_list_priority_parameter("inactive") // CircuitsCircuitGroupAssignmentsListPriorityParameter | * `primary` - Primary * `secondary` - Secondary * `tertiary` - Tertiary * `inactive` - Inactive (optional)
 	q := "q_example" // string | Search (optional)
 	role := []string{"Inner_example"} // []string | Contact role (slug) (optional)
 	roleN := []string{"Inner_example"} // []string | Contact role (slug) (optional)
@@ -469,7 +468,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TenancyAPI.TenancyContactAssignmentsList(context.Background()).ContactId(contactId).ContactIdN(contactIdN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Group(group).GroupN(groupN).GroupId(groupId).GroupIdN(groupIdN).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).ModifiedByRequest(modifiedByRequest).ObjectId(objectId).ObjectIdEmpty(objectIdEmpty).ObjectIdGt(objectIdGt).ObjectIdGte(objectIdGte).ObjectIdLt(objectIdLt).ObjectIdLte(objectIdLte).ObjectIdN(objectIdN).ObjectType(objectType).ObjectTypeN(objectTypeN).ObjectTypeId(objectTypeId).ObjectTypeIdN(objectTypeIdN).Offset(offset).Ordering(ordering).Priority(priority).PriorityN(priorityN).Q(q).Role(role).RoleN(roleN).RoleId(roleId).RoleIdN(roleIdN).Tag(tag).TagN(tagN).UpdatedByRequest(updatedByRequest).Execute()
+	resp, r, err := apiClient.TenancyAPI.TenancyContactAssignmentsList(context.Background()).ContactId(contactId).ContactIdN(contactIdN).Created(created).CreatedEmpty(createdEmpty).CreatedGt(createdGt).CreatedGte(createdGte).CreatedLt(createdLt).CreatedLte(createdLte).CreatedN(createdN).CreatedByRequest(createdByRequest).Group(group).GroupN(groupN).GroupId(groupId).GroupIdN(groupIdN).Id(id).IdEmpty(idEmpty).IdGt(idGt).IdGte(idGte).IdLt(idLt).IdLte(idLte).IdN(idN).LastUpdated(lastUpdated).LastUpdatedEmpty(lastUpdatedEmpty).LastUpdatedGt(lastUpdatedGt).LastUpdatedGte(lastUpdatedGte).LastUpdatedLt(lastUpdatedLt).LastUpdatedLte(lastUpdatedLte).LastUpdatedN(lastUpdatedN).Limit(limit).ModifiedByRequest(modifiedByRequest).ObjectId(objectId).ObjectIdEmpty(objectIdEmpty).ObjectIdGt(objectIdGt).ObjectIdGte(objectIdGte).ObjectIdLt(objectIdLt).ObjectIdLte(objectIdLte).ObjectIdN(objectIdN).ObjectType(objectType).ObjectTypeN(objectTypeN).ObjectTypeId(objectTypeId).ObjectTypeIdN(objectTypeIdN).Offset(offset).Ordering(ordering).Priority(priority).Q(q).Role(role).RoleN(roleN).RoleId(roleId).RoleIdN(roleIdN).Tag(tag).TagN(tagN).UpdatedByRequest(updatedByRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TenancyAPI.TenancyContactAssignmentsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -500,10 +499,10 @@ Name | Type | Description  | Notes
  **createdLte** | [**[]time.Time**](time.Time.md) |  | 
  **createdN** | [**[]time.Time**](time.Time.md) |  | 
  **createdByRequest** | **string** |  | 
- **group** | **[]int32** | Contact group (slug) | 
- **groupN** | **[]int32** | Contact group (slug) | 
- **groupId** | **[]int32** | Contact group (ID) | 
- **groupIdN** | **[]int32** | Contact group (ID) | 
+ **group** | **[]string** |  | 
+ **groupN** | **[]string** |  | 
+ **groupId** | **[]string** |  | 
+ **groupIdN** | **[]string** |  | 
  **id** | **[]int32** |  | 
  **idEmpty** | **bool** |  | 
  **idGt** | **[]int32** |  | 
@@ -533,8 +532,7 @@ Name | Type | Description  | Notes
  **objectTypeIdN** | **int32** |  | 
  **offset** | **int32** | The initial index from which to return the results. | 
  **ordering** | **string** | Which field to use when ordering the results. | 
- **priority** | [**TenancyContactAssignmentsListPriorityParameter**](TenancyContactAssignmentsListPriorityParameter.md) | * &#x60;primary&#x60; - Primary * &#x60;secondary&#x60; - Secondary * &#x60;tertiary&#x60; - Tertiary * &#x60;inactive&#x60; - Inactive | 
- **priorityN** | [**TenancyContactAssignmentsListPriorityParameter**](TenancyContactAssignmentsListPriorityParameter.md) | * &#x60;primary&#x60; - Primary * &#x60;secondary&#x60; - Secondary * &#x60;tertiary&#x60; - Tertiary * &#x60;inactive&#x60; - Inactive | 
+ **priority** | [**CircuitsCircuitGroupAssignmentsListPriorityParameter**](CircuitsCircuitGroupAssignmentsListPriorityParameter.md) | * &#x60;primary&#x60; - Primary * &#x60;secondary&#x60; - Secondary * &#x60;tertiary&#x60; - Tertiary * &#x60;inactive&#x60; - Inactive | 
  **q** | **string** | Search | 
  **role** | **[]string** | Contact role (slug) | 
  **roleN** | **[]string** | Contact role (slug) | 
@@ -579,7 +577,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -651,7 +649,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -721,12 +719,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this contact assignment.
-	writableContactAssignmentRequest := *openapiclient.NewWritableContactAssignmentRequest("ObjectType_example", int64(123), *openapiclient.NewContactRequest("Name_example")) // WritableContactAssignmentRequest | 
+	writableContactAssignmentRequest := *openapiclient.NewWritableContactAssignmentRequest("ObjectType_example", int64(123), *openapiclient.NewBriefContactRequest("Name_example")) // WritableContactAssignmentRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -793,7 +791,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -857,7 +855,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -923,7 +921,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -989,7 +987,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1055,7 +1053,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1124,14 +1122,14 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	ancestor := []int32{int32(123)} // []int32 | Contact group (slug) (optional)
-	ancestorN := []int32{int32(123)} // []int32 | Contact group (slug) (optional)
-	ancestorId := []int32{int32(123)} // []int32 | Contact group (ID) (optional)
-	ancestorIdN := []int32{int32(123)} // []int32 | Contact group (ID) (optional)
+	ancestor := []string{"Inner_example"} // []string |  (optional)
+	ancestorN := []string{"Inner_example"} // []string |  (optional)
+	ancestorId := []string{"Inner_example"} // []string |  (optional)
+	ancestorIdN := []string{"Inner_example"} // []string |  (optional)
 	created := []time.Time{time.Now()} // []time.Time |  (optional)
 	createdEmpty := []time.Time{time.Now()} // []time.Time |  (optional)
 	createdGt := []time.Time{time.Now()} // []time.Time |  (optional)
@@ -1223,10 +1221,10 @@ Other parameters are passed through a pointer to a apiTenancyContactGroupsListRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ancestor** | **[]int32** | Contact group (slug) | 
- **ancestorN** | **[]int32** | Contact group (slug) | 
- **ancestorId** | **[]int32** | Contact group (ID) | 
- **ancestorIdN** | **[]int32** | Contact group (ID) | 
+ **ancestor** | **[]string** |  | 
+ **ancestorN** | **[]string** |  | 
+ **ancestorId** | **[]string** |  | 
+ **ancestorIdN** | **[]string** |  | 
  **created** | [**[]time.Time**](time.Time.md) |  | 
  **createdEmpty** | [**[]time.Time**](time.Time.md) |  | 
  **createdGt** | [**[]time.Time**](time.Time.md) |  | 
@@ -1330,7 +1328,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1402,7 +1400,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1472,7 +1470,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1544,7 +1542,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1608,7 +1606,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1674,7 +1672,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1740,7 +1738,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1806,7 +1804,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -1875,7 +1873,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2065,7 +2063,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2137,7 +2135,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2207,7 +2205,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2279,7 +2277,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2343,7 +2341,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2409,7 +2407,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2475,7 +2473,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2541,7 +2539,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2610,7 +2608,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2655,10 +2653,10 @@ func main() {
 	emailNie := []string{"Inner_example"} // []string |  (optional)
 	emailNiew := []string{"Inner_example"} // []string |  (optional)
 	emailNisw := []string{"Inner_example"} // []string |  (optional)
-	group := []int32{int32(123)} // []int32 | Contact group (slug) (optional)
-	groupN := []int32{int32(123)} // []int32 | Contact group (slug) (optional)
-	groupId := []int32{int32(123)} // []int32 | Contact group (ID) (optional)
-	groupIdN := []int32{int32(123)} // []int32 | Contact group (ID) (optional)
+	group := []string{"Inner_example"} // []string |  (optional)
+	groupN := []string{"Inner_example"} // []string |  (optional)
+	groupId := []string{"Inner_example"} // []string |  (optional)
+	groupIdN := []string{"Inner_example"} // []string |  (optional)
 	id := []int32{int32(123)} // []int32 |  (optional)
 	idEmpty := true // bool |  (optional)
 	idGt := []int32{int32(123)} // []int32 |  (optional)
@@ -2790,10 +2788,10 @@ Name | Type | Description  | Notes
  **emailNie** | **[]string** |  | 
  **emailNiew** | **[]string** |  | 
  **emailNisw** | **[]string** |  | 
- **group** | **[]int32** | Contact group (slug) | 
- **groupN** | **[]int32** | Contact group (slug) | 
- **groupId** | **[]int32** | Contact group (ID) | 
- **groupIdN** | **[]int32** | Contact group (ID) | 
+ **group** | **[]string** |  | 
+ **groupN** | **[]string** |  | 
+ **groupId** | **[]string** |  | 
+ **groupIdN** | **[]string** |  | 
  **id** | **[]int32** |  | 
  **idEmpty** | **bool** |  | 
  **idGt** | **[]int32** |  | 
@@ -2896,7 +2894,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -2968,7 +2966,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3038,7 +3036,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3110,7 +3108,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3174,7 +3172,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3240,7 +3238,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3306,7 +3304,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3372,7 +3370,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3441,14 +3439,14 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
-	ancestor := []int32{int32(123)} // []int32 | Tenant group (slug) (optional)
-	ancestorN := []int32{int32(123)} // []int32 | Tenant group (slug) (optional)
-	ancestorId := []int32{int32(123)} // []int32 | Tenant group (ID) (optional)
-	ancestorIdN := []int32{int32(123)} // []int32 | Tenant group (ID) (optional)
+	ancestor := []string{"Inner_example"} // []string |  (optional)
+	ancestorN := []string{"Inner_example"} // []string |  (optional)
+	ancestorId := []string{"Inner_example"} // []string |  (optional)
+	ancestorIdN := []string{"Inner_example"} // []string |  (optional)
 	created := []time.Time{time.Now()} // []time.Time |  (optional)
 	createdEmpty := []time.Time{time.Now()} // []time.Time |  (optional)
 	createdGt := []time.Time{time.Now()} // []time.Time |  (optional)
@@ -3540,10 +3538,10 @@ Other parameters are passed through a pointer to a apiTenancyTenantGroupsListReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ancestor** | **[]int32** | Tenant group (slug) | 
- **ancestorN** | **[]int32** | Tenant group (slug) | 
- **ancestorId** | **[]int32** | Tenant group (ID) | 
- **ancestorIdN** | **[]int32** | Tenant group (ID) | 
+ **ancestor** | **[]string** |  | 
+ **ancestorN** | **[]string** |  | 
+ **ancestorId** | **[]string** |  | 
+ **ancestorIdN** | **[]string** |  | 
  **created** | [**[]time.Time**](time.Time.md) |  | 
  **createdEmpty** | [**[]time.Time**](time.Time.md) |  | 
  **createdGt** | [**[]time.Time**](time.Time.md) |  | 
@@ -3647,7 +3645,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3719,7 +3717,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3789,7 +3787,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3861,7 +3859,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3925,7 +3923,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -3991,7 +3989,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -4057,7 +4055,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -4123,7 +4121,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -4192,14 +4190,14 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
 	contact := []int32{int32(123)} // []int32 | Contact (optional)
 	contactN := []int32{int32(123)} // []int32 | Contact (optional)
-	contactGroup := []int32{int32(123)} // []int32 | Contact group (optional)
-	contactGroupN := []int32{int32(123)} // []int32 | Contact group (optional)
+	contactGroup := []string{"Inner_example"} // []string |  (optional)
+	contactGroupN := []string{"Inner_example"} // []string |  (optional)
 	contactRole := []int32{int32(123)} // []int32 | Contact Role (optional)
 	contactRoleN := []int32{int32(123)} // []int32 | Contact Role (optional)
 	created := []time.Time{time.Now()} // []time.Time |  (optional)
@@ -4221,10 +4219,10 @@ func main() {
 	descriptionNie := []string{"Inner_example"} // []string |  (optional)
 	descriptionNiew := []string{"Inner_example"} // []string |  (optional)
 	descriptionNisw := []string{"Inner_example"} // []string |  (optional)
-	group := []int32{int32(123)} // []int32 | Tenant group (slug) (optional)
-	groupN := []int32{int32(123)} // []int32 | Tenant group (slug) (optional)
-	groupId := []int32{int32(123)} // []int32 | Tenant group (ID) (optional)
-	groupIdN := []int32{int32(123)} // []int32 | Tenant group (ID) (optional)
+	group := []string{"Inner_example"} // []string |  (optional)
+	groupN := []string{"Inner_example"} // []string |  (optional)
+	groupId := []string{"Inner_example"} // []string |  (optional)
+	groupIdN := []string{"Inner_example"} // []string |  (optional)
 	id := []int32{int32(123)} // []int32 |  (optional)
 	idEmpty := true // bool |  (optional)
 	idGt := []int32{int32(123)} // []int32 |  (optional)
@@ -4295,8 +4293,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contact** | **[]int32** | Contact | 
  **contactN** | **[]int32** | Contact | 
- **contactGroup** | **[]int32** | Contact group | 
- **contactGroupN** | **[]int32** | Contact group | 
+ **contactGroup** | **[]string** |  | 
+ **contactGroupN** | **[]string** |  | 
  **contactRole** | **[]int32** | Contact Role | 
  **contactRoleN** | **[]int32** | Contact Role | 
  **created** | [**[]time.Time**](time.Time.md) |  | 
@@ -4318,10 +4316,10 @@ Name | Type | Description  | Notes
  **descriptionNie** | **[]string** |  | 
  **descriptionNiew** | **[]string** |  | 
  **descriptionNisw** | **[]string** |  | 
- **group** | **[]int32** | Tenant group (slug) | 
- **groupN** | **[]int32** | Tenant group (slug) | 
- **groupId** | **[]int32** | Tenant group (ID) | 
- **groupIdN** | **[]int32** | Tenant group (ID) | 
+ **group** | **[]string** |  | 
+ **groupN** | **[]string** |  | 
+ **groupId** | **[]string** |  | 
+ **groupIdN** | **[]string** |  | 
  **id** | **[]int32** |  | 
  **idEmpty** | **bool** |  | 
  **idGt** | **[]int32** |  | 
@@ -4402,7 +4400,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -4474,7 +4472,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
@@ -4544,7 +4542,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/netbox-community/go-netbox/v4"
+	openapiclient "github.com/sherweb/go-netbox/v4"
 )
 
 func main() {
