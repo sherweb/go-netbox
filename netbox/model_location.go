@@ -36,8 +36,8 @@ type Location struct {
 	Description *string `json:"description,omitempty"`
 	Tags []NestedTag `json:"tags,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created"`
-	LastUpdated NullableTime `json:"last_updated"`
+	Created NullableTime `json:"created,omitempty"`
+	LastUpdated NullableTime `json:"last_updated,omitempty"`
 	RackCount *int32 `json:"rack_count,omitempty"`
 	DeviceCount *int32 `json:"device_count,omitempty"`
 	Depth int32 `json:"_depth"`
@@ -50,7 +50,7 @@ type _Location Location
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLocation(id int32, url string, display string, name string, slug string, site BriefSite, created NullableTime, lastUpdated NullableTime, depth int32) *Location {
+func NewLocation(id int32, url string, display string, name string, slug string, site BriefSite, depth int32) *Location {
 	this := Location{}
 	this.Id = id
 	this.Url = url
@@ -58,8 +58,6 @@ func NewLocation(id int32, url string, display string, name string, slug string,
 	this.Name = name
 	this.Slug = slug
 	this.Site = site
-	this.Created = created
-	this.LastUpdated = lastUpdated
 	this.Depth = depth
 	return &this
 }
@@ -498,18 +496,16 @@ func (o *Location) SetCustomFields(v map[string]interface{}) {
 	o.CustomFields = v
 }
 
-// GetCreated returns the Created field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Location) GetCreated() time.Time {
-	if o == nil || o.Created.Get() == nil {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.Created.Get()
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Location) GetCreatedOk() (*time.Time, bool) {
@@ -519,24 +515,39 @@ func (o *Location) GetCreatedOk() (*time.Time, bool) {
 	return o.Created.Get(), o.Created.IsSet()
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *Location) HasCreated() bool {
+	if o != nil && o.Created.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *Location) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *Location) SetCreatedNil() {
+	o.Created.Set(nil)
+}
 
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *Location) UnsetCreated() {
+	o.Created.Unset()
+}
 
-// GetLastUpdated returns the LastUpdated field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Location) GetLastUpdated() time.Time {
-	if o == nil || o.LastUpdated.Get() == nil {
+	if o == nil || IsNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.LastUpdated.Get()
 }
 
-// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Location) GetLastUpdatedOk() (*time.Time, bool) {
@@ -546,11 +557,28 @@ func (o *Location) GetLastUpdatedOk() (*time.Time, bool) {
 	return o.LastUpdated.Get(), o.LastUpdated.IsSet()
 }
 
-// SetLastUpdated sets field value
+// HasLastUpdated returns a boolean if a field has been set.
+func (o *Location) HasLastUpdated() bool {
+	if o != nil && o.LastUpdated.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
 func (o *Location) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+// SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
+func (o *Location) SetLastUpdatedNil() {
+	o.LastUpdated.Set(nil)
+}
 
+// UnsetLastUpdated ensures that no value is present for LastUpdated, not even an explicit nil
+func (o *Location) UnsetLastUpdated() {
+	o.LastUpdated.Unset()
+}
 
 // GetRackCount returns the RackCount field value if set, zero value otherwise.
 func (o *Location) GetRackCount() int32 {
@@ -681,8 +709,12 @@ func (o Location) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CustomFields) {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
-	toSerialize["created"] = o.Created.Get()
-	toSerialize["last_updated"] = o.LastUpdated.Get()
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.LastUpdated.IsSet() {
+		toSerialize["last_updated"] = o.LastUpdated.Get()
+	}
 	if !IsNil(o.RackCount) {
 		toSerialize["rack_count"] = o.RackCount
 	}
@@ -709,8 +741,6 @@ func (o *Location) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"slug",
 		"site",
-		"created",
-		"last_updated",
 		"_depth",
 	}
 

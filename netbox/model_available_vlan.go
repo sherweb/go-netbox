@@ -21,7 +21,7 @@ var _ MappedNullable = &AvailableVLAN{}
 // AvailableVLAN Representation of a VLAN which does not exist in the database.
 type AvailableVLAN struct {
 	Vid int32 `json:"vid"`
-	Group NullableBriefVLANGroup `json:"group"`
+	Group NullableBriefVLANGroup `json:"group,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,10 +31,9 @@ type _AvailableVLAN AvailableVLAN
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAvailableVLAN(vid int32, group NullableBriefVLANGroup) *AvailableVLAN {
+func NewAvailableVLAN(vid int32) *AvailableVLAN {
 	this := AvailableVLAN{}
 	this.Vid = vid
-	this.Group = group
 	return &this
 }
 
@@ -71,18 +70,16 @@ func (o *AvailableVLAN) SetVid(v int32) {
 }
 
 
-// GetGroup returns the Group field value
-// If the value is explicit nil, the zero value for BriefVLANGroup will be returned
+// GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AvailableVLAN) GetGroup() BriefVLANGroup {
-	if o == nil || o.Group.Get() == nil {
+	if o == nil || IsNil(o.Group.Get()) {
 		var ret BriefVLANGroup
 		return ret
 	}
-
 	return *o.Group.Get()
 }
 
-// GetGroupOk returns a tuple with the Group field value
+// GetGroupOk returns a tuple with the Group field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AvailableVLAN) GetGroupOk() (*BriefVLANGroup, bool) {
@@ -92,11 +89,28 @@ func (o *AvailableVLAN) GetGroupOk() (*BriefVLANGroup, bool) {
 	return o.Group.Get(), o.Group.IsSet()
 }
 
-// SetGroup sets field value
+// HasGroup returns a boolean if a field has been set.
+func (o *AvailableVLAN) HasGroup() bool {
+	if o != nil && o.Group.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGroup gets a reference to the given NullableBriefVLANGroup and assigns it to the Group field.
 func (o *AvailableVLAN) SetGroup(v BriefVLANGroup) {
 	o.Group.Set(&v)
 }
+// SetGroupNil sets the value for Group to be an explicit nil
+func (o *AvailableVLAN) SetGroupNil() {
+	o.Group.Set(nil)
+}
 
+// UnsetGroup ensures that no value is present for Group, not even an explicit nil
+func (o *AvailableVLAN) UnsetGroup() {
+	o.Group.Unset()
+}
 
 func (o AvailableVLAN) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
@@ -109,7 +123,9 @@ func (o AvailableVLAN) MarshalJSON() ([]byte, error) {
 func (o AvailableVLAN) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["vid"] = o.Vid
-	toSerialize["group"] = o.Group.Get()
+	if o.Group.IsSet() {
+		toSerialize["group"] = o.Group.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -124,7 +140,6 @@ func (o *AvailableVLAN) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"vid",
-		"group",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.

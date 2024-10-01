@@ -32,9 +32,9 @@ type ObjectChange struct {
 	Action ObjectChangeAction `json:"action"`
 	ChangedObjectType string `json:"changed_object_type"`
 	ChangedObjectId int64 `json:"changed_object_id"`
-	ChangedObject interface{} `json:"changed_object"`
-	PrechangeData interface{} `json:"prechange_data"`
-	PostchangeData interface{} `json:"postchange_data"`
+	ChangedObject interface{} `json:"changed_object,omitempty"`
+	PrechangeData interface{} `json:"prechange_data,omitempty"`
+	PostchangeData interface{} `json:"postchange_data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,7 +44,7 @@ type _ObjectChange ObjectChange
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewObjectChange(id int32, url string, display string, time time.Time, user BriefUser, userName string, requestId string, action ObjectChangeAction, changedObjectType string, changedObjectId int64, changedObject interface{}, prechangeData interface{}, postchangeData interface{}) *ObjectChange {
+func NewObjectChange(id int32, url string, display string, time time.Time, user BriefUser, userName string, requestId string, action ObjectChangeAction, changedObjectType string, changedObjectId int64) *ObjectChange {
 	this := ObjectChange{}
 	this.Id = id
 	this.Url = url
@@ -56,9 +56,6 @@ func NewObjectChange(id int32, url string, display string, time time.Time, user 
 	this.Action = action
 	this.ChangedObjectType = changedObjectType
 	this.ChangedObjectId = changedObjectId
-	this.ChangedObject = changedObject
-	this.PrechangeData = prechangeData
-	this.PostchangeData = postchangeData
 	return &this
 }
 
@@ -352,18 +349,16 @@ func (o *ObjectChange) SetChangedObjectId(v int64) {
 }
 
 
-// GetChangedObject returns the ChangedObject field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetChangedObject returns the ChangedObject field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ObjectChange) GetChangedObject() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.ChangedObject
 }
 
-// GetChangedObjectOk returns a tuple with the ChangedObject field value
+// GetChangedObjectOk returns a tuple with the ChangedObject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ObjectChange) GetChangedObjectOk() (*interface{}, bool) {
@@ -373,24 +368,30 @@ func (o *ObjectChange) GetChangedObjectOk() (*interface{}, bool) {
 	return &o.ChangedObject, true
 }
 
-// SetChangedObject sets field value
+// HasChangedObject returns a boolean if a field has been set.
+func (o *ObjectChange) HasChangedObject() bool {
+	if o != nil && !IsNil(o.ChangedObject) {
+		return true
+	}
+
+	return false
+}
+
+// SetChangedObject gets a reference to the given interface{} and assigns it to the ChangedObject field.
 func (o *ObjectChange) SetChangedObject(v interface{}) {
 	o.ChangedObject = v
 }
 
-
-// GetPrechangeData returns the PrechangeData field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetPrechangeData returns the PrechangeData field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ObjectChange) GetPrechangeData() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.PrechangeData
 }
 
-// GetPrechangeDataOk returns a tuple with the PrechangeData field value
+// GetPrechangeDataOk returns a tuple with the PrechangeData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ObjectChange) GetPrechangeDataOk() (*interface{}, bool) {
@@ -400,24 +401,30 @@ func (o *ObjectChange) GetPrechangeDataOk() (*interface{}, bool) {
 	return &o.PrechangeData, true
 }
 
-// SetPrechangeData sets field value
+// HasPrechangeData returns a boolean if a field has been set.
+func (o *ObjectChange) HasPrechangeData() bool {
+	if o != nil && !IsNil(o.PrechangeData) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrechangeData gets a reference to the given interface{} and assigns it to the PrechangeData field.
 func (o *ObjectChange) SetPrechangeData(v interface{}) {
 	o.PrechangeData = v
 }
 
-
-// GetPostchangeData returns the PostchangeData field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetPostchangeData returns the PostchangeData field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ObjectChange) GetPostchangeData() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.PostchangeData
 }
 
-// GetPostchangeDataOk returns a tuple with the PostchangeData field value
+// GetPostchangeDataOk returns a tuple with the PostchangeData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ObjectChange) GetPostchangeDataOk() (*interface{}, bool) {
@@ -427,11 +434,19 @@ func (o *ObjectChange) GetPostchangeDataOk() (*interface{}, bool) {
 	return &o.PostchangeData, true
 }
 
-// SetPostchangeData sets field value
+// HasPostchangeData returns a boolean if a field has been set.
+func (o *ObjectChange) HasPostchangeData() bool {
+	if o != nil && !IsNil(o.PostchangeData) {
+		return true
+	}
+
+	return false
+}
+
+// SetPostchangeData gets a reference to the given interface{} and assigns it to the PostchangeData field.
 func (o *ObjectChange) SetPostchangeData(v interface{}) {
 	o.PostchangeData = v
 }
-
 
 func (o ObjectChange) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
@@ -488,9 +503,6 @@ func (o *ObjectChange) UnmarshalJSON(data []byte) (err error) {
 		"action",
 		"changed_object_type",
 		"changed_object_id",
-		"changed_object",
-		"prechange_data",
-		"postchange_data",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.

@@ -23,7 +23,7 @@ type WritableLocationRequest struct {
 	Name string `json:"name"`
 	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Site BriefSiteRequest `json:"site"`
-	Parent NullableInt32 `json:"parent"`
+	Parent NullableInt32 `json:"parent,omitempty"`
 	Status *LocationStatusValue `json:"status,omitempty"`
 	Tenant NullableBriefTenantRequest `json:"tenant,omitempty"`
 	// Local facility ID or description
@@ -40,12 +40,11 @@ type _WritableLocationRequest WritableLocationRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWritableLocationRequest(name string, slug string, site BriefSiteRequest, parent NullableInt32) *WritableLocationRequest {
+func NewWritableLocationRequest(name string, slug string, site BriefSiteRequest) *WritableLocationRequest {
 	this := WritableLocationRequest{}
 	this.Name = name
 	this.Slug = slug
 	this.Site = site
-	this.Parent = parent
 	return &this
 }
 
@@ -132,18 +131,16 @@ func (o *WritableLocationRequest) SetSite(v BriefSiteRequest) {
 }
 
 
-// GetParent returns the Parent field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableLocationRequest) GetParent() int32 {
-	if o == nil || o.Parent.Get() == nil {
+	if o == nil || IsNil(o.Parent.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.Parent.Get()
 }
 
-// GetParentOk returns a tuple with the Parent field value
+// GetParentOk returns a tuple with the Parent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WritableLocationRequest) GetParentOk() (*int32, bool) {
@@ -153,11 +150,28 @@ func (o *WritableLocationRequest) GetParentOk() (*int32, bool) {
 	return o.Parent.Get(), o.Parent.IsSet()
 }
 
-// SetParent sets field value
+// HasParent returns a boolean if a field has been set.
+func (o *WritableLocationRequest) HasParent() bool {
+	if o != nil && o.Parent.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetParent gets a reference to the given NullableInt32 and assigns it to the Parent field.
 func (o *WritableLocationRequest) SetParent(v int32) {
 	o.Parent.Set(&v)
 }
+// SetParentNil sets the value for Parent to be an explicit nil
+func (o *WritableLocationRequest) SetParentNil() {
+	o.Parent.Set(nil)
+}
 
+// UnsetParent ensures that no value is present for Parent, not even an explicit nil
+func (o *WritableLocationRequest) UnsetParent() {
+	o.Parent.Unset()
+}
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *WritableLocationRequest) GetStatus() LocationStatusValue {
@@ -374,7 +388,9 @@ func (o WritableLocationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["slug"] = o.Slug
 	toSerialize["site"] = o.Site
-	toSerialize["parent"] = o.Parent.Get()
+	if o.Parent.IsSet() {
+		toSerialize["parent"] = o.Parent.Get()
+	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
@@ -409,7 +425,6 @@ func (o *WritableLocationRequest) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"slug",
 		"site",
-		"parent",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.

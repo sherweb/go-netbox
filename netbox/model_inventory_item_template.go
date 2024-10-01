@@ -37,9 +37,9 @@ type InventoryItemTemplate struct {
 	Description *string `json:"description,omitempty"`
 	ComponentType NullableString `json:"component_type,omitempty"`
 	ComponentId NullableInt64 `json:"component_id,omitempty"`
-	Component interface{} `json:"component"`
-	Created NullableTime `json:"created"`
-	LastUpdated NullableTime `json:"last_updated"`
+	Component interface{} `json:"component,omitempty"`
+	Created NullableTime `json:"created,omitempty"`
+	LastUpdated NullableTime `json:"last_updated,omitempty"`
 	Depth int32 `json:"_depth"`
 	AdditionalProperties map[string]interface{}
 }
@@ -50,16 +50,13 @@ type _InventoryItemTemplate InventoryItemTemplate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInventoryItemTemplate(id int32, url string, display string, deviceType BriefDeviceType, name string, component interface{}, created NullableTime, lastUpdated NullableTime, depth int32) *InventoryItemTemplate {
+func NewInventoryItemTemplate(id int32, url string, display string, deviceType BriefDeviceType, name string, depth int32) *InventoryItemTemplate {
 	this := InventoryItemTemplate{}
 	this.Id = id
 	this.Url = url
 	this.Display = display
 	this.DeviceType = deviceType
 	this.Name = name
-	this.Component = component
-	this.Created = created
-	this.LastUpdated = lastUpdated
 	this.Depth = depth
 	return &this
 }
@@ -503,18 +500,16 @@ func (o *InventoryItemTemplate) UnsetComponentId() {
 	o.ComponentId.Unset()
 }
 
-// GetComponent returns the Component field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetComponent returns the Component field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InventoryItemTemplate) GetComponent() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value
+// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InventoryItemTemplate) GetComponentOk() (*interface{}, bool) {
@@ -524,24 +519,30 @@ func (o *InventoryItemTemplate) GetComponentOk() (*interface{}, bool) {
 	return &o.Component, true
 }
 
-// SetComponent sets field value
+// HasComponent returns a boolean if a field has been set.
+func (o *InventoryItemTemplate) HasComponent() bool {
+	if o != nil && !IsNil(o.Component) {
+		return true
+	}
+
+	return false
+}
+
+// SetComponent gets a reference to the given interface{} and assigns it to the Component field.
 func (o *InventoryItemTemplate) SetComponent(v interface{}) {
 	o.Component = v
 }
 
-
-// GetCreated returns the Created field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InventoryItemTemplate) GetCreated() time.Time {
-	if o == nil || o.Created.Get() == nil {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.Created.Get()
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InventoryItemTemplate) GetCreatedOk() (*time.Time, bool) {
@@ -551,24 +552,39 @@ func (o *InventoryItemTemplate) GetCreatedOk() (*time.Time, bool) {
 	return o.Created.Get(), o.Created.IsSet()
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *InventoryItemTemplate) HasCreated() bool {
+	if o != nil && o.Created.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *InventoryItemTemplate) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *InventoryItemTemplate) SetCreatedNil() {
+	o.Created.Set(nil)
+}
 
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *InventoryItemTemplate) UnsetCreated() {
+	o.Created.Unset()
+}
 
-// GetLastUpdated returns the LastUpdated field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InventoryItemTemplate) GetLastUpdated() time.Time {
-	if o == nil || o.LastUpdated.Get() == nil {
+	if o == nil || IsNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.LastUpdated.Get()
 }
 
-// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InventoryItemTemplate) GetLastUpdatedOk() (*time.Time, bool) {
@@ -578,11 +594,28 @@ func (o *InventoryItemTemplate) GetLastUpdatedOk() (*time.Time, bool) {
 	return o.LastUpdated.Get(), o.LastUpdated.IsSet()
 }
 
-// SetLastUpdated sets field value
+// HasLastUpdated returns a boolean if a field has been set.
+func (o *InventoryItemTemplate) HasLastUpdated() bool {
+	if o != nil && o.LastUpdated.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
 func (o *InventoryItemTemplate) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+// SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
+func (o *InventoryItemTemplate) SetLastUpdatedNil() {
+	o.LastUpdated.Set(nil)
+}
 
+// UnsetLastUpdated ensures that no value is present for LastUpdated, not even an explicit nil
+func (o *InventoryItemTemplate) UnsetLastUpdated() {
+	o.LastUpdated.Unset()
+}
 
 // GetDepth returns the Depth field value
 func (o *InventoryItemTemplate) GetDepth() int32 {
@@ -651,8 +684,12 @@ func (o InventoryItemTemplate) ToMap() (map[string]interface{}, error) {
 	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
-	toSerialize["created"] = o.Created.Get()
-	toSerialize["last_updated"] = o.LastUpdated.Get()
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.LastUpdated.IsSet() {
+		toSerialize["last_updated"] = o.LastUpdated.Get()
+	}
 	toSerialize["_depth"] = o.Depth
 
 	for key, value := range o.AdditionalProperties {
@@ -672,9 +709,6 @@ func (o *InventoryItemTemplate) UnmarshalJSON(data []byte) (err error) {
 		"display",
 		"device_type",
 		"name",
-		"component",
-		"created",
-		"last_updated",
 		"_depth",
 	}
 

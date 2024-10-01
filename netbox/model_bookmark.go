@@ -26,9 +26,9 @@ type Bookmark struct {
 	Display string `json:"display"`
 	ObjectType string `json:"object_type"`
 	ObjectId int64 `json:"object_id"`
-	Object interface{} `json:"object"`
+	Object interface{} `json:"object,omitempty"`
 	User BriefUser `json:"user"`
-	Created time.Time `json:"created"`
+	Created *time.Time `json:"created,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -38,16 +38,14 @@ type _Bookmark Bookmark
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBookmark(id int32, url string, display string, objectType string, objectId int64, object interface{}, user BriefUser, created time.Time) *Bookmark {
+func NewBookmark(id int32, url string, display string, objectType string, objectId int64, user BriefUser) *Bookmark {
 	this := Bookmark{}
 	this.Id = id
 	this.Url = url
 	this.Display = display
 	this.ObjectType = objectType
 	this.ObjectId = objectId
-	this.Object = object
 	this.User = user
-	this.Created = created
 	return &this
 }
 
@@ -184,18 +182,16 @@ func (o *Bookmark) SetObjectId(v int64) {
 }
 
 
-// GetObject returns the Object field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetObject returns the Object field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Bookmark) GetObject() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Object
 }
 
-// GetObjectOk returns a tuple with the Object field value
+// GetObjectOk returns a tuple with the Object field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Bookmark) GetObjectOk() (*interface{}, bool) {
@@ -205,11 +201,19 @@ func (o *Bookmark) GetObjectOk() (*interface{}, bool) {
 	return &o.Object, true
 }
 
-// SetObject sets field value
+// HasObject returns a boolean if a field has been set.
+func (o *Bookmark) HasObject() bool {
+	if o != nil && !IsNil(o.Object) {
+		return true
+	}
+
+	return false
+}
+
+// SetObject gets a reference to the given interface{} and assigns it to the Object field.
 func (o *Bookmark) SetObject(v interface{}) {
 	o.Object = v
 }
-
 
 // GetUser returns the User field value
 func (o *Bookmark) GetUser() BriefUser {
@@ -236,30 +240,37 @@ func (o *Bookmark) SetUser(v BriefUser) {
 }
 
 
-// GetCreated returns the Created field value
+// GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Bookmark) GetCreated() time.Time {
-	if o == nil {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
-
-	return o.Created
+	return *o.Created
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Bookmark) GetCreatedOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
-	return &o.Created, true
+	return o.Created, true
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *Bookmark) HasCreated() bool {
+	if o != nil && !IsNil(o.Created) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *Bookmark) SetCreated(v time.Time) {
-	o.Created = v
+	o.Created = &v
 }
-
 
 func (o Bookmark) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
@@ -280,7 +291,9 @@ func (o Bookmark) ToMap() (map[string]interface{}, error) {
 		toSerialize["object"] = o.Object
 	}
 	toSerialize["user"] = o.User
-	toSerialize["created"] = o.Created
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -299,9 +312,7 @@ func (o *Bookmark) UnmarshalJSON(data []byte) (err error) {
 		"display",
 		"object_type",
 		"object_id",
-		"object",
 		"user",
-		"created",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.

@@ -37,11 +37,11 @@ type VMInterface struct {
 	UntaggedVlan NullableBriefVLAN `json:"untagged_vlan,omitempty"`
 	TaggedVlans []VLAN `json:"tagged_vlans,omitempty"`
 	Vrf NullableBriefVRF `json:"vrf,omitempty"`
-	L2vpnTermination NullableBriefL2VPNTermination `json:"l2vpn_termination"`
+	L2vpnTermination NullableBriefL2VPNTermination `json:"l2vpn_termination,omitempty"`
 	Tags []NestedTag `json:"tags,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created"`
-	LastUpdated NullableTime `json:"last_updated"`
+	Created NullableTime `json:"created,omitempty"`
+	LastUpdated NullableTime `json:"last_updated,omitempty"`
 	CountIpaddresses int32 `json:"count_ipaddresses"`
 	CountFhrpGroups int32 `json:"count_fhrp_groups"`
 	AdditionalProperties map[string]interface{}
@@ -53,16 +53,13 @@ type _VMInterface VMInterface
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVMInterface(id int32, url string, display string, virtualMachine BriefVirtualMachine, name string, l2vpnTermination NullableBriefL2VPNTermination, created NullableTime, lastUpdated NullableTime, countIpaddresses int32, countFhrpGroups int32) *VMInterface {
+func NewVMInterface(id int32, url string, display string, virtualMachine BriefVirtualMachine, name string, countIpaddresses int32, countFhrpGroups int32) *VMInterface {
 	this := VMInterface{}
 	this.Id = id
 	this.Url = url
 	this.Display = display
 	this.VirtualMachine = virtualMachine
 	this.Name = name
-	this.L2vpnTermination = l2vpnTermination
-	this.Created = created
-	this.LastUpdated = lastUpdated
 	this.CountIpaddresses = countIpaddresses
 	this.CountFhrpGroups = countFhrpGroups
 	return &this
@@ -613,18 +610,16 @@ func (o *VMInterface) UnsetVrf() {
 	o.Vrf.Unset()
 }
 
-// GetL2vpnTermination returns the L2vpnTermination field value
-// If the value is explicit nil, the zero value for BriefL2VPNTermination will be returned
+// GetL2vpnTermination returns the L2vpnTermination field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VMInterface) GetL2vpnTermination() BriefL2VPNTermination {
-	if o == nil || o.L2vpnTermination.Get() == nil {
+	if o == nil || IsNil(o.L2vpnTermination.Get()) {
 		var ret BriefL2VPNTermination
 		return ret
 	}
-
 	return *o.L2vpnTermination.Get()
 }
 
-// GetL2vpnTerminationOk returns a tuple with the L2vpnTermination field value
+// GetL2vpnTerminationOk returns a tuple with the L2vpnTermination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VMInterface) GetL2vpnTerminationOk() (*BriefL2VPNTermination, bool) {
@@ -634,11 +629,28 @@ func (o *VMInterface) GetL2vpnTerminationOk() (*BriefL2VPNTermination, bool) {
 	return o.L2vpnTermination.Get(), o.L2vpnTermination.IsSet()
 }
 
-// SetL2vpnTermination sets field value
+// HasL2vpnTermination returns a boolean if a field has been set.
+func (o *VMInterface) HasL2vpnTermination() bool {
+	if o != nil && o.L2vpnTermination.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetL2vpnTermination gets a reference to the given NullableBriefL2VPNTermination and assigns it to the L2vpnTermination field.
 func (o *VMInterface) SetL2vpnTermination(v BriefL2VPNTermination) {
 	o.L2vpnTermination.Set(&v)
 }
+// SetL2vpnTerminationNil sets the value for L2vpnTermination to be an explicit nil
+func (o *VMInterface) SetL2vpnTerminationNil() {
+	o.L2vpnTermination.Set(nil)
+}
 
+// UnsetL2vpnTermination ensures that no value is present for L2vpnTermination, not even an explicit nil
+func (o *VMInterface) UnsetL2vpnTermination() {
+	o.L2vpnTermination.Unset()
+}
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *VMInterface) GetTags() []NestedTag {
@@ -704,18 +716,16 @@ func (o *VMInterface) SetCustomFields(v map[string]interface{}) {
 	o.CustomFields = v
 }
 
-// GetCreated returns the Created field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VMInterface) GetCreated() time.Time {
-	if o == nil || o.Created.Get() == nil {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.Created.Get()
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VMInterface) GetCreatedOk() (*time.Time, bool) {
@@ -725,24 +735,39 @@ func (o *VMInterface) GetCreatedOk() (*time.Time, bool) {
 	return o.Created.Get(), o.Created.IsSet()
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *VMInterface) HasCreated() bool {
+	if o != nil && o.Created.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *VMInterface) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *VMInterface) SetCreatedNil() {
+	o.Created.Set(nil)
+}
 
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *VMInterface) UnsetCreated() {
+	o.Created.Unset()
+}
 
-// GetLastUpdated returns the LastUpdated field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VMInterface) GetLastUpdated() time.Time {
-	if o == nil || o.LastUpdated.Get() == nil {
+	if o == nil || IsNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.LastUpdated.Get()
 }
 
-// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VMInterface) GetLastUpdatedOk() (*time.Time, bool) {
@@ -752,11 +777,28 @@ func (o *VMInterface) GetLastUpdatedOk() (*time.Time, bool) {
 	return o.LastUpdated.Get(), o.LastUpdated.IsSet()
 }
 
-// SetLastUpdated sets field value
+// HasLastUpdated returns a boolean if a field has been set.
+func (o *VMInterface) HasLastUpdated() bool {
+	if o != nil && o.LastUpdated.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
 func (o *VMInterface) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+// SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
+func (o *VMInterface) SetLastUpdatedNil() {
+	o.LastUpdated.Set(nil)
+}
 
+// UnsetLastUpdated ensures that no value is present for LastUpdated, not even an explicit nil
+func (o *VMInterface) UnsetLastUpdated() {
+	o.LastUpdated.Unset()
+}
 
 // GetCountIpaddresses returns the CountIpaddresses field value
 func (o *VMInterface) GetCountIpaddresses() int32 {
@@ -856,15 +898,21 @@ func (o VMInterface) ToMap() (map[string]interface{}, error) {
 	if o.Vrf.IsSet() {
 		toSerialize["vrf"] = o.Vrf.Get()
 	}
-	toSerialize["l2vpn_termination"] = o.L2vpnTermination.Get()
+	if o.L2vpnTermination.IsSet() {
+		toSerialize["l2vpn_termination"] = o.L2vpnTermination.Get()
+	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
 	if !IsNil(o.CustomFields) {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
-	toSerialize["created"] = o.Created.Get()
-	toSerialize["last_updated"] = o.LastUpdated.Get()
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.LastUpdated.IsSet() {
+		toSerialize["last_updated"] = o.LastUpdated.Get()
+	}
 	toSerialize["count_ipaddresses"] = o.CountIpaddresses
 	toSerialize["count_fhrp_groups"] = o.CountFhrpGroups
 
@@ -885,9 +933,6 @@ func (o *VMInterface) UnmarshalJSON(data []byte) (err error) {
 		"display",
 		"virtual_machine",
 		"name",
-		"l2vpn_termination",
-		"created",
-		"last_updated",
 		"count_ipaddresses",
 		"count_fhrp_groups",
 	}

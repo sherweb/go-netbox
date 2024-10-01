@@ -22,7 +22,7 @@ var _ MappedNullable = &GenericObject{}
 type GenericObject struct {
 	ObjectType string `json:"object_type"`
 	ObjectId int32 `json:"object_id"`
-	Object interface{} `json:"object"`
+	Object interface{} `json:"object,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -32,11 +32,10 @@ type _GenericObject GenericObject
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGenericObject(objectType string, objectId int32, object interface{}) *GenericObject {
+func NewGenericObject(objectType string, objectId int32) *GenericObject {
 	this := GenericObject{}
 	this.ObjectType = objectType
 	this.ObjectId = objectId
-	this.Object = object
 	return &this
 }
 
@@ -98,18 +97,16 @@ func (o *GenericObject) SetObjectId(v int32) {
 }
 
 
-// GetObject returns the Object field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetObject returns the Object field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GenericObject) GetObject() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Object
 }
 
-// GetObjectOk returns a tuple with the Object field value
+// GetObjectOk returns a tuple with the Object field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GenericObject) GetObjectOk() (*interface{}, bool) {
@@ -119,11 +116,19 @@ func (o *GenericObject) GetObjectOk() (*interface{}, bool) {
 	return &o.Object, true
 }
 
-// SetObject sets field value
+// HasObject returns a boolean if a field has been set.
+func (o *GenericObject) HasObject() bool {
+	if o != nil && !IsNil(o.Object) {
+		return true
+	}
+
+	return false
+}
+
+// SetObject gets a reference to the given interface{} and assigns it to the Object field.
 func (o *GenericObject) SetObject(v interface{}) {
 	o.Object = v
 }
-
 
 func (o GenericObject) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
@@ -155,7 +160,6 @@ func (o *GenericObject) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"object_type",
 		"object_id",
-		"object",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.

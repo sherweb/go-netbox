@@ -24,8 +24,8 @@ type CircuitCircuitTermination struct {
 	Url string `json:"url"`
 	DisplayUrl *string `json:"display_url,omitempty"`
 	Display string `json:"display"`
-	Site NullableBriefSite `json:"site"`
-	ProviderNetwork NullableBriefProviderNetwork `json:"provider_network"`
+	Site NullableBriefSite `json:"site,omitempty"`
+	ProviderNetwork NullableBriefProviderNetwork `json:"provider_network,omitempty"`
 	// Physical circuit speed
 	PortSpeed NullableInt32 `json:"port_speed,omitempty"`
 	// Upstream speed, if different from port speed
@@ -42,13 +42,11 @@ type _CircuitCircuitTermination CircuitCircuitTermination
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCircuitCircuitTermination(id int32, url string, display string, site NullableBriefSite, providerNetwork NullableBriefProviderNetwork) *CircuitCircuitTermination {
+func NewCircuitCircuitTermination(id int32, url string, display string) *CircuitCircuitTermination {
 	this := CircuitCircuitTermination{}
 	this.Id = id
 	this.Url = url
 	this.Display = display
-	this.Site = site
-	this.ProviderNetwork = providerNetwork
 	return &this
 }
 
@@ -167,18 +165,16 @@ func (o *CircuitCircuitTermination) SetDisplay(v string) {
 }
 
 
-// GetSite returns the Site field value
-// If the value is explicit nil, the zero value for BriefSite will be returned
+// GetSite returns the Site field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CircuitCircuitTermination) GetSite() BriefSite {
-	if o == nil || o.Site.Get() == nil {
+	if o == nil || IsNil(o.Site.Get()) {
 		var ret BriefSite
 		return ret
 	}
-
 	return *o.Site.Get()
 }
 
-// GetSiteOk returns a tuple with the Site field value
+// GetSiteOk returns a tuple with the Site field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CircuitCircuitTermination) GetSiteOk() (*BriefSite, bool) {
@@ -188,24 +184,39 @@ func (o *CircuitCircuitTermination) GetSiteOk() (*BriefSite, bool) {
 	return o.Site.Get(), o.Site.IsSet()
 }
 
-// SetSite sets field value
+// HasSite returns a boolean if a field has been set.
+func (o *CircuitCircuitTermination) HasSite() bool {
+	if o != nil && o.Site.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSite gets a reference to the given NullableBriefSite and assigns it to the Site field.
 func (o *CircuitCircuitTermination) SetSite(v BriefSite) {
 	o.Site.Set(&v)
 }
+// SetSiteNil sets the value for Site to be an explicit nil
+func (o *CircuitCircuitTermination) SetSiteNil() {
+	o.Site.Set(nil)
+}
 
+// UnsetSite ensures that no value is present for Site, not even an explicit nil
+func (o *CircuitCircuitTermination) UnsetSite() {
+	o.Site.Unset()
+}
 
-// GetProviderNetwork returns the ProviderNetwork field value
-// If the value is explicit nil, the zero value for BriefProviderNetwork will be returned
+// GetProviderNetwork returns the ProviderNetwork field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CircuitCircuitTermination) GetProviderNetwork() BriefProviderNetwork {
-	if o == nil || o.ProviderNetwork.Get() == nil {
+	if o == nil || IsNil(o.ProviderNetwork.Get()) {
 		var ret BriefProviderNetwork
 		return ret
 	}
-
 	return *o.ProviderNetwork.Get()
 }
 
-// GetProviderNetworkOk returns a tuple with the ProviderNetwork field value
+// GetProviderNetworkOk returns a tuple with the ProviderNetwork field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CircuitCircuitTermination) GetProviderNetworkOk() (*BriefProviderNetwork, bool) {
@@ -215,11 +226,28 @@ func (o *CircuitCircuitTermination) GetProviderNetworkOk() (*BriefProviderNetwor
 	return o.ProviderNetwork.Get(), o.ProviderNetwork.IsSet()
 }
 
-// SetProviderNetwork sets field value
+// HasProviderNetwork returns a boolean if a field has been set.
+func (o *CircuitCircuitTermination) HasProviderNetwork() bool {
+	if o != nil && o.ProviderNetwork.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderNetwork gets a reference to the given NullableBriefProviderNetwork and assigns it to the ProviderNetwork field.
 func (o *CircuitCircuitTermination) SetProviderNetwork(v BriefProviderNetwork) {
 	o.ProviderNetwork.Set(&v)
 }
+// SetProviderNetworkNil sets the value for ProviderNetwork to be an explicit nil
+func (o *CircuitCircuitTermination) SetProviderNetworkNil() {
+	o.ProviderNetwork.Set(nil)
+}
 
+// UnsetProviderNetwork ensures that no value is present for ProviderNetwork, not even an explicit nil
+func (o *CircuitCircuitTermination) UnsetProviderNetwork() {
+	o.ProviderNetwork.Unset()
+}
 
 // GetPortSpeed returns the PortSpeed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CircuitCircuitTermination) GetPortSpeed() int32 {
@@ -385,8 +413,12 @@ func (o CircuitCircuitTermination) ToMap() (map[string]interface{}, error) {
 		toSerialize["display_url"] = o.DisplayUrl
 	}
 	toSerialize["display"] = o.Display
-	toSerialize["site"] = o.Site.Get()
-	toSerialize["provider_network"] = o.ProviderNetwork.Get()
+	if o.Site.IsSet() {
+		toSerialize["site"] = o.Site.Get()
+	}
+	if o.ProviderNetwork.IsSet() {
+		toSerialize["provider_network"] = o.ProviderNetwork.Get()
+	}
 	if o.PortSpeed.IsSet() {
 		toSerialize["port_speed"] = o.PortSpeed.Get()
 	}
@@ -415,8 +447,6 @@ func (o *CircuitCircuitTermination) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"url",
 		"display",
-		"site",
-		"provider_network",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.

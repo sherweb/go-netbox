@@ -27,10 +27,10 @@ type FHRPGroupAssignment struct {
 	Group BriefFHRPGroup `json:"group"`
 	InterfaceType string `json:"interface_type"`
 	InterfaceId int64 `json:"interface_id"`
-	Interface interface{} `json:"interface"`
+	Interface interface{} `json:"interface,omitempty"`
 	Priority int32 `json:"priority"`
-	Created NullableTime `json:"created"`
-	LastUpdated NullableTime `json:"last_updated"`
+	Created NullableTime `json:"created,omitempty"`
+	LastUpdated NullableTime `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,7 +40,7 @@ type _FHRPGroupAssignment FHRPGroupAssignment
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFHRPGroupAssignment(id int32, url string, display string, group BriefFHRPGroup, interfaceType string, interfaceId int64, interface_ interface{}, priority int32, created NullableTime, lastUpdated NullableTime) *FHRPGroupAssignment {
+func NewFHRPGroupAssignment(id int32, url string, display string, group BriefFHRPGroup, interfaceType string, interfaceId int64, priority int32) *FHRPGroupAssignment {
 	this := FHRPGroupAssignment{}
 	this.Id = id
 	this.Url = url
@@ -48,10 +48,7 @@ func NewFHRPGroupAssignment(id int32, url string, display string, group BriefFHR
 	this.Group = group
 	this.InterfaceType = interfaceType
 	this.InterfaceId = interfaceId
-	this.Interface = interface_
 	this.Priority = priority
-	this.Created = created
-	this.LastUpdated = lastUpdated
 	return &this
 }
 
@@ -213,18 +210,16 @@ func (o *FHRPGroupAssignment) SetInterfaceId(v int64) {
 }
 
 
-// GetInterface returns the Interface field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetInterface returns the Interface field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FHRPGroupAssignment) GetInterface() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Interface
 }
 
-// GetInterfaceOk returns a tuple with the Interface field value
+// GetInterfaceOk returns a tuple with the Interface field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FHRPGroupAssignment) GetInterfaceOk() (*interface{}, bool) {
@@ -234,11 +229,19 @@ func (o *FHRPGroupAssignment) GetInterfaceOk() (*interface{}, bool) {
 	return &o.Interface, true
 }
 
-// SetInterface sets field value
+// HasInterface returns a boolean if a field has been set.
+func (o *FHRPGroupAssignment) HasInterface() bool {
+	if o != nil && !IsNil(o.Interface) {
+		return true
+	}
+
+	return false
+}
+
+// SetInterface gets a reference to the given interface{} and assigns it to the Interface field.
 func (o *FHRPGroupAssignment) SetInterface(v interface{}) {
 	o.Interface = v
 }
-
 
 // GetPriority returns the Priority field value
 func (o *FHRPGroupAssignment) GetPriority() int32 {
@@ -265,18 +268,16 @@ func (o *FHRPGroupAssignment) SetPriority(v int32) {
 }
 
 
-// GetCreated returns the Created field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FHRPGroupAssignment) GetCreated() time.Time {
-	if o == nil || o.Created.Get() == nil {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.Created.Get()
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FHRPGroupAssignment) GetCreatedOk() (*time.Time, bool) {
@@ -286,24 +287,39 @@ func (o *FHRPGroupAssignment) GetCreatedOk() (*time.Time, bool) {
 	return o.Created.Get(), o.Created.IsSet()
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *FHRPGroupAssignment) HasCreated() bool {
+	if o != nil && o.Created.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *FHRPGroupAssignment) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *FHRPGroupAssignment) SetCreatedNil() {
+	o.Created.Set(nil)
+}
 
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *FHRPGroupAssignment) UnsetCreated() {
+	o.Created.Unset()
+}
 
-// GetLastUpdated returns the LastUpdated field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FHRPGroupAssignment) GetLastUpdated() time.Time {
-	if o == nil || o.LastUpdated.Get() == nil {
+	if o == nil || IsNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.LastUpdated.Get()
 }
 
-// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FHRPGroupAssignment) GetLastUpdatedOk() (*time.Time, bool) {
@@ -313,11 +329,28 @@ func (o *FHRPGroupAssignment) GetLastUpdatedOk() (*time.Time, bool) {
 	return o.LastUpdated.Get(), o.LastUpdated.IsSet()
 }
 
-// SetLastUpdated sets field value
+// HasLastUpdated returns a boolean if a field has been set.
+func (o *FHRPGroupAssignment) HasLastUpdated() bool {
+	if o != nil && o.LastUpdated.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
 func (o *FHRPGroupAssignment) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+// SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
+func (o *FHRPGroupAssignment) SetLastUpdatedNil() {
+	o.LastUpdated.Set(nil)
+}
 
+// UnsetLastUpdated ensures that no value is present for LastUpdated, not even an explicit nil
+func (o *FHRPGroupAssignment) UnsetLastUpdated() {
+	o.LastUpdated.Unset()
+}
 
 func (o FHRPGroupAssignment) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
@@ -339,8 +372,12 @@ func (o FHRPGroupAssignment) ToMap() (map[string]interface{}, error) {
 		toSerialize["interface"] = o.Interface
 	}
 	toSerialize["priority"] = o.Priority
-	toSerialize["created"] = o.Created.Get()
-	toSerialize["last_updated"] = o.LastUpdated.Get()
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.LastUpdated.IsSet() {
+		toSerialize["last_updated"] = o.LastUpdated.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -360,10 +397,7 @@ func (o *FHRPGroupAssignment) UnmarshalJSON(data []byte) (err error) {
 		"group",
 		"interface_type",
 		"interface_id",
-		"interface",
 		"priority",
-		"created",
-		"last_updated",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.
