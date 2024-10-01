@@ -25,8 +25,8 @@ type Script struct {
 	DisplayUrl *string `json:"display_url,omitempty"`
 	Module int32 `json:"module"`
 	Name string `json:"name"`
-	Description NullableString `json:"description"`
-	Vars interface{} `json:"vars"`
+	Description NullableString `json:"description,omitempty"`
+	Vars interface{} `json:"vars,omitempty"`
 	Result BriefJob `json:"result"`
 	Display string `json:"display"`
 	IsExecutable bool `json:"is_executable"`
@@ -39,14 +39,12 @@ type _Script Script
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScript(id int32, url string, module int32, name string, description NullableString, vars interface{}, result BriefJob, display string, isExecutable bool) *Script {
+func NewScript(id int32, url string, module int32, name string, result BriefJob, display string, isExecutable bool) *Script {
 	this := Script{}
 	this.Id = id
 	this.Url = url
 	this.Module = module
 	this.Name = name
-	this.Description = description
-	this.Vars = vars
 	this.Result = result
 	this.Display = display
 	this.IsExecutable = isExecutable
@@ -193,18 +191,16 @@ func (o *Script) SetName(v string) {
 }
 
 
-// GetDescription returns the Description field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Script) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Description.Get()
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Script) GetDescriptionOk() (*string, bool) {
@@ -214,24 +210,39 @@ func (o *Script) GetDescriptionOk() (*string, bool) {
 	return o.Description.Get(), o.Description.IsSet()
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *Script) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *Script) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *Script) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
 
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *Script) UnsetDescription() {
+	o.Description.Unset()
+}
 
-// GetVars returns the Vars field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetVars returns the Vars field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Script) GetVars() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Vars
 }
 
-// GetVarsOk returns a tuple with the Vars field value
+// GetVarsOk returns a tuple with the Vars field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Script) GetVarsOk() (*interface{}, bool) {
@@ -241,11 +252,19 @@ func (o *Script) GetVarsOk() (*interface{}, bool) {
 	return &o.Vars, true
 }
 
-// SetVars sets field value
+// HasVars returns a boolean if a field has been set.
+func (o *Script) HasVars() bool {
+	if o != nil && !IsNil(o.Vars) {
+		return true
+	}
+
+	return false
+}
+
+// SetVars gets a reference to the given interface{} and assigns it to the Vars field.
 func (o *Script) SetVars(v interface{}) {
 	o.Vars = v
 }
-
 
 // GetResult returns the Result field value
 func (o *Script) GetResult() BriefJob {
@@ -339,7 +358,9 @@ func (o Script) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["module"] = o.Module
 	toSerialize["name"] = o.Name
-	toSerialize["description"] = o.Description.Get()
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
 	if o.Vars != nil {
 		toSerialize["vars"] = o.Vars
 	}
@@ -363,8 +384,6 @@ func (o *Script) UnmarshalJSON(data []byte) (err error) {
 		"url",
 		"module",
 		"name",
-		"description",
-		"vars",
 		"result",
 		"display",
 		"is_executable",

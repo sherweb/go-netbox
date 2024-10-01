@@ -29,7 +29,7 @@ type VirtualDeviceContext struct {
 	Device BriefDevice `json:"device"`
 	Identifier NullableInt32 `json:"identifier,omitempty"`
 	Tenant NullableBriefTenant `json:"tenant,omitempty"`
-	PrimaryIp NullableBriefIPAddress `json:"primary_ip"`
+	PrimaryIp NullableBriefIPAddress `json:"primary_ip,omitempty"`
 	PrimaryIp4 NullableBriefIPAddress `json:"primary_ip4,omitempty"`
 	PrimaryIp6 NullableBriefIPAddress `json:"primary_ip6,omitempty"`
 	Status VirtualDeviceContextStatus `json:"status"`
@@ -37,8 +37,8 @@ type VirtualDeviceContext struct {
 	Comments *string `json:"comments,omitempty"`
 	Tags []NestedTag `json:"tags,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created"`
-	LastUpdated NullableTime `json:"last_updated"`
+	Created NullableTime `json:"created,omitempty"`
+	LastUpdated NullableTime `json:"last_updated,omitempty"`
 	InterfaceCount int64 `json:"interface_count"`
 	AdditionalProperties map[string]interface{}
 }
@@ -49,17 +49,14 @@ type _VirtualDeviceContext VirtualDeviceContext
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualDeviceContext(id int32, url string, display string, name string, device BriefDevice, primaryIp NullableBriefIPAddress, status VirtualDeviceContextStatus, created NullableTime, lastUpdated NullableTime, interfaceCount int64) *VirtualDeviceContext {
+func NewVirtualDeviceContext(id int32, url string, display string, name string, device BriefDevice, status VirtualDeviceContextStatus, interfaceCount int64) *VirtualDeviceContext {
 	this := VirtualDeviceContext{}
 	this.Id = id
 	this.Url = url
 	this.Display = display
 	this.Name = name
 	this.Device = device
-	this.PrimaryIp = primaryIp
 	this.Status = status
-	this.Created = created
-	this.LastUpdated = lastUpdated
 	this.InterfaceCount = interfaceCount
 	return &this
 }
@@ -313,18 +310,16 @@ func (o *VirtualDeviceContext) UnsetTenant() {
 	o.Tenant.Unset()
 }
 
-// GetPrimaryIp returns the PrimaryIp field value
-// If the value is explicit nil, the zero value for BriefIPAddress will be returned
+// GetPrimaryIp returns the PrimaryIp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VirtualDeviceContext) GetPrimaryIp() BriefIPAddress {
-	if o == nil || o.PrimaryIp.Get() == nil {
+	if o == nil || IsNil(o.PrimaryIp.Get()) {
 		var ret BriefIPAddress
 		return ret
 	}
-
 	return *o.PrimaryIp.Get()
 }
 
-// GetPrimaryIpOk returns a tuple with the PrimaryIp field value
+// GetPrimaryIpOk returns a tuple with the PrimaryIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VirtualDeviceContext) GetPrimaryIpOk() (*BriefIPAddress, bool) {
@@ -334,11 +329,28 @@ func (o *VirtualDeviceContext) GetPrimaryIpOk() (*BriefIPAddress, bool) {
 	return o.PrimaryIp.Get(), o.PrimaryIp.IsSet()
 }
 
-// SetPrimaryIp sets field value
+// HasPrimaryIp returns a boolean if a field has been set.
+func (o *VirtualDeviceContext) HasPrimaryIp() bool {
+	if o != nil && o.PrimaryIp.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPrimaryIp gets a reference to the given NullableBriefIPAddress and assigns it to the PrimaryIp field.
 func (o *VirtualDeviceContext) SetPrimaryIp(v BriefIPAddress) {
 	o.PrimaryIp.Set(&v)
 }
+// SetPrimaryIpNil sets the value for PrimaryIp to be an explicit nil
+func (o *VirtualDeviceContext) SetPrimaryIpNil() {
+	o.PrimaryIp.Set(nil)
+}
 
+// UnsetPrimaryIp ensures that no value is present for PrimaryIp, not even an explicit nil
+func (o *VirtualDeviceContext) UnsetPrimaryIp() {
+	o.PrimaryIp.Unset()
+}
 
 // GetPrimaryIp4 returns the PrimaryIp4 field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VirtualDeviceContext) GetPrimaryIp4() BriefIPAddress {
@@ -577,18 +589,16 @@ func (o *VirtualDeviceContext) SetCustomFields(v map[string]interface{}) {
 	o.CustomFields = v
 }
 
-// GetCreated returns the Created field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VirtualDeviceContext) GetCreated() time.Time {
-	if o == nil || o.Created.Get() == nil {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.Created.Get()
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VirtualDeviceContext) GetCreatedOk() (*time.Time, bool) {
@@ -598,24 +608,39 @@ func (o *VirtualDeviceContext) GetCreatedOk() (*time.Time, bool) {
 	return o.Created.Get(), o.Created.IsSet()
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *VirtualDeviceContext) HasCreated() bool {
+	if o != nil && o.Created.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *VirtualDeviceContext) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *VirtualDeviceContext) SetCreatedNil() {
+	o.Created.Set(nil)
+}
 
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *VirtualDeviceContext) UnsetCreated() {
+	o.Created.Unset()
+}
 
-// GetLastUpdated returns the LastUpdated field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VirtualDeviceContext) GetLastUpdated() time.Time {
-	if o == nil || o.LastUpdated.Get() == nil {
+	if o == nil || IsNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.LastUpdated.Get()
 }
 
-// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VirtualDeviceContext) GetLastUpdatedOk() (*time.Time, bool) {
@@ -625,11 +650,28 @@ func (o *VirtualDeviceContext) GetLastUpdatedOk() (*time.Time, bool) {
 	return o.LastUpdated.Get(), o.LastUpdated.IsSet()
 }
 
-// SetLastUpdated sets field value
+// HasLastUpdated returns a boolean if a field has been set.
+func (o *VirtualDeviceContext) HasLastUpdated() bool {
+	if o != nil && o.LastUpdated.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
 func (o *VirtualDeviceContext) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+// SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
+func (o *VirtualDeviceContext) SetLastUpdatedNil() {
+	o.LastUpdated.Set(nil)
+}
 
+// UnsetLastUpdated ensures that no value is present for LastUpdated, not even an explicit nil
+func (o *VirtualDeviceContext) UnsetLastUpdated() {
+	o.LastUpdated.Unset()
+}
 
 // GetInterfaceCount returns the InterfaceCount field value
 func (o *VirtualDeviceContext) GetInterfaceCount() int64 {
@@ -680,7 +722,9 @@ func (o VirtualDeviceContext) ToMap() (map[string]interface{}, error) {
 	if o.Tenant.IsSet() {
 		toSerialize["tenant"] = o.Tenant.Get()
 	}
-	toSerialize["primary_ip"] = o.PrimaryIp.Get()
+	if o.PrimaryIp.IsSet() {
+		toSerialize["primary_ip"] = o.PrimaryIp.Get()
+	}
 	if o.PrimaryIp4.IsSet() {
 		toSerialize["primary_ip4"] = o.PrimaryIp4.Get()
 	}
@@ -700,8 +744,12 @@ func (o VirtualDeviceContext) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CustomFields) {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
-	toSerialize["created"] = o.Created.Get()
-	toSerialize["last_updated"] = o.LastUpdated.Get()
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.LastUpdated.IsSet() {
+		toSerialize["last_updated"] = o.LastUpdated.Get()
+	}
 	toSerialize["interface_count"] = o.InterfaceCount
 
 	for key, value := range o.AdditionalProperties {
@@ -721,10 +769,7 @@ func (o *VirtualDeviceContext) UnmarshalJSON(data []byte) (err error) {
 		"display",
 		"name",
 		"device",
-		"primary_ip",
 		"status",
-		"created",
-		"last_updated",
 		"interface_count",
 	}
 

@@ -37,15 +37,15 @@ type RearPort struct {
 	Description *string `json:"description,omitempty"`
 	// Treat as if a cable is connected
 	MarkConnected *bool `json:"mark_connected,omitempty"`
-	Cable NullableBriefCable `json:"cable"`
+	Cable NullableBriefCable `json:"cable,omitempty"`
 	CableEnd string `json:"cable_end"`
 	LinkPeers []interface{} `json:"link_peers"`
 	// Return the type of the peer link terminations, or None.
-	LinkPeersType NullableString `json:"link_peers_type"`
+	LinkPeersType NullableString `json:"link_peers_type,omitempty"`
 	Tags []NestedTag `json:"tags,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created"`
-	LastUpdated NullableTime `json:"last_updated"`
+	Created NullableTime `json:"created,omitempty"`
+	LastUpdated NullableTime `json:"last_updated,omitempty"`
 	Occupied bool `json:"_occupied"`
 	AdditionalProperties map[string]interface{}
 }
@@ -56,7 +56,7 @@ type _RearPort RearPort
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRearPort(id int32, url string, display string, device BriefDevice, name string, type_ FrontPortType, cable NullableBriefCable, cableEnd string, linkPeers []interface{}, linkPeersType NullableString, created NullableTime, lastUpdated NullableTime, occupied bool) *RearPort {
+func NewRearPort(id int32, url string, display string, device BriefDevice, name string, type_ FrontPortType, cableEnd string, linkPeers []interface{}, occupied bool) *RearPort {
 	this := RearPort{}
 	this.Id = id
 	this.Url = url
@@ -64,12 +64,8 @@ func NewRearPort(id int32, url string, display string, device BriefDevice, name 
 	this.Device = device
 	this.Name = name
 	this.Type = type_
-	this.Cable = cable
 	this.CableEnd = cableEnd
 	this.LinkPeers = linkPeers
-	this.LinkPeersType = linkPeersType
-	this.Created = created
-	this.LastUpdated = lastUpdated
 	this.Occupied = occupied
 	return &this
 }
@@ -466,18 +462,16 @@ func (o *RearPort) SetMarkConnected(v bool) {
 	o.MarkConnected = &v
 }
 
-// GetCable returns the Cable field value
-// If the value is explicit nil, the zero value for BriefCable will be returned
+// GetCable returns the Cable field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RearPort) GetCable() BriefCable {
-	if o == nil || o.Cable.Get() == nil {
+	if o == nil || IsNil(o.Cable.Get()) {
 		var ret BriefCable
 		return ret
 	}
-
 	return *o.Cable.Get()
 }
 
-// GetCableOk returns a tuple with the Cable field value
+// GetCableOk returns a tuple with the Cable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RearPort) GetCableOk() (*BriefCable, bool) {
@@ -487,11 +481,28 @@ func (o *RearPort) GetCableOk() (*BriefCable, bool) {
 	return o.Cable.Get(), o.Cable.IsSet()
 }
 
-// SetCable sets field value
+// HasCable returns a boolean if a field has been set.
+func (o *RearPort) HasCable() bool {
+	if o != nil && o.Cable.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCable gets a reference to the given NullableBriefCable and assigns it to the Cable field.
 func (o *RearPort) SetCable(v BriefCable) {
 	o.Cable.Set(&v)
 }
+// SetCableNil sets the value for Cable to be an explicit nil
+func (o *RearPort) SetCableNil() {
+	o.Cable.Set(nil)
+}
 
+// UnsetCable ensures that no value is present for Cable, not even an explicit nil
+func (o *RearPort) UnsetCable() {
+	o.Cable.Unset()
+}
 
 // GetCableEnd returns the CableEnd field value
 func (o *RearPort) GetCableEnd() string {
@@ -543,18 +554,16 @@ func (o *RearPort) SetLinkPeers(v []interface{}) {
 }
 
 
-// GetLinkPeersType returns the LinkPeersType field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetLinkPeersType returns the LinkPeersType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RearPort) GetLinkPeersType() string {
-	if o == nil || o.LinkPeersType.Get() == nil {
+	if o == nil || IsNil(o.LinkPeersType.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.LinkPeersType.Get()
 }
 
-// GetLinkPeersTypeOk returns a tuple with the LinkPeersType field value
+// GetLinkPeersTypeOk returns a tuple with the LinkPeersType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RearPort) GetLinkPeersTypeOk() (*string, bool) {
@@ -564,11 +573,28 @@ func (o *RearPort) GetLinkPeersTypeOk() (*string, bool) {
 	return o.LinkPeersType.Get(), o.LinkPeersType.IsSet()
 }
 
-// SetLinkPeersType sets field value
+// HasLinkPeersType returns a boolean if a field has been set.
+func (o *RearPort) HasLinkPeersType() bool {
+	if o != nil && o.LinkPeersType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLinkPeersType gets a reference to the given NullableString and assigns it to the LinkPeersType field.
 func (o *RearPort) SetLinkPeersType(v string) {
 	o.LinkPeersType.Set(&v)
 }
+// SetLinkPeersTypeNil sets the value for LinkPeersType to be an explicit nil
+func (o *RearPort) SetLinkPeersTypeNil() {
+	o.LinkPeersType.Set(nil)
+}
 
+// UnsetLinkPeersType ensures that no value is present for LinkPeersType, not even an explicit nil
+func (o *RearPort) UnsetLinkPeersType() {
+	o.LinkPeersType.Unset()
+}
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *RearPort) GetTags() []NestedTag {
@@ -634,18 +660,16 @@ func (o *RearPort) SetCustomFields(v map[string]interface{}) {
 	o.CustomFields = v
 }
 
-// GetCreated returns the Created field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RearPort) GetCreated() time.Time {
-	if o == nil || o.Created.Get() == nil {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.Created.Get()
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RearPort) GetCreatedOk() (*time.Time, bool) {
@@ -655,24 +679,39 @@ func (o *RearPort) GetCreatedOk() (*time.Time, bool) {
 	return o.Created.Get(), o.Created.IsSet()
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *RearPort) HasCreated() bool {
+	if o != nil && o.Created.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *RearPort) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *RearPort) SetCreatedNil() {
+	o.Created.Set(nil)
+}
 
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *RearPort) UnsetCreated() {
+	o.Created.Unset()
+}
 
-// GetLastUpdated returns the LastUpdated field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RearPort) GetLastUpdated() time.Time {
-	if o == nil || o.LastUpdated.Get() == nil {
+	if o == nil || IsNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.LastUpdated.Get()
 }
 
-// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RearPort) GetLastUpdatedOk() (*time.Time, bool) {
@@ -682,11 +721,28 @@ func (o *RearPort) GetLastUpdatedOk() (*time.Time, bool) {
 	return o.LastUpdated.Get(), o.LastUpdated.IsSet()
 }
 
-// SetLastUpdated sets field value
+// HasLastUpdated returns a boolean if a field has been set.
+func (o *RearPort) HasLastUpdated() bool {
+	if o != nil && o.LastUpdated.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
 func (o *RearPort) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+// SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
+func (o *RearPort) SetLastUpdatedNil() {
+	o.LastUpdated.Set(nil)
+}
 
+// UnsetLastUpdated ensures that no value is present for LastUpdated, not even an explicit nil
+func (o *RearPort) UnsetLastUpdated() {
+	o.LastUpdated.Unset()
+}
 
 // GetOccupied returns the Occupied field value
 func (o *RearPort) GetOccupied() bool {
@@ -750,18 +806,26 @@ func (o RearPort) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MarkConnected) {
 		toSerialize["mark_connected"] = o.MarkConnected
 	}
-	toSerialize["cable"] = o.Cable.Get()
+	if o.Cable.IsSet() {
+		toSerialize["cable"] = o.Cable.Get()
+	}
 	toSerialize["cable_end"] = o.CableEnd
 	toSerialize["link_peers"] = o.LinkPeers
-	toSerialize["link_peers_type"] = o.LinkPeersType.Get()
+	if o.LinkPeersType.IsSet() {
+		toSerialize["link_peers_type"] = o.LinkPeersType.Get()
+	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
 	if !IsNil(o.CustomFields) {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
-	toSerialize["created"] = o.Created.Get()
-	toSerialize["last_updated"] = o.LastUpdated.Get()
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.LastUpdated.IsSet() {
+		toSerialize["last_updated"] = o.LastUpdated.Get()
+	}
 	toSerialize["_occupied"] = o.Occupied
 
 	for key, value := range o.AdditionalProperties {
@@ -782,12 +846,8 @@ func (o *RearPort) UnmarshalJSON(data []byte) (err error) {
 		"device",
 		"name",
 		"type",
-		"cable",
 		"cable_end",
 		"link_peers",
-		"link_peers_type",
-		"created",
-		"last_updated",
 		"_occupied",
 	}
 

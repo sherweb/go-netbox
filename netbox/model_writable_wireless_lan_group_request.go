@@ -22,7 +22,7 @@ var _ MappedNullable = &WritableWirelessLANGroupRequest{}
 type WritableWirelessLANGroupRequest struct {
 	Name string `json:"name"`
 	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Parent NullableInt32 `json:"parent"`
+	Parent NullableInt32 `json:"parent,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Tags []NestedTagRequest `json:"tags,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -35,11 +35,10 @@ type _WritableWirelessLANGroupRequest WritableWirelessLANGroupRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWritableWirelessLANGroupRequest(name string, slug string, parent NullableInt32) *WritableWirelessLANGroupRequest {
+func NewWritableWirelessLANGroupRequest(name string, slug string) *WritableWirelessLANGroupRequest {
 	this := WritableWirelessLANGroupRequest{}
 	this.Name = name
 	this.Slug = slug
-	this.Parent = parent
 	return &this
 }
 
@@ -101,18 +100,16 @@ func (o *WritableWirelessLANGroupRequest) SetSlug(v string) {
 }
 
 
-// GetParent returns the Parent field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableWirelessLANGroupRequest) GetParent() int32 {
-	if o == nil || o.Parent.Get() == nil {
+	if o == nil || IsNil(o.Parent.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.Parent.Get()
 }
 
-// GetParentOk returns a tuple with the Parent field value
+// GetParentOk returns a tuple with the Parent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WritableWirelessLANGroupRequest) GetParentOk() (*int32, bool) {
@@ -122,11 +119,28 @@ func (o *WritableWirelessLANGroupRequest) GetParentOk() (*int32, bool) {
 	return o.Parent.Get(), o.Parent.IsSet()
 }
 
-// SetParent sets field value
+// HasParent returns a boolean if a field has been set.
+func (o *WritableWirelessLANGroupRequest) HasParent() bool {
+	if o != nil && o.Parent.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetParent gets a reference to the given NullableInt32 and assigns it to the Parent field.
 func (o *WritableWirelessLANGroupRequest) SetParent(v int32) {
 	o.Parent.Set(&v)
 }
+// SetParentNil sets the value for Parent to be an explicit nil
+func (o *WritableWirelessLANGroupRequest) SetParentNil() {
+	o.Parent.Set(nil)
+}
 
+// UnsetParent ensures that no value is present for Parent, not even an explicit nil
+func (o *WritableWirelessLANGroupRequest) UnsetParent() {
+	o.Parent.Unset()
+}
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *WritableWirelessLANGroupRequest) GetDescription() string {
@@ -236,7 +250,9 @@ func (o WritableWirelessLANGroupRequest) ToMap() (map[string]interface{}, error)
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["slug"] = o.Slug
-	toSerialize["parent"] = o.Parent.Get()
+	if o.Parent.IsSet() {
+		toSerialize["parent"] = o.Parent.Get()
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -261,7 +277,6 @@ func (o *WritableWirelessLANGroupRequest) UnmarshalJSON(data []byte) (err error)
 	requiredProperties := []string{
 		"name",
 		"slug",
-		"parent",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.

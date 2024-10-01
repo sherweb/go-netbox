@@ -36,9 +36,9 @@ type DataSource struct {
 	IgnoreRules *string `json:"ignore_rules,omitempty"`
 	Comments *string `json:"comments,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created"`
-	LastUpdated NullableTime `json:"last_updated"`
-	LastSynced NullableTime `json:"last_synced"`
+	Created NullableTime `json:"created,omitempty"`
+	LastUpdated NullableTime `json:"last_updated,omitempty"`
+	LastSynced NullableTime `json:"last_synced,omitempty"`
 	FileCount int64 `json:"file_count"`
 	AdditionalProperties map[string]interface{}
 }
@@ -49,7 +49,7 @@ type _DataSource DataSource
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataSource(id int32, url string, display string, name string, type_ DataSourceType, sourceUrl string, status DataSourceStatus, created NullableTime, lastUpdated NullableTime, lastSynced NullableTime, fileCount int64) *DataSource {
+func NewDataSource(id int32, url string, display string, name string, type_ DataSourceType, sourceUrl string, status DataSourceStatus, fileCount int64) *DataSource {
 	this := DataSource{}
 	this.Id = id
 	this.Url = url
@@ -58,9 +58,6 @@ func NewDataSource(id int32, url string, display string, name string, type_ Data
 	this.Type = type_
 	this.SourceUrl = sourceUrl
 	this.Status = status
-	this.Created = created
-	this.LastUpdated = lastUpdated
-	this.LastSynced = lastSynced
 	this.FileCount = fileCount
 	return &this
 }
@@ -473,18 +470,16 @@ func (o *DataSource) SetCustomFields(v map[string]interface{}) {
 	o.CustomFields = v
 }
 
-// GetCreated returns the Created field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DataSource) GetCreated() time.Time {
-	if o == nil || o.Created.Get() == nil {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.Created.Get()
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DataSource) GetCreatedOk() (*time.Time, bool) {
@@ -494,24 +489,39 @@ func (o *DataSource) GetCreatedOk() (*time.Time, bool) {
 	return o.Created.Get(), o.Created.IsSet()
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *DataSource) HasCreated() bool {
+	if o != nil && o.Created.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *DataSource) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *DataSource) SetCreatedNil() {
+	o.Created.Set(nil)
+}
 
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *DataSource) UnsetCreated() {
+	o.Created.Unset()
+}
 
-// GetLastUpdated returns the LastUpdated field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DataSource) GetLastUpdated() time.Time {
-	if o == nil || o.LastUpdated.Get() == nil {
+	if o == nil || IsNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.LastUpdated.Get()
 }
 
-// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DataSource) GetLastUpdatedOk() (*time.Time, bool) {
@@ -521,24 +531,39 @@ func (o *DataSource) GetLastUpdatedOk() (*time.Time, bool) {
 	return o.LastUpdated.Get(), o.LastUpdated.IsSet()
 }
 
-// SetLastUpdated sets field value
+// HasLastUpdated returns a boolean if a field has been set.
+func (o *DataSource) HasLastUpdated() bool {
+	if o != nil && o.LastUpdated.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
 func (o *DataSource) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+// SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
+func (o *DataSource) SetLastUpdatedNil() {
+	o.LastUpdated.Set(nil)
+}
 
+// UnsetLastUpdated ensures that no value is present for LastUpdated, not even an explicit nil
+func (o *DataSource) UnsetLastUpdated() {
+	o.LastUpdated.Unset()
+}
 
-// GetLastSynced returns the LastSynced field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetLastSynced returns the LastSynced field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DataSource) GetLastSynced() time.Time {
-	if o == nil || o.LastSynced.Get() == nil {
+	if o == nil || IsNil(o.LastSynced.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.LastSynced.Get()
 }
 
-// GetLastSyncedOk returns a tuple with the LastSynced field value
+// GetLastSyncedOk returns a tuple with the LastSynced field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DataSource) GetLastSyncedOk() (*time.Time, bool) {
@@ -548,11 +573,28 @@ func (o *DataSource) GetLastSyncedOk() (*time.Time, bool) {
 	return o.LastSynced.Get(), o.LastSynced.IsSet()
 }
 
-// SetLastSynced sets field value
+// HasLastSynced returns a boolean if a field has been set.
+func (o *DataSource) HasLastSynced() bool {
+	if o != nil && o.LastSynced.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastSynced gets a reference to the given NullableTime and assigns it to the LastSynced field.
 func (o *DataSource) SetLastSynced(v time.Time) {
 	o.LastSynced.Set(&v)
 }
+// SetLastSyncedNil sets the value for LastSynced to be an explicit nil
+func (o *DataSource) SetLastSyncedNil() {
+	o.LastSynced.Set(nil)
+}
 
+// UnsetLastSynced ensures that no value is present for LastSynced, not even an explicit nil
+func (o *DataSource) UnsetLastSynced() {
+	o.LastSynced.Unset()
+}
 
 // GetFileCount returns the FileCount field value
 func (o *DataSource) GetFileCount() int64 {
@@ -617,9 +659,15 @@ func (o DataSource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CustomFields) {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
-	toSerialize["created"] = o.Created.Get()
-	toSerialize["last_updated"] = o.LastUpdated.Get()
-	toSerialize["last_synced"] = o.LastSynced.Get()
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.LastUpdated.IsSet() {
+		toSerialize["last_updated"] = o.LastUpdated.Get()
+	}
+	if o.LastSynced.IsSet() {
+		toSerialize["last_synced"] = o.LastSynced.Get()
+	}
 	toSerialize["file_count"] = o.FileCount
 
 	for key, value := range o.AdditionalProperties {
@@ -641,9 +689,6 @@ func (o *DataSource) UnmarshalJSON(data []byte) (err error) {
 		"type",
 		"source_url",
 		"status",
-		"created",
-		"last_updated",
-		"last_synced",
 		"file_count",
 	}
 

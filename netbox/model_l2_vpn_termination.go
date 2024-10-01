@@ -28,11 +28,11 @@ type L2VPNTermination struct {
 	L2vpn BriefL2VPN `json:"l2vpn"`
 	AssignedObjectType string `json:"assigned_object_type"`
 	AssignedObjectId int64 `json:"assigned_object_id"`
-	AssignedObject interface{} `json:"assigned_object"`
+	AssignedObject interface{} `json:"assigned_object,omitempty"`
 	Tags []NestedTag `json:"tags,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created"`
-	LastUpdated NullableTime `json:"last_updated"`
+	Created NullableTime `json:"created,omitempty"`
+	LastUpdated NullableTime `json:"last_updated,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -42,7 +42,7 @@ type _L2VPNTermination L2VPNTermination
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewL2VPNTermination(id int32, url string, display string, l2vpn BriefL2VPN, assignedObjectType string, assignedObjectId int64, assignedObject interface{}, created NullableTime, lastUpdated NullableTime) *L2VPNTermination {
+func NewL2VPNTermination(id int32, url string, display string, l2vpn BriefL2VPN, assignedObjectType string, assignedObjectId int64) *L2VPNTermination {
 	this := L2VPNTermination{}
 	this.Id = id
 	this.Url = url
@@ -50,9 +50,6 @@ func NewL2VPNTermination(id int32, url string, display string, l2vpn BriefL2VPN,
 	this.L2vpn = l2vpn
 	this.AssignedObjectType = assignedObjectType
 	this.AssignedObjectId = assignedObjectId
-	this.AssignedObject = assignedObject
-	this.Created = created
-	this.LastUpdated = lastUpdated
 	return &this
 }
 
@@ -246,18 +243,16 @@ func (o *L2VPNTermination) SetAssignedObjectId(v int64) {
 }
 
 
-// GetAssignedObject returns the AssignedObject field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetAssignedObject returns the AssignedObject field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *L2VPNTermination) GetAssignedObject() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.AssignedObject
 }
 
-// GetAssignedObjectOk returns a tuple with the AssignedObject field value
+// GetAssignedObjectOk returns a tuple with the AssignedObject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *L2VPNTermination) GetAssignedObjectOk() (*interface{}, bool) {
@@ -267,11 +262,19 @@ func (o *L2VPNTermination) GetAssignedObjectOk() (*interface{}, bool) {
 	return &o.AssignedObject, true
 }
 
-// SetAssignedObject sets field value
+// HasAssignedObject returns a boolean if a field has been set.
+func (o *L2VPNTermination) HasAssignedObject() bool {
+	if o != nil && !IsNil(o.AssignedObject) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssignedObject gets a reference to the given interface{} and assigns it to the AssignedObject field.
 func (o *L2VPNTermination) SetAssignedObject(v interface{}) {
 	o.AssignedObject = v
 }
-
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *L2VPNTermination) GetTags() []NestedTag {
@@ -337,18 +340,16 @@ func (o *L2VPNTermination) SetCustomFields(v map[string]interface{}) {
 	o.CustomFields = v
 }
 
-// GetCreated returns the Created field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *L2VPNTermination) GetCreated() time.Time {
-	if o == nil || o.Created.Get() == nil {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.Created.Get()
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *L2VPNTermination) GetCreatedOk() (*time.Time, bool) {
@@ -358,24 +359,39 @@ func (o *L2VPNTermination) GetCreatedOk() (*time.Time, bool) {
 	return o.Created.Get(), o.Created.IsSet()
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *L2VPNTermination) HasCreated() bool {
+	if o != nil && o.Created.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *L2VPNTermination) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *L2VPNTermination) SetCreatedNil() {
+	o.Created.Set(nil)
+}
 
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *L2VPNTermination) UnsetCreated() {
+	o.Created.Unset()
+}
 
-// GetLastUpdated returns the LastUpdated field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *L2VPNTermination) GetLastUpdated() time.Time {
-	if o == nil || o.LastUpdated.Get() == nil {
+	if o == nil || IsNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.LastUpdated.Get()
 }
 
-// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *L2VPNTermination) GetLastUpdatedOk() (*time.Time, bool) {
@@ -385,11 +401,28 @@ func (o *L2VPNTermination) GetLastUpdatedOk() (*time.Time, bool) {
 	return o.LastUpdated.Get(), o.LastUpdated.IsSet()
 }
 
-// SetLastUpdated sets field value
+// HasLastUpdated returns a boolean if a field has been set.
+func (o *L2VPNTermination) HasLastUpdated() bool {
+	if o != nil && o.LastUpdated.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
 func (o *L2VPNTermination) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+// SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
+func (o *L2VPNTermination) SetLastUpdatedNil() {
+	o.LastUpdated.Set(nil)
+}
 
+// UnsetLastUpdated ensures that no value is present for LastUpdated, not even an explicit nil
+func (o *L2VPNTermination) UnsetLastUpdated() {
+	o.LastUpdated.Unset()
+}
 
 func (o L2VPNTermination) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
@@ -419,8 +452,12 @@ func (o L2VPNTermination) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CustomFields) {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
-	toSerialize["created"] = o.Created.Get()
-	toSerialize["last_updated"] = o.LastUpdated.Get()
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.LastUpdated.IsSet() {
+		toSerialize["last_updated"] = o.LastUpdated.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -440,9 +477,6 @@ func (o *L2VPNTermination) UnmarshalJSON(data []byte) (err error) {
 		"l2vpn",
 		"assigned_object_type",
 		"assigned_object_id",
-		"assigned_object",
-		"created",
-		"last_updated",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.

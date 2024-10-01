@@ -37,13 +37,13 @@ type Circuit struct {
 	// Committed rate
 	CommitRate NullableInt32 `json:"commit_rate,omitempty"`
 	Description *string `json:"description,omitempty"`
-	TerminationA NullableCircuitCircuitTermination `json:"termination_a"`
-	TerminationZ NullableCircuitCircuitTermination `json:"termination_z"`
+	TerminationA NullableCircuitCircuitTermination `json:"termination_a,omitempty"`
+	TerminationZ NullableCircuitCircuitTermination `json:"termination_z,omitempty"`
 	Comments *string `json:"comments,omitempty"`
 	Tags []NestedTag `json:"tags,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created"`
-	LastUpdated NullableTime `json:"last_updated"`
+	Created NullableTime `json:"created,omitempty"`
+	LastUpdated NullableTime `json:"last_updated,omitempty"`
 	Assignments []BriefCircuitGroupAssignmentSerializer `json:"assignments,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -54,7 +54,7 @@ type _Circuit Circuit
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCircuit(id int32, url string, display string, cid string, provider BriefProvider, type_ BriefCircuitType, terminationA NullableCircuitCircuitTermination, terminationZ NullableCircuitCircuitTermination, created NullableTime, lastUpdated NullableTime) *Circuit {
+func NewCircuit(id int32, url string, display string, cid string, provider BriefProvider, type_ BriefCircuitType) *Circuit {
 	this := Circuit{}
 	this.Id = id
 	this.Url = url
@@ -62,10 +62,6 @@ func NewCircuit(id int32, url string, display string, cid string, provider Brief
 	this.Cid = cid
 	this.Provider = provider
 	this.Type = type_
-	this.TerminationA = terminationA
-	this.TerminationZ = terminationZ
-	this.Created = created
-	this.LastUpdated = lastUpdated
 	return &this
 }
 
@@ -533,18 +529,16 @@ func (o *Circuit) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetTerminationA returns the TerminationA field value
-// If the value is explicit nil, the zero value for CircuitCircuitTermination will be returned
+// GetTerminationA returns the TerminationA field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Circuit) GetTerminationA() CircuitCircuitTermination {
-	if o == nil || o.TerminationA.Get() == nil {
+	if o == nil || IsNil(o.TerminationA.Get()) {
 		var ret CircuitCircuitTermination
 		return ret
 	}
-
 	return *o.TerminationA.Get()
 }
 
-// GetTerminationAOk returns a tuple with the TerminationA field value
+// GetTerminationAOk returns a tuple with the TerminationA field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Circuit) GetTerminationAOk() (*CircuitCircuitTermination, bool) {
@@ -554,24 +548,39 @@ func (o *Circuit) GetTerminationAOk() (*CircuitCircuitTermination, bool) {
 	return o.TerminationA.Get(), o.TerminationA.IsSet()
 }
 
-// SetTerminationA sets field value
+// HasTerminationA returns a boolean if a field has been set.
+func (o *Circuit) HasTerminationA() bool {
+	if o != nil && o.TerminationA.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTerminationA gets a reference to the given NullableCircuitCircuitTermination and assigns it to the TerminationA field.
 func (o *Circuit) SetTerminationA(v CircuitCircuitTermination) {
 	o.TerminationA.Set(&v)
 }
+// SetTerminationANil sets the value for TerminationA to be an explicit nil
+func (o *Circuit) SetTerminationANil() {
+	o.TerminationA.Set(nil)
+}
 
+// UnsetTerminationA ensures that no value is present for TerminationA, not even an explicit nil
+func (o *Circuit) UnsetTerminationA() {
+	o.TerminationA.Unset()
+}
 
-// GetTerminationZ returns the TerminationZ field value
-// If the value is explicit nil, the zero value for CircuitCircuitTermination will be returned
+// GetTerminationZ returns the TerminationZ field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Circuit) GetTerminationZ() CircuitCircuitTermination {
-	if o == nil || o.TerminationZ.Get() == nil {
+	if o == nil || IsNil(o.TerminationZ.Get()) {
 		var ret CircuitCircuitTermination
 		return ret
 	}
-
 	return *o.TerminationZ.Get()
 }
 
-// GetTerminationZOk returns a tuple with the TerminationZ field value
+// GetTerminationZOk returns a tuple with the TerminationZ field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Circuit) GetTerminationZOk() (*CircuitCircuitTermination, bool) {
@@ -581,11 +590,28 @@ func (o *Circuit) GetTerminationZOk() (*CircuitCircuitTermination, bool) {
 	return o.TerminationZ.Get(), o.TerminationZ.IsSet()
 }
 
-// SetTerminationZ sets field value
+// HasTerminationZ returns a boolean if a field has been set.
+func (o *Circuit) HasTerminationZ() bool {
+	if o != nil && o.TerminationZ.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTerminationZ gets a reference to the given NullableCircuitCircuitTermination and assigns it to the TerminationZ field.
 func (o *Circuit) SetTerminationZ(v CircuitCircuitTermination) {
 	o.TerminationZ.Set(&v)
 }
+// SetTerminationZNil sets the value for TerminationZ to be an explicit nil
+func (o *Circuit) SetTerminationZNil() {
+	o.TerminationZ.Set(nil)
+}
 
+// UnsetTerminationZ ensures that no value is present for TerminationZ, not even an explicit nil
+func (o *Circuit) UnsetTerminationZ() {
+	o.TerminationZ.Unset()
+}
 
 // GetComments returns the Comments field value if set, zero value otherwise.
 func (o *Circuit) GetComments() string {
@@ -683,18 +709,16 @@ func (o *Circuit) SetCustomFields(v map[string]interface{}) {
 	o.CustomFields = v
 }
 
-// GetCreated returns the Created field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Circuit) GetCreated() time.Time {
-	if o == nil || o.Created.Get() == nil {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.Created.Get()
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Circuit) GetCreatedOk() (*time.Time, bool) {
@@ -704,24 +728,39 @@ func (o *Circuit) GetCreatedOk() (*time.Time, bool) {
 	return o.Created.Get(), o.Created.IsSet()
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *Circuit) HasCreated() bool {
+	if o != nil && o.Created.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *Circuit) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *Circuit) SetCreatedNil() {
+	o.Created.Set(nil)
+}
 
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *Circuit) UnsetCreated() {
+	o.Created.Unset()
+}
 
-// GetLastUpdated returns the LastUpdated field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Circuit) GetLastUpdated() time.Time {
-	if o == nil || o.LastUpdated.Get() == nil {
+	if o == nil || IsNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.LastUpdated.Get()
 }
 
-// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Circuit) GetLastUpdatedOk() (*time.Time, bool) {
@@ -731,11 +770,28 @@ func (o *Circuit) GetLastUpdatedOk() (*time.Time, bool) {
 	return o.LastUpdated.Get(), o.LastUpdated.IsSet()
 }
 
-// SetLastUpdated sets field value
+// HasLastUpdated returns a boolean if a field has been set.
+func (o *Circuit) HasLastUpdated() bool {
+	if o != nil && o.LastUpdated.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
 func (o *Circuit) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+// SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
+func (o *Circuit) SetLastUpdatedNil() {
+	o.LastUpdated.Set(nil)
+}
 
+// UnsetLastUpdated ensures that no value is present for LastUpdated, not even an explicit nil
+func (o *Circuit) UnsetLastUpdated() {
+	o.LastUpdated.Unset()
+}
 
 // GetAssignments returns the Assignments field value if set, zero value otherwise.
 func (o *Circuit) GetAssignments() []BriefCircuitGroupAssignmentSerializer {
@@ -809,8 +865,12 @@ func (o Circuit) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	toSerialize["termination_a"] = o.TerminationA.Get()
-	toSerialize["termination_z"] = o.TerminationZ.Get()
+	if o.TerminationA.IsSet() {
+		toSerialize["termination_a"] = o.TerminationA.Get()
+	}
+	if o.TerminationZ.IsSet() {
+		toSerialize["termination_z"] = o.TerminationZ.Get()
+	}
 	if !IsNil(o.Comments) {
 		toSerialize["comments"] = o.Comments
 	}
@@ -820,8 +880,12 @@ func (o Circuit) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CustomFields) {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
-	toSerialize["created"] = o.Created.Get()
-	toSerialize["last_updated"] = o.LastUpdated.Get()
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.LastUpdated.IsSet() {
+		toSerialize["last_updated"] = o.LastUpdated.Get()
+	}
 	if !IsNil(o.Assignments) {
 		toSerialize["assignments"] = o.Assignments
 	}
@@ -844,10 +908,6 @@ func (o *Circuit) UnmarshalJSON(data []byte) (err error) {
 		"cid",
 		"provider",
 		"type",
-		"termination_a",
-		"termination_z",
-		"created",
-		"last_updated",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.

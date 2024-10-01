@@ -35,18 +35,18 @@ type ConsoleServerPort struct {
 	Description *string `json:"description,omitempty"`
 	// Treat as if a cable is connected
 	MarkConnected *bool `json:"mark_connected,omitempty"`
-	Cable NullableBriefCable `json:"cable"`
+	Cable NullableBriefCable `json:"cable,omitempty"`
 	CableEnd string `json:"cable_end"`
 	LinkPeers []interface{} `json:"link_peers"`
 	// Return the type of the peer link terminations, or None.
-	LinkPeersType NullableString `json:"link_peers_type"`
-	ConnectedEndpoints []interface{} `json:"connected_endpoints"`
-	ConnectedEndpointsType NullableString `json:"connected_endpoints_type"`
+	LinkPeersType NullableString `json:"link_peers_type,omitempty"`
+	ConnectedEndpoints []interface{} `json:"connected_endpoints,omitempty"`
+	ConnectedEndpointsType NullableString `json:"connected_endpoints_type,omitempty"`
 	ConnectedEndpointsReachable bool `json:"connected_endpoints_reachable"`
 	Tags []NestedTag `json:"tags,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created"`
-	LastUpdated NullableTime `json:"last_updated"`
+	Created NullableTime `json:"created,omitempty"`
+	LastUpdated NullableTime `json:"last_updated,omitempty"`
 	Occupied bool `json:"_occupied"`
 	AdditionalProperties map[string]interface{}
 }
@@ -57,22 +57,16 @@ type _ConsoleServerPort ConsoleServerPort
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConsoleServerPort(id int32, url string, display string, device BriefDevice, name string, cable NullableBriefCable, cableEnd string, linkPeers []interface{}, linkPeersType NullableString, connectedEndpoints []interface{}, connectedEndpointsType NullableString, connectedEndpointsReachable bool, created NullableTime, lastUpdated NullableTime, occupied bool) *ConsoleServerPort {
+func NewConsoleServerPort(id int32, url string, display string, device BriefDevice, name string, cableEnd string, linkPeers []interface{}, connectedEndpointsReachable bool, occupied bool) *ConsoleServerPort {
 	this := ConsoleServerPort{}
 	this.Id = id
 	this.Url = url
 	this.Display = display
 	this.Device = device
 	this.Name = name
-	this.Cable = cable
 	this.CableEnd = cableEnd
 	this.LinkPeers = linkPeers
-	this.LinkPeersType = linkPeersType
-	this.ConnectedEndpoints = connectedEndpoints
-	this.ConnectedEndpointsType = connectedEndpointsType
 	this.ConnectedEndpointsReachable = connectedEndpointsReachable
-	this.Created = created
-	this.LastUpdated = lastUpdated
 	this.Occupied = occupied
 	return &this
 }
@@ -454,18 +448,16 @@ func (o *ConsoleServerPort) SetMarkConnected(v bool) {
 	o.MarkConnected = &v
 }
 
-// GetCable returns the Cable field value
-// If the value is explicit nil, the zero value for BriefCable will be returned
+// GetCable returns the Cable field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConsoleServerPort) GetCable() BriefCable {
-	if o == nil || o.Cable.Get() == nil {
+	if o == nil || IsNil(o.Cable.Get()) {
 		var ret BriefCable
 		return ret
 	}
-
 	return *o.Cable.Get()
 }
 
-// GetCableOk returns a tuple with the Cable field value
+// GetCableOk returns a tuple with the Cable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConsoleServerPort) GetCableOk() (*BriefCable, bool) {
@@ -475,11 +467,28 @@ func (o *ConsoleServerPort) GetCableOk() (*BriefCable, bool) {
 	return o.Cable.Get(), o.Cable.IsSet()
 }
 
-// SetCable sets field value
+// HasCable returns a boolean if a field has been set.
+func (o *ConsoleServerPort) HasCable() bool {
+	if o != nil && o.Cable.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCable gets a reference to the given NullableBriefCable and assigns it to the Cable field.
 func (o *ConsoleServerPort) SetCable(v BriefCable) {
 	o.Cable.Set(&v)
 }
+// SetCableNil sets the value for Cable to be an explicit nil
+func (o *ConsoleServerPort) SetCableNil() {
+	o.Cable.Set(nil)
+}
 
+// UnsetCable ensures that no value is present for Cable, not even an explicit nil
+func (o *ConsoleServerPort) UnsetCable() {
+	o.Cable.Unset()
+}
 
 // GetCableEnd returns the CableEnd field value
 func (o *ConsoleServerPort) GetCableEnd() string {
@@ -531,18 +540,16 @@ func (o *ConsoleServerPort) SetLinkPeers(v []interface{}) {
 }
 
 
-// GetLinkPeersType returns the LinkPeersType field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetLinkPeersType returns the LinkPeersType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConsoleServerPort) GetLinkPeersType() string {
-	if o == nil || o.LinkPeersType.Get() == nil {
+	if o == nil || IsNil(o.LinkPeersType.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.LinkPeersType.Get()
 }
 
-// GetLinkPeersTypeOk returns a tuple with the LinkPeersType field value
+// GetLinkPeersTypeOk returns a tuple with the LinkPeersType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConsoleServerPort) GetLinkPeersTypeOk() (*string, bool) {
@@ -552,24 +559,39 @@ func (o *ConsoleServerPort) GetLinkPeersTypeOk() (*string, bool) {
 	return o.LinkPeersType.Get(), o.LinkPeersType.IsSet()
 }
 
-// SetLinkPeersType sets field value
+// HasLinkPeersType returns a boolean if a field has been set.
+func (o *ConsoleServerPort) HasLinkPeersType() bool {
+	if o != nil && o.LinkPeersType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLinkPeersType gets a reference to the given NullableString and assigns it to the LinkPeersType field.
 func (o *ConsoleServerPort) SetLinkPeersType(v string) {
 	o.LinkPeersType.Set(&v)
 }
+// SetLinkPeersTypeNil sets the value for LinkPeersType to be an explicit nil
+func (o *ConsoleServerPort) SetLinkPeersTypeNil() {
+	o.LinkPeersType.Set(nil)
+}
 
+// UnsetLinkPeersType ensures that no value is present for LinkPeersType, not even an explicit nil
+func (o *ConsoleServerPort) UnsetLinkPeersType() {
+	o.LinkPeersType.Unset()
+}
 
-// GetConnectedEndpoints returns the ConnectedEndpoints field value
-// If the value is explicit nil, the zero value for []interface{} will be returned
+// GetConnectedEndpoints returns the ConnectedEndpoints field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConsoleServerPort) GetConnectedEndpoints() []interface{} {
 	if o == nil {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.ConnectedEndpoints
 }
 
-// GetConnectedEndpointsOk returns a tuple with the ConnectedEndpoints field value
+// GetConnectedEndpointsOk returns a tuple with the ConnectedEndpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConsoleServerPort) GetConnectedEndpointsOk() ([]interface{}, bool) {
@@ -579,24 +601,30 @@ func (o *ConsoleServerPort) GetConnectedEndpointsOk() ([]interface{}, bool) {
 	return o.ConnectedEndpoints, true
 }
 
-// SetConnectedEndpoints sets field value
+// HasConnectedEndpoints returns a boolean if a field has been set.
+func (o *ConsoleServerPort) HasConnectedEndpoints() bool {
+	if o != nil && !IsNil(o.ConnectedEndpoints) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedEndpoints gets a reference to the given []interface{} and assigns it to the ConnectedEndpoints field.
 func (o *ConsoleServerPort) SetConnectedEndpoints(v []interface{}) {
 	o.ConnectedEndpoints = v
 }
 
-
-// GetConnectedEndpointsType returns the ConnectedEndpointsType field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetConnectedEndpointsType returns the ConnectedEndpointsType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConsoleServerPort) GetConnectedEndpointsType() string {
-	if o == nil || o.ConnectedEndpointsType.Get() == nil {
+	if o == nil || IsNil(o.ConnectedEndpointsType.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.ConnectedEndpointsType.Get()
 }
 
-// GetConnectedEndpointsTypeOk returns a tuple with the ConnectedEndpointsType field value
+// GetConnectedEndpointsTypeOk returns a tuple with the ConnectedEndpointsType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConsoleServerPort) GetConnectedEndpointsTypeOk() (*string, bool) {
@@ -606,11 +634,28 @@ func (o *ConsoleServerPort) GetConnectedEndpointsTypeOk() (*string, bool) {
 	return o.ConnectedEndpointsType.Get(), o.ConnectedEndpointsType.IsSet()
 }
 
-// SetConnectedEndpointsType sets field value
+// HasConnectedEndpointsType returns a boolean if a field has been set.
+func (o *ConsoleServerPort) HasConnectedEndpointsType() bool {
+	if o != nil && o.ConnectedEndpointsType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedEndpointsType gets a reference to the given NullableString and assigns it to the ConnectedEndpointsType field.
 func (o *ConsoleServerPort) SetConnectedEndpointsType(v string) {
 	o.ConnectedEndpointsType.Set(&v)
 }
+// SetConnectedEndpointsTypeNil sets the value for ConnectedEndpointsType to be an explicit nil
+func (o *ConsoleServerPort) SetConnectedEndpointsTypeNil() {
+	o.ConnectedEndpointsType.Set(nil)
+}
 
+// UnsetConnectedEndpointsType ensures that no value is present for ConnectedEndpointsType, not even an explicit nil
+func (o *ConsoleServerPort) UnsetConnectedEndpointsType() {
+	o.ConnectedEndpointsType.Unset()
+}
 
 // GetConnectedEndpointsReachable returns the ConnectedEndpointsReachable field value
 func (o *ConsoleServerPort) GetConnectedEndpointsReachable() bool {
@@ -701,18 +746,16 @@ func (o *ConsoleServerPort) SetCustomFields(v map[string]interface{}) {
 	o.CustomFields = v
 }
 
-// GetCreated returns the Created field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConsoleServerPort) GetCreated() time.Time {
-	if o == nil || o.Created.Get() == nil {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.Created.Get()
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConsoleServerPort) GetCreatedOk() (*time.Time, bool) {
@@ -722,24 +765,39 @@ func (o *ConsoleServerPort) GetCreatedOk() (*time.Time, bool) {
 	return o.Created.Get(), o.Created.IsSet()
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *ConsoleServerPort) HasCreated() bool {
+	if o != nil && o.Created.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *ConsoleServerPort) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *ConsoleServerPort) SetCreatedNil() {
+	o.Created.Set(nil)
+}
 
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *ConsoleServerPort) UnsetCreated() {
+	o.Created.Unset()
+}
 
-// GetLastUpdated returns the LastUpdated field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConsoleServerPort) GetLastUpdated() time.Time {
-	if o == nil || o.LastUpdated.Get() == nil {
+	if o == nil || IsNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.LastUpdated.Get()
 }
 
-// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConsoleServerPort) GetLastUpdatedOk() (*time.Time, bool) {
@@ -749,11 +807,28 @@ func (o *ConsoleServerPort) GetLastUpdatedOk() (*time.Time, bool) {
 	return o.LastUpdated.Get(), o.LastUpdated.IsSet()
 }
 
-// SetLastUpdated sets field value
+// HasLastUpdated returns a boolean if a field has been set.
+func (o *ConsoleServerPort) HasLastUpdated() bool {
+	if o != nil && o.LastUpdated.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
 func (o *ConsoleServerPort) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+// SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
+func (o *ConsoleServerPort) SetLastUpdatedNil() {
+	o.LastUpdated.Set(nil)
+}
 
+// UnsetLastUpdated ensures that no value is present for LastUpdated, not even an explicit nil
+func (o *ConsoleServerPort) UnsetLastUpdated() {
+	o.LastUpdated.Unset()
+}
 
 // GetOccupied returns the Occupied field value
 func (o *ConsoleServerPort) GetOccupied() bool {
@@ -816,14 +891,20 @@ func (o ConsoleServerPort) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MarkConnected) {
 		toSerialize["mark_connected"] = o.MarkConnected
 	}
-	toSerialize["cable"] = o.Cable.Get()
+	if o.Cable.IsSet() {
+		toSerialize["cable"] = o.Cable.Get()
+	}
 	toSerialize["cable_end"] = o.CableEnd
 	toSerialize["link_peers"] = o.LinkPeers
-	toSerialize["link_peers_type"] = o.LinkPeersType.Get()
+	if o.LinkPeersType.IsSet() {
+		toSerialize["link_peers_type"] = o.LinkPeersType.Get()
+	}
 	if o.ConnectedEndpoints != nil {
 		toSerialize["connected_endpoints"] = o.ConnectedEndpoints
 	}
-	toSerialize["connected_endpoints_type"] = o.ConnectedEndpointsType.Get()
+	if o.ConnectedEndpointsType.IsSet() {
+		toSerialize["connected_endpoints_type"] = o.ConnectedEndpointsType.Get()
+	}
 	toSerialize["connected_endpoints_reachable"] = o.ConnectedEndpointsReachable
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
@@ -831,8 +912,12 @@ func (o ConsoleServerPort) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CustomFields) {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
-	toSerialize["created"] = o.Created.Get()
-	toSerialize["last_updated"] = o.LastUpdated.Get()
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.LastUpdated.IsSet() {
+		toSerialize["last_updated"] = o.LastUpdated.Get()
+	}
 	toSerialize["_occupied"] = o.Occupied
 
 	for key, value := range o.AdditionalProperties {
@@ -852,15 +937,9 @@ func (o *ConsoleServerPort) UnmarshalJSON(data []byte) (err error) {
 		"display",
 		"device",
 		"name",
-		"cable",
 		"cable_end",
 		"link_peers",
-		"link_peers_type",
-		"connected_endpoints",
-		"connected_endpoints_type",
 		"connected_endpoints_reachable",
-		"created",
-		"last_updated",
 		"_occupied",
 	}
 

@@ -26,7 +26,7 @@ type BriefPowerPort struct {
 	Device BriefDevice `json:"device"`
 	Name string `json:"name"`
 	Description *string `json:"description,omitempty"`
-	Cable NullableBriefCable `json:"cable"`
+	Cable NullableBriefCable `json:"cable,omitempty"`
 	Occupied bool `json:"_occupied"`
 	AdditionalProperties map[string]interface{}
 }
@@ -37,14 +37,13 @@ type _BriefPowerPort BriefPowerPort
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBriefPowerPort(id int32, url string, display string, device BriefDevice, name string, cable NullableBriefCable, occupied bool) *BriefPowerPort {
+func NewBriefPowerPort(id int32, url string, display string, device BriefDevice, name string, occupied bool) *BriefPowerPort {
 	this := BriefPowerPort{}
 	this.Id = id
 	this.Url = url
 	this.Display = display
 	this.Device = device
 	this.Name = name
-	this.Cable = cable
 	this.Occupied = occupied
 	return &this
 }
@@ -214,18 +213,16 @@ func (o *BriefPowerPort) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetCable returns the Cable field value
-// If the value is explicit nil, the zero value for BriefCable will be returned
+// GetCable returns the Cable field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BriefPowerPort) GetCable() BriefCable {
-	if o == nil || o.Cable.Get() == nil {
+	if o == nil || IsNil(o.Cable.Get()) {
 		var ret BriefCable
 		return ret
 	}
-
 	return *o.Cable.Get()
 }
 
-// GetCableOk returns a tuple with the Cable field value
+// GetCableOk returns a tuple with the Cable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BriefPowerPort) GetCableOk() (*BriefCable, bool) {
@@ -235,11 +232,28 @@ func (o *BriefPowerPort) GetCableOk() (*BriefCable, bool) {
 	return o.Cable.Get(), o.Cable.IsSet()
 }
 
-// SetCable sets field value
+// HasCable returns a boolean if a field has been set.
+func (o *BriefPowerPort) HasCable() bool {
+	if o != nil && o.Cable.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCable gets a reference to the given NullableBriefCable and assigns it to the Cable field.
 func (o *BriefPowerPort) SetCable(v BriefCable) {
 	o.Cable.Set(&v)
 }
+// SetCableNil sets the value for Cable to be an explicit nil
+func (o *BriefPowerPort) SetCableNil() {
+	o.Cable.Set(nil)
+}
 
+// UnsetCable ensures that no value is present for Cable, not even an explicit nil
+func (o *BriefPowerPort) UnsetCable() {
+	o.Cable.Unset()
+}
 
 // GetOccupied returns the Occupied field value
 func (o *BriefPowerPort) GetOccupied() bool {
@@ -284,7 +298,9 @@ func (o BriefPowerPort) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	toSerialize["cable"] = o.Cable.Get()
+	if o.Cable.IsSet() {
+		toSerialize["cable"] = o.Cable.Get()
+	}
 	toSerialize["_occupied"] = o.Occupied
 
 	for key, value := range o.AdditionalProperties {
@@ -304,7 +320,6 @@ func (o *BriefPowerPort) UnmarshalJSON(data []byte) (err error) {
 		"display",
 		"device",
 		"name",
-		"cable",
 		"_occupied",
 	}
 

@@ -34,7 +34,7 @@ type VirtualMachineWithConfigContext struct {
 	Role NullableBriefDeviceRole `json:"role,omitempty"`
 	Tenant NullableBriefTenant `json:"tenant,omitempty"`
 	Platform NullableBriefPlatform `json:"platform,omitempty"`
-	PrimaryIp NullableBriefIPAddress `json:"primary_ip"`
+	PrimaryIp NullableBriefIPAddress `json:"primary_ip,omitempty"`
 	PrimaryIp4 NullableBriefIPAddress `json:"primary_ip4,omitempty"`
 	PrimaryIp6 NullableBriefIPAddress `json:"primary_ip6,omitempty"`
 	Vcpus NullableFloat64 `json:"vcpus,omitempty"`
@@ -47,9 +47,9 @@ type VirtualMachineWithConfigContext struct {
 	LocalContextData interface{} `json:"local_context_data,omitempty"`
 	Tags []NestedTag `json:"tags,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	ConfigContext interface{} `json:"config_context"`
-	Created NullableTime `json:"created"`
-	LastUpdated NullableTime `json:"last_updated"`
+	ConfigContext interface{} `json:"config_context,omitempty"`
+	Created NullableTime `json:"created,omitempty"`
+	LastUpdated NullableTime `json:"last_updated,omitempty"`
 	InterfaceCount int32 `json:"interface_count"`
 	VirtualDiskCount int32 `json:"virtual_disk_count"`
 	AdditionalProperties map[string]interface{}
@@ -61,16 +61,12 @@ type _VirtualMachineWithConfigContext VirtualMachineWithConfigContext
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualMachineWithConfigContext(id int32, url string, display string, name string, primaryIp NullableBriefIPAddress, configContext interface{}, created NullableTime, lastUpdated NullableTime, interfaceCount int32, virtualDiskCount int32) *VirtualMachineWithConfigContext {
+func NewVirtualMachineWithConfigContext(id int32, url string, display string, name string, interfaceCount int32, virtualDiskCount int32) *VirtualMachineWithConfigContext {
 	this := VirtualMachineWithConfigContext{}
 	this.Id = id
 	this.Url = url
 	this.Display = display
 	this.Name = name
-	this.PrimaryIp = primaryIp
-	this.ConfigContext = configContext
-	this.Created = created
-	this.LastUpdated = lastUpdated
 	this.InterfaceCount = interfaceCount
 	this.VirtualDiskCount = virtualDiskCount
 	return &this
@@ -532,18 +528,16 @@ func (o *VirtualMachineWithConfigContext) UnsetPlatform() {
 	o.Platform.Unset()
 }
 
-// GetPrimaryIp returns the PrimaryIp field value
-// If the value is explicit nil, the zero value for BriefIPAddress will be returned
+// GetPrimaryIp returns the PrimaryIp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VirtualMachineWithConfigContext) GetPrimaryIp() BriefIPAddress {
-	if o == nil || o.PrimaryIp.Get() == nil {
+	if o == nil || IsNil(o.PrimaryIp.Get()) {
 		var ret BriefIPAddress
 		return ret
 	}
-
 	return *o.PrimaryIp.Get()
 }
 
-// GetPrimaryIpOk returns a tuple with the PrimaryIp field value
+// GetPrimaryIpOk returns a tuple with the PrimaryIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VirtualMachineWithConfigContext) GetPrimaryIpOk() (*BriefIPAddress, bool) {
@@ -553,11 +547,28 @@ func (o *VirtualMachineWithConfigContext) GetPrimaryIpOk() (*BriefIPAddress, boo
 	return o.PrimaryIp.Get(), o.PrimaryIp.IsSet()
 }
 
-// SetPrimaryIp sets field value
+// HasPrimaryIp returns a boolean if a field has been set.
+func (o *VirtualMachineWithConfigContext) HasPrimaryIp() bool {
+	if o != nil && o.PrimaryIp.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPrimaryIp gets a reference to the given NullableBriefIPAddress and assigns it to the PrimaryIp field.
 func (o *VirtualMachineWithConfigContext) SetPrimaryIp(v BriefIPAddress) {
 	o.PrimaryIp.Set(&v)
 }
+// SetPrimaryIpNil sets the value for PrimaryIp to be an explicit nil
+func (o *VirtualMachineWithConfigContext) SetPrimaryIpNil() {
+	o.PrimaryIp.Set(nil)
+}
 
+// UnsetPrimaryIp ensures that no value is present for PrimaryIp, not even an explicit nil
+func (o *VirtualMachineWithConfigContext) UnsetPrimaryIp() {
+	o.PrimaryIp.Unset()
+}
 
 // GetPrimaryIp4 returns the PrimaryIp4 field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VirtualMachineWithConfigContext) GetPrimaryIp4() BriefIPAddress {
@@ -972,18 +983,16 @@ func (o *VirtualMachineWithConfigContext) SetCustomFields(v map[string]interface
 	o.CustomFields = v
 }
 
-// GetConfigContext returns the ConfigContext field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetConfigContext returns the ConfigContext field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VirtualMachineWithConfigContext) GetConfigContext() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.ConfigContext
 }
 
-// GetConfigContextOk returns a tuple with the ConfigContext field value
+// GetConfigContextOk returns a tuple with the ConfigContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VirtualMachineWithConfigContext) GetConfigContextOk() (*interface{}, bool) {
@@ -993,24 +1002,30 @@ func (o *VirtualMachineWithConfigContext) GetConfigContextOk() (*interface{}, bo
 	return &o.ConfigContext, true
 }
 
-// SetConfigContext sets field value
+// HasConfigContext returns a boolean if a field has been set.
+func (o *VirtualMachineWithConfigContext) HasConfigContext() bool {
+	if o != nil && !IsNil(o.ConfigContext) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigContext gets a reference to the given interface{} and assigns it to the ConfigContext field.
 func (o *VirtualMachineWithConfigContext) SetConfigContext(v interface{}) {
 	o.ConfigContext = v
 }
 
-
-// GetCreated returns the Created field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VirtualMachineWithConfigContext) GetCreated() time.Time {
-	if o == nil || o.Created.Get() == nil {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.Created.Get()
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VirtualMachineWithConfigContext) GetCreatedOk() (*time.Time, bool) {
@@ -1020,24 +1035,39 @@ func (o *VirtualMachineWithConfigContext) GetCreatedOk() (*time.Time, bool) {
 	return o.Created.Get(), o.Created.IsSet()
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *VirtualMachineWithConfigContext) HasCreated() bool {
+	if o != nil && o.Created.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *VirtualMachineWithConfigContext) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *VirtualMachineWithConfigContext) SetCreatedNil() {
+	o.Created.Set(nil)
+}
 
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *VirtualMachineWithConfigContext) UnsetCreated() {
+	o.Created.Unset()
+}
 
-// GetLastUpdated returns the LastUpdated field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VirtualMachineWithConfigContext) GetLastUpdated() time.Time {
-	if o == nil || o.LastUpdated.Get() == nil {
+	if o == nil || IsNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.LastUpdated.Get()
 }
 
-// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VirtualMachineWithConfigContext) GetLastUpdatedOk() (*time.Time, bool) {
@@ -1047,11 +1077,28 @@ func (o *VirtualMachineWithConfigContext) GetLastUpdatedOk() (*time.Time, bool) 
 	return o.LastUpdated.Get(), o.LastUpdated.IsSet()
 }
 
-// SetLastUpdated sets field value
+// HasLastUpdated returns a boolean if a field has been set.
+func (o *VirtualMachineWithConfigContext) HasLastUpdated() bool {
+	if o != nil && o.LastUpdated.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
 func (o *VirtualMachineWithConfigContext) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+// SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
+func (o *VirtualMachineWithConfigContext) SetLastUpdatedNil() {
+	o.LastUpdated.Set(nil)
+}
 
+// UnsetLastUpdated ensures that no value is present for LastUpdated, not even an explicit nil
+func (o *VirtualMachineWithConfigContext) UnsetLastUpdated() {
+	o.LastUpdated.Unset()
+}
 
 // GetInterfaceCount returns the InterfaceCount field value
 func (o *VirtualMachineWithConfigContext) GetInterfaceCount() int32 {
@@ -1144,7 +1191,9 @@ func (o VirtualMachineWithConfigContext) ToMap() (map[string]interface{}, error)
 	if o.Platform.IsSet() {
 		toSerialize["platform"] = o.Platform.Get()
 	}
-	toSerialize["primary_ip"] = o.PrimaryIp.Get()
+	if o.PrimaryIp.IsSet() {
+		toSerialize["primary_ip"] = o.PrimaryIp.Get()
+	}
 	if o.PrimaryIp4.IsSet() {
 		toSerialize["primary_ip4"] = o.PrimaryIp4.Get()
 	}
@@ -1181,8 +1230,12 @@ func (o VirtualMachineWithConfigContext) ToMap() (map[string]interface{}, error)
 	if o.ConfigContext != nil {
 		toSerialize["config_context"] = o.ConfigContext
 	}
-	toSerialize["created"] = o.Created.Get()
-	toSerialize["last_updated"] = o.LastUpdated.Get()
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.LastUpdated.IsSet() {
+		toSerialize["last_updated"] = o.LastUpdated.Get()
+	}
 	toSerialize["interface_count"] = o.InterfaceCount
 	toSerialize["virtual_disk_count"] = o.VirtualDiskCount
 
@@ -1202,10 +1255,6 @@ func (o *VirtualMachineWithConfigContext) UnmarshalJSON(data []byte) (err error)
 		"url",
 		"display",
 		"name",
-		"primary_ip",
-		"config_context",
-		"created",
-		"last_updated",
 		"interface_count",
 		"virtual_disk_count",
 	}

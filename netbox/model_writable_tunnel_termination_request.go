@@ -23,7 +23,7 @@ type WritableTunnelTerminationRequest struct {
 	Tunnel BriefTunnelRequest `json:"tunnel"`
 	Role *PatchedWritableTunnelTerminationRequestRole `json:"role,omitempty"`
 	TerminationType string `json:"termination_type"`
-	TerminationId NullableInt64 `json:"termination_id"`
+	TerminationId NullableInt64 `json:"termination_id,omitempty"`
 	OutsideIp NullableBriefIPAddressRequest `json:"outside_ip,omitempty"`
 	Tags []NestedTagRequest `json:"tags,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -36,11 +36,10 @@ type _WritableTunnelTerminationRequest WritableTunnelTerminationRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWritableTunnelTerminationRequest(tunnel BriefTunnelRequest, terminationType string, terminationId NullableInt64) *WritableTunnelTerminationRequest {
+func NewWritableTunnelTerminationRequest(tunnel BriefTunnelRequest, terminationType string) *WritableTunnelTerminationRequest {
 	this := WritableTunnelTerminationRequest{}
 	this.Tunnel = tunnel
 	this.TerminationType = terminationType
-	this.TerminationId = terminationId
 	return &this
 }
 
@@ -134,18 +133,16 @@ func (o *WritableTunnelTerminationRequest) SetTerminationType(v string) {
 }
 
 
-// GetTerminationId returns the TerminationId field value
-// If the value is explicit nil, the zero value for int64 will be returned
+// GetTerminationId returns the TerminationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableTunnelTerminationRequest) GetTerminationId() int64 {
-	if o == nil || o.TerminationId.Get() == nil {
+	if o == nil || IsNil(o.TerminationId.Get()) {
 		var ret int64
 		return ret
 	}
-
 	return *o.TerminationId.Get()
 }
 
-// GetTerminationIdOk returns a tuple with the TerminationId field value
+// GetTerminationIdOk returns a tuple with the TerminationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WritableTunnelTerminationRequest) GetTerminationIdOk() (*int64, bool) {
@@ -155,11 +152,28 @@ func (o *WritableTunnelTerminationRequest) GetTerminationIdOk() (*int64, bool) {
 	return o.TerminationId.Get(), o.TerminationId.IsSet()
 }
 
-// SetTerminationId sets field value
+// HasTerminationId returns a boolean if a field has been set.
+func (o *WritableTunnelTerminationRequest) HasTerminationId() bool {
+	if o != nil && o.TerminationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTerminationId gets a reference to the given NullableInt64 and assigns it to the TerminationId field.
 func (o *WritableTunnelTerminationRequest) SetTerminationId(v int64) {
 	o.TerminationId.Set(&v)
 }
+// SetTerminationIdNil sets the value for TerminationId to be an explicit nil
+func (o *WritableTunnelTerminationRequest) SetTerminationIdNil() {
+	o.TerminationId.Set(nil)
+}
 
+// UnsetTerminationId ensures that no value is present for TerminationId, not even an explicit nil
+func (o *WritableTunnelTerminationRequest) UnsetTerminationId() {
+	o.TerminationId.Unset()
+}
 
 // GetOutsideIp returns the OutsideIp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WritableTunnelTerminationRequest) GetOutsideIp() BriefIPAddressRequest {
@@ -282,7 +296,9 @@ func (o WritableTunnelTerminationRequest) ToMap() (map[string]interface{}, error
 		toSerialize["role"] = o.Role
 	}
 	toSerialize["termination_type"] = o.TerminationType
-	toSerialize["termination_id"] = o.TerminationId.Get()
+	if o.TerminationId.IsSet() {
+		toSerialize["termination_id"] = o.TerminationId.Get()
+	}
 	if o.OutsideIp.IsSet() {
 		toSerialize["outside_ip"] = o.OutsideIp.Get()
 	}
@@ -307,7 +323,6 @@ func (o *WritableTunnelTerminationRequest) UnmarshalJSON(data []byte) (err error
 	requiredProperties := []string{
 		"tunnel",
 		"termination_type",
-		"termination_id",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.

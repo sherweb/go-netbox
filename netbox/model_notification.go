@@ -26,9 +26,9 @@ type Notification struct {
 	Display string `json:"display"`
 	ObjectType string `json:"object_type"`
 	ObjectId int64 `json:"object_id"`
-	Object interface{} `json:"object"`
+	Object interface{} `json:"object,omitempty"`
 	User BriefUser `json:"user"`
-	Created time.Time `json:"created"`
+	Created *time.Time `json:"created,omitempty"`
 	Read NullableTime `json:"read,omitempty"`
 	EventType Event `json:"event_type"`
 	AdditionalProperties map[string]interface{}
@@ -40,16 +40,14 @@ type _Notification Notification
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotification(id int32, url string, display string, objectType string, objectId int64, object interface{}, user BriefUser, created time.Time, eventType Event) *Notification {
+func NewNotification(id int32, url string, display string, objectType string, objectId int64, user BriefUser, eventType Event) *Notification {
 	this := Notification{}
 	this.Id = id
 	this.Url = url
 	this.Display = display
 	this.ObjectType = objectType
 	this.ObjectId = objectId
-	this.Object = object
 	this.User = user
-	this.Created = created
 	this.EventType = eventType
 	return &this
 }
@@ -187,18 +185,16 @@ func (o *Notification) SetObjectId(v int64) {
 }
 
 
-// GetObject returns the Object field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetObject returns the Object field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Notification) GetObject() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Object
 }
 
-// GetObjectOk returns a tuple with the Object field value
+// GetObjectOk returns a tuple with the Object field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Notification) GetObjectOk() (*interface{}, bool) {
@@ -208,11 +204,19 @@ func (o *Notification) GetObjectOk() (*interface{}, bool) {
 	return &o.Object, true
 }
 
-// SetObject sets field value
+// HasObject returns a boolean if a field has been set.
+func (o *Notification) HasObject() bool {
+	if o != nil && !IsNil(o.Object) {
+		return true
+	}
+
+	return false
+}
+
+// SetObject gets a reference to the given interface{} and assigns it to the Object field.
 func (o *Notification) SetObject(v interface{}) {
 	o.Object = v
 }
-
 
 // GetUser returns the User field value
 func (o *Notification) GetUser() BriefUser {
@@ -239,30 +243,37 @@ func (o *Notification) SetUser(v BriefUser) {
 }
 
 
-// GetCreated returns the Created field value
+// GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Notification) GetCreated() time.Time {
-	if o == nil {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
-
-	return o.Created
+	return *o.Created
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Notification) GetCreatedOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
-	return &o.Created, true
+	return o.Created, true
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *Notification) HasCreated() bool {
+	if o != nil && !IsNil(o.Created) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *Notification) SetCreated(v time.Time) {
-	o.Created = v
+	o.Created = &v
 }
-
 
 // GetRead returns the Read field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Notification) GetRead() time.Time {
@@ -350,7 +361,9 @@ func (o Notification) ToMap() (map[string]interface{}, error) {
 		toSerialize["object"] = o.Object
 	}
 	toSerialize["user"] = o.User
-	toSerialize["created"] = o.Created
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
 	if o.Read.IsSet() {
 		toSerialize["read"] = o.Read.Get()
 	}
@@ -373,9 +386,7 @@ func (o *Notification) UnmarshalJSON(data []byte) (err error) {
 		"display",
 		"object_type",
 		"object_id",
-		"object",
 		"user",
-		"created",
 		"event_type",
 	}
 

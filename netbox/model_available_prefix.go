@@ -22,7 +22,7 @@ var _ MappedNullable = &AvailablePrefix{}
 type AvailablePrefix struct {
 	Family int32 `json:"family"`
 	Prefix string `json:"prefix"`
-	Vrf NullableBriefVRF `json:"vrf"`
+	Vrf NullableBriefVRF `json:"vrf,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -32,11 +32,10 @@ type _AvailablePrefix AvailablePrefix
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAvailablePrefix(family int32, prefix string, vrf NullableBriefVRF) *AvailablePrefix {
+func NewAvailablePrefix(family int32, prefix string) *AvailablePrefix {
 	this := AvailablePrefix{}
 	this.Family = family
 	this.Prefix = prefix
-	this.Vrf = vrf
 	return &this
 }
 
@@ -98,18 +97,16 @@ func (o *AvailablePrefix) SetPrefix(v string) {
 }
 
 
-// GetVrf returns the Vrf field value
-// If the value is explicit nil, the zero value for BriefVRF will be returned
+// GetVrf returns the Vrf field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AvailablePrefix) GetVrf() BriefVRF {
-	if o == nil || o.Vrf.Get() == nil {
+	if o == nil || IsNil(o.Vrf.Get()) {
 		var ret BriefVRF
 		return ret
 	}
-
 	return *o.Vrf.Get()
 }
 
-// GetVrfOk returns a tuple with the Vrf field value
+// GetVrfOk returns a tuple with the Vrf field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AvailablePrefix) GetVrfOk() (*BriefVRF, bool) {
@@ -119,11 +116,28 @@ func (o *AvailablePrefix) GetVrfOk() (*BriefVRF, bool) {
 	return o.Vrf.Get(), o.Vrf.IsSet()
 }
 
-// SetVrf sets field value
+// HasVrf returns a boolean if a field has been set.
+func (o *AvailablePrefix) HasVrf() bool {
+	if o != nil && o.Vrf.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVrf gets a reference to the given NullableBriefVRF and assigns it to the Vrf field.
 func (o *AvailablePrefix) SetVrf(v BriefVRF) {
 	o.Vrf.Set(&v)
 }
+// SetVrfNil sets the value for Vrf to be an explicit nil
+func (o *AvailablePrefix) SetVrfNil() {
+	o.Vrf.Set(nil)
+}
 
+// UnsetVrf ensures that no value is present for Vrf, not even an explicit nil
+func (o *AvailablePrefix) UnsetVrf() {
+	o.Vrf.Unset()
+}
 
 func (o AvailablePrefix) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
@@ -137,7 +151,9 @@ func (o AvailablePrefix) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["family"] = o.Family
 	toSerialize["prefix"] = o.Prefix
-	toSerialize["vrf"] = o.Vrf.Get()
+	if o.Vrf.IsSet() {
+		toSerialize["vrf"] = o.Vrf.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -153,7 +169,6 @@ func (o *AvailablePrefix) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"family",
 		"prefix",
-		"vrf",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.

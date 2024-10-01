@@ -58,22 +58,22 @@ type Interface struct {
 	TaggedVlans []VLAN `json:"tagged_vlans,omitempty"`
 	// Treat as if a cable is connected
 	MarkConnected *bool `json:"mark_connected,omitempty"`
-	Cable NullableBriefCable `json:"cable"`
+	Cable NullableBriefCable `json:"cable,omitempty"`
 	CableEnd string `json:"cable_end"`
-	WirelessLink NullableNestedWirelessLink `json:"wireless_link"`
+	WirelessLink NullableNestedWirelessLink `json:"wireless_link,omitempty"`
 	LinkPeers []interface{} `json:"link_peers"`
 	// Return the type of the peer link terminations, or None.
-	LinkPeersType NullableString `json:"link_peers_type"`
+	LinkPeersType NullableString `json:"link_peers_type,omitempty"`
 	WirelessLans []WirelessLAN `json:"wireless_lans,omitempty"`
 	Vrf NullableBriefVRF `json:"vrf,omitempty"`
-	L2vpnTermination NullableBriefL2VPNTermination `json:"l2vpn_termination"`
-	ConnectedEndpoints []interface{} `json:"connected_endpoints"`
-	ConnectedEndpointsType NullableString `json:"connected_endpoints_type"`
+	L2vpnTermination NullableBriefL2VPNTermination `json:"l2vpn_termination,omitempty"`
+	ConnectedEndpoints []interface{} `json:"connected_endpoints,omitempty"`
+	ConnectedEndpointsType NullableString `json:"connected_endpoints_type,omitempty"`
 	ConnectedEndpointsReachable bool `json:"connected_endpoints_reachable"`
 	Tags []NestedTag `json:"tags,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
-	Created NullableTime `json:"created"`
-	LastUpdated NullableTime `json:"last_updated"`
+	Created NullableTime `json:"created,omitempty"`
+	LastUpdated NullableTime `json:"last_updated,omitempty"`
 	CountIpaddresses int32 `json:"count_ipaddresses"`
 	CountFhrpGroups int32 `json:"count_fhrp_groups"`
 	Occupied bool `json:"_occupied"`
@@ -86,7 +86,7 @@ type _Interface Interface
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInterface(id int32, url string, display string, device BriefDevice, name string, type_ InterfaceType, cable NullableBriefCable, cableEnd string, wirelessLink NullableNestedWirelessLink, linkPeers []interface{}, linkPeersType NullableString, l2vpnTermination NullableBriefL2VPNTermination, connectedEndpoints []interface{}, connectedEndpointsType NullableString, connectedEndpointsReachable bool, created NullableTime, lastUpdated NullableTime, countIpaddresses int32, countFhrpGroups int32, occupied bool) *Interface {
+func NewInterface(id int32, url string, display string, device BriefDevice, name string, type_ InterfaceType, cableEnd string, linkPeers []interface{}, connectedEndpointsReachable bool, countIpaddresses int32, countFhrpGroups int32, occupied bool) *Interface {
 	this := Interface{}
 	this.Id = id
 	this.Url = url
@@ -94,17 +94,9 @@ func NewInterface(id int32, url string, display string, device BriefDevice, name
 	this.Device = device
 	this.Name = name
 	this.Type = type_
-	this.Cable = cable
 	this.CableEnd = cableEnd
-	this.WirelessLink = wirelessLink
 	this.LinkPeers = linkPeers
-	this.LinkPeersType = linkPeersType
-	this.L2vpnTermination = l2vpnTermination
-	this.ConnectedEndpoints = connectedEndpoints
-	this.ConnectedEndpointsType = connectedEndpointsType
 	this.ConnectedEndpointsReachable = connectedEndpointsReachable
-	this.Created = created
-	this.LastUpdated = lastUpdated
 	this.CountIpaddresses = countIpaddresses
 	this.CountFhrpGroups = countFhrpGroups
 	this.Occupied = occupied
@@ -1231,18 +1223,16 @@ func (o *Interface) SetMarkConnected(v bool) {
 	o.MarkConnected = &v
 }
 
-// GetCable returns the Cable field value
-// If the value is explicit nil, the zero value for BriefCable will be returned
+// GetCable returns the Cable field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Interface) GetCable() BriefCable {
-	if o == nil || o.Cable.Get() == nil {
+	if o == nil || IsNil(o.Cable.Get()) {
 		var ret BriefCable
 		return ret
 	}
-
 	return *o.Cable.Get()
 }
 
-// GetCableOk returns a tuple with the Cable field value
+// GetCableOk returns a tuple with the Cable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Interface) GetCableOk() (*BriefCable, bool) {
@@ -1252,11 +1242,28 @@ func (o *Interface) GetCableOk() (*BriefCable, bool) {
 	return o.Cable.Get(), o.Cable.IsSet()
 }
 
-// SetCable sets field value
+// HasCable returns a boolean if a field has been set.
+func (o *Interface) HasCable() bool {
+	if o != nil && o.Cable.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCable gets a reference to the given NullableBriefCable and assigns it to the Cable field.
 func (o *Interface) SetCable(v BriefCable) {
 	o.Cable.Set(&v)
 }
+// SetCableNil sets the value for Cable to be an explicit nil
+func (o *Interface) SetCableNil() {
+	o.Cable.Set(nil)
+}
 
+// UnsetCable ensures that no value is present for Cable, not even an explicit nil
+func (o *Interface) UnsetCable() {
+	o.Cable.Unset()
+}
 
 // GetCableEnd returns the CableEnd field value
 func (o *Interface) GetCableEnd() string {
@@ -1283,18 +1290,16 @@ func (o *Interface) SetCableEnd(v string) {
 }
 
 
-// GetWirelessLink returns the WirelessLink field value
-// If the value is explicit nil, the zero value for NestedWirelessLink will be returned
+// GetWirelessLink returns the WirelessLink field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Interface) GetWirelessLink() NestedWirelessLink {
-	if o == nil || o.WirelessLink.Get() == nil {
+	if o == nil || IsNil(o.WirelessLink.Get()) {
 		var ret NestedWirelessLink
 		return ret
 	}
-
 	return *o.WirelessLink.Get()
 }
 
-// GetWirelessLinkOk returns a tuple with the WirelessLink field value
+// GetWirelessLinkOk returns a tuple with the WirelessLink field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Interface) GetWirelessLinkOk() (*NestedWirelessLink, bool) {
@@ -1304,11 +1309,28 @@ func (o *Interface) GetWirelessLinkOk() (*NestedWirelessLink, bool) {
 	return o.WirelessLink.Get(), o.WirelessLink.IsSet()
 }
 
-// SetWirelessLink sets field value
+// HasWirelessLink returns a boolean if a field has been set.
+func (o *Interface) HasWirelessLink() bool {
+	if o != nil && o.WirelessLink.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetWirelessLink gets a reference to the given NullableNestedWirelessLink and assigns it to the WirelessLink field.
 func (o *Interface) SetWirelessLink(v NestedWirelessLink) {
 	o.WirelessLink.Set(&v)
 }
+// SetWirelessLinkNil sets the value for WirelessLink to be an explicit nil
+func (o *Interface) SetWirelessLinkNil() {
+	o.WirelessLink.Set(nil)
+}
 
+// UnsetWirelessLink ensures that no value is present for WirelessLink, not even an explicit nil
+func (o *Interface) UnsetWirelessLink() {
+	o.WirelessLink.Unset()
+}
 
 // GetLinkPeers returns the LinkPeers field value
 func (o *Interface) GetLinkPeers() []interface{} {
@@ -1335,18 +1357,16 @@ func (o *Interface) SetLinkPeers(v []interface{}) {
 }
 
 
-// GetLinkPeersType returns the LinkPeersType field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetLinkPeersType returns the LinkPeersType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Interface) GetLinkPeersType() string {
-	if o == nil || o.LinkPeersType.Get() == nil {
+	if o == nil || IsNil(o.LinkPeersType.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.LinkPeersType.Get()
 }
 
-// GetLinkPeersTypeOk returns a tuple with the LinkPeersType field value
+// GetLinkPeersTypeOk returns a tuple with the LinkPeersType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Interface) GetLinkPeersTypeOk() (*string, bool) {
@@ -1356,11 +1376,28 @@ func (o *Interface) GetLinkPeersTypeOk() (*string, bool) {
 	return o.LinkPeersType.Get(), o.LinkPeersType.IsSet()
 }
 
-// SetLinkPeersType sets field value
+// HasLinkPeersType returns a boolean if a field has been set.
+func (o *Interface) HasLinkPeersType() bool {
+	if o != nil && o.LinkPeersType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLinkPeersType gets a reference to the given NullableString and assigns it to the LinkPeersType field.
 func (o *Interface) SetLinkPeersType(v string) {
 	o.LinkPeersType.Set(&v)
 }
+// SetLinkPeersTypeNil sets the value for LinkPeersType to be an explicit nil
+func (o *Interface) SetLinkPeersTypeNil() {
+	o.LinkPeersType.Set(nil)
+}
 
+// UnsetLinkPeersType ensures that no value is present for LinkPeersType, not even an explicit nil
+func (o *Interface) UnsetLinkPeersType() {
+	o.LinkPeersType.Unset()
+}
 
 // GetWirelessLans returns the WirelessLans field value if set, zero value otherwise.
 func (o *Interface) GetWirelessLans() []WirelessLAN {
@@ -1436,18 +1473,16 @@ func (o *Interface) UnsetVrf() {
 	o.Vrf.Unset()
 }
 
-// GetL2vpnTermination returns the L2vpnTermination field value
-// If the value is explicit nil, the zero value for BriefL2VPNTermination will be returned
+// GetL2vpnTermination returns the L2vpnTermination field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Interface) GetL2vpnTermination() BriefL2VPNTermination {
-	if o == nil || o.L2vpnTermination.Get() == nil {
+	if o == nil || IsNil(o.L2vpnTermination.Get()) {
 		var ret BriefL2VPNTermination
 		return ret
 	}
-
 	return *o.L2vpnTermination.Get()
 }
 
-// GetL2vpnTerminationOk returns a tuple with the L2vpnTermination field value
+// GetL2vpnTerminationOk returns a tuple with the L2vpnTermination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Interface) GetL2vpnTerminationOk() (*BriefL2VPNTermination, bool) {
@@ -1457,24 +1492,39 @@ func (o *Interface) GetL2vpnTerminationOk() (*BriefL2VPNTermination, bool) {
 	return o.L2vpnTermination.Get(), o.L2vpnTermination.IsSet()
 }
 
-// SetL2vpnTermination sets field value
+// HasL2vpnTermination returns a boolean if a field has been set.
+func (o *Interface) HasL2vpnTermination() bool {
+	if o != nil && o.L2vpnTermination.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetL2vpnTermination gets a reference to the given NullableBriefL2VPNTermination and assigns it to the L2vpnTermination field.
 func (o *Interface) SetL2vpnTermination(v BriefL2VPNTermination) {
 	o.L2vpnTermination.Set(&v)
 }
+// SetL2vpnTerminationNil sets the value for L2vpnTermination to be an explicit nil
+func (o *Interface) SetL2vpnTerminationNil() {
+	o.L2vpnTermination.Set(nil)
+}
 
+// UnsetL2vpnTermination ensures that no value is present for L2vpnTermination, not even an explicit nil
+func (o *Interface) UnsetL2vpnTermination() {
+	o.L2vpnTermination.Unset()
+}
 
-// GetConnectedEndpoints returns the ConnectedEndpoints field value
-// If the value is explicit nil, the zero value for []interface{} will be returned
+// GetConnectedEndpoints returns the ConnectedEndpoints field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Interface) GetConnectedEndpoints() []interface{} {
 	if o == nil {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.ConnectedEndpoints
 }
 
-// GetConnectedEndpointsOk returns a tuple with the ConnectedEndpoints field value
+// GetConnectedEndpointsOk returns a tuple with the ConnectedEndpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Interface) GetConnectedEndpointsOk() ([]interface{}, bool) {
@@ -1484,24 +1534,30 @@ func (o *Interface) GetConnectedEndpointsOk() ([]interface{}, bool) {
 	return o.ConnectedEndpoints, true
 }
 
-// SetConnectedEndpoints sets field value
+// HasConnectedEndpoints returns a boolean if a field has been set.
+func (o *Interface) HasConnectedEndpoints() bool {
+	if o != nil && !IsNil(o.ConnectedEndpoints) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedEndpoints gets a reference to the given []interface{} and assigns it to the ConnectedEndpoints field.
 func (o *Interface) SetConnectedEndpoints(v []interface{}) {
 	o.ConnectedEndpoints = v
 }
 
-
-// GetConnectedEndpointsType returns the ConnectedEndpointsType field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetConnectedEndpointsType returns the ConnectedEndpointsType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Interface) GetConnectedEndpointsType() string {
-	if o == nil || o.ConnectedEndpointsType.Get() == nil {
+	if o == nil || IsNil(o.ConnectedEndpointsType.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.ConnectedEndpointsType.Get()
 }
 
-// GetConnectedEndpointsTypeOk returns a tuple with the ConnectedEndpointsType field value
+// GetConnectedEndpointsTypeOk returns a tuple with the ConnectedEndpointsType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Interface) GetConnectedEndpointsTypeOk() (*string, bool) {
@@ -1511,11 +1567,28 @@ func (o *Interface) GetConnectedEndpointsTypeOk() (*string, bool) {
 	return o.ConnectedEndpointsType.Get(), o.ConnectedEndpointsType.IsSet()
 }
 
-// SetConnectedEndpointsType sets field value
+// HasConnectedEndpointsType returns a boolean if a field has been set.
+func (o *Interface) HasConnectedEndpointsType() bool {
+	if o != nil && o.ConnectedEndpointsType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedEndpointsType gets a reference to the given NullableString and assigns it to the ConnectedEndpointsType field.
 func (o *Interface) SetConnectedEndpointsType(v string) {
 	o.ConnectedEndpointsType.Set(&v)
 }
+// SetConnectedEndpointsTypeNil sets the value for ConnectedEndpointsType to be an explicit nil
+func (o *Interface) SetConnectedEndpointsTypeNil() {
+	o.ConnectedEndpointsType.Set(nil)
+}
 
+// UnsetConnectedEndpointsType ensures that no value is present for ConnectedEndpointsType, not even an explicit nil
+func (o *Interface) UnsetConnectedEndpointsType() {
+	o.ConnectedEndpointsType.Unset()
+}
 
 // GetConnectedEndpointsReachable returns the ConnectedEndpointsReachable field value
 func (o *Interface) GetConnectedEndpointsReachable() bool {
@@ -1606,18 +1679,16 @@ func (o *Interface) SetCustomFields(v map[string]interface{}) {
 	o.CustomFields = v
 }
 
-// GetCreated returns the Created field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Interface) GetCreated() time.Time {
-	if o == nil || o.Created.Get() == nil {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.Created.Get()
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Interface) GetCreatedOk() (*time.Time, bool) {
@@ -1627,24 +1698,39 @@ func (o *Interface) GetCreatedOk() (*time.Time, bool) {
 	return o.Created.Get(), o.Created.IsSet()
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *Interface) HasCreated() bool {
+	if o != nil && o.Created.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *Interface) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *Interface) SetCreatedNil() {
+	o.Created.Set(nil)
+}
 
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *Interface) UnsetCreated() {
+	o.Created.Unset()
+}
 
-// GetLastUpdated returns the LastUpdated field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Interface) GetLastUpdated() time.Time {
-	if o == nil || o.LastUpdated.Get() == nil {
+	if o == nil || IsNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.LastUpdated.Get()
 }
 
-// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Interface) GetLastUpdatedOk() (*time.Time, bool) {
@@ -1654,11 +1740,28 @@ func (o *Interface) GetLastUpdatedOk() (*time.Time, bool) {
 	return o.LastUpdated.Get(), o.LastUpdated.IsSet()
 }
 
-// SetLastUpdated sets field value
+// HasLastUpdated returns a boolean if a field has been set.
+func (o *Interface) HasLastUpdated() bool {
+	if o != nil && o.LastUpdated.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
 func (o *Interface) SetLastUpdated(v time.Time) {
 	o.LastUpdated.Set(&v)
 }
+// SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
+func (o *Interface) SetLastUpdatedNil() {
+	o.LastUpdated.Set(nil)
+}
 
+// UnsetLastUpdated ensures that no value is present for LastUpdated, not even an explicit nil
+func (o *Interface) UnsetLastUpdated() {
+	o.LastUpdated.Unset()
+}
 
 // GetCountIpaddresses returns the CountIpaddresses field value
 func (o *Interface) GetCountIpaddresses() int32 {
@@ -1829,22 +1932,32 @@ func (o Interface) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MarkConnected) {
 		toSerialize["mark_connected"] = o.MarkConnected
 	}
-	toSerialize["cable"] = o.Cable.Get()
+	if o.Cable.IsSet() {
+		toSerialize["cable"] = o.Cable.Get()
+	}
 	toSerialize["cable_end"] = o.CableEnd
-	toSerialize["wireless_link"] = o.WirelessLink.Get()
+	if o.WirelessLink.IsSet() {
+		toSerialize["wireless_link"] = o.WirelessLink.Get()
+	}
 	toSerialize["link_peers"] = o.LinkPeers
-	toSerialize["link_peers_type"] = o.LinkPeersType.Get()
+	if o.LinkPeersType.IsSet() {
+		toSerialize["link_peers_type"] = o.LinkPeersType.Get()
+	}
 	if !IsNil(o.WirelessLans) {
 		toSerialize["wireless_lans"] = o.WirelessLans
 	}
 	if o.Vrf.IsSet() {
 		toSerialize["vrf"] = o.Vrf.Get()
 	}
-	toSerialize["l2vpn_termination"] = o.L2vpnTermination.Get()
+	if o.L2vpnTermination.IsSet() {
+		toSerialize["l2vpn_termination"] = o.L2vpnTermination.Get()
+	}
 	if o.ConnectedEndpoints != nil {
 		toSerialize["connected_endpoints"] = o.ConnectedEndpoints
 	}
-	toSerialize["connected_endpoints_type"] = o.ConnectedEndpointsType.Get()
+	if o.ConnectedEndpointsType.IsSet() {
+		toSerialize["connected_endpoints_type"] = o.ConnectedEndpointsType.Get()
+	}
 	toSerialize["connected_endpoints_reachable"] = o.ConnectedEndpointsReachable
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
@@ -1852,8 +1965,12 @@ func (o Interface) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CustomFields) {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
-	toSerialize["created"] = o.Created.Get()
-	toSerialize["last_updated"] = o.LastUpdated.Get()
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.LastUpdated.IsSet() {
+		toSerialize["last_updated"] = o.LastUpdated.Get()
+	}
 	toSerialize["count_ipaddresses"] = o.CountIpaddresses
 	toSerialize["count_fhrp_groups"] = o.CountFhrpGroups
 	toSerialize["_occupied"] = o.Occupied
@@ -1876,17 +1993,9 @@ func (o *Interface) UnmarshalJSON(data []byte) (err error) {
 		"device",
 		"name",
 		"type",
-		"cable",
 		"cable_end",
-		"wireless_link",
 		"link_peers",
-		"link_peers_type",
-		"l2vpn_termination",
-		"connected_endpoints",
-		"connected_endpoints_type",
 		"connected_endpoints_reachable",
-		"created",
-		"last_updated",
 		"count_ipaddresses",
 		"count_fhrp_groups",
 		"_occupied",
