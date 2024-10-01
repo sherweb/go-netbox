@@ -1,7 +1,7 @@
 generatorName: go
 
 gitHost: github.com
-gitUserId: netbox-community
+gitUserId: sherweb
 gitRepoId: go-netbox/v4
 
 packageName: netbox
