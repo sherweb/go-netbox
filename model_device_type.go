@@ -23,7 +23,7 @@ var _ MappedNullable = &DeviceType{}
 type DeviceType struct {
 	Id int32 `json:"id"`
 	Url string `json:"url"`
-	DisplayUrl string `json:"display_url"`
+	DisplayUrl *string `json:"display_url,omitempty"`
 	Display string `json:"display"`
 	Manufacturer BriefManufacturer `json:"manufacturer"`
 	DefaultPlatform NullableBriefPlatform `json:"default_platform,omitempty"`
@@ -68,11 +68,10 @@ type _DeviceType DeviceType
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceType(id int32, url string, displayUrl string, display string, manufacturer BriefManufacturer, model string, slug string, created NullableTime, lastUpdated NullableTime, consolePortTemplateCount int32, consoleServerPortTemplateCount int32, powerPortTemplateCount int32, powerOutletTemplateCount int32, interfaceTemplateCount int32, frontPortTemplateCount int32, rearPortTemplateCount int32, deviceBayTemplateCount int32, moduleBayTemplateCount int32, inventoryItemTemplateCount int32) *DeviceType {
+func NewDeviceType(id int32, url string, display string, manufacturer BriefManufacturer, model string, slug string, created NullableTime, lastUpdated NullableTime, consolePortTemplateCount int32, consoleServerPortTemplateCount int32, powerPortTemplateCount int32, powerOutletTemplateCount int32, interfaceTemplateCount int32, frontPortTemplateCount int32, rearPortTemplateCount int32, deviceBayTemplateCount int32, moduleBayTemplateCount int32, inventoryItemTemplateCount int32) *DeviceType {
 	this := DeviceType{}
 	this.Id = id
 	this.Url = url
-	this.DisplayUrl = displayUrl
 	this.Display = display
 	this.Manufacturer = manufacturer
 	this.Model = model
@@ -152,28 +151,36 @@ func (o *DeviceType) SetUrl(v string) {
 	o.Url = v
 }
 
-// GetDisplayUrl returns the DisplayUrl field value
+// GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *DeviceType) GetDisplayUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.DisplayUrl) {
 		var ret string
 		return ret
 	}
-
-	return o.DisplayUrl
+	return *o.DisplayUrl
 }
 
-// GetDisplayUrlOk returns a tuple with the DisplayUrl field value
+// GetDisplayUrlOk returns a tuple with the DisplayUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceType) GetDisplayUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DisplayUrl) {
 		return nil, false
 	}
-	return &o.DisplayUrl, true
+	return o.DisplayUrl, true
 }
 
-// SetDisplayUrl sets field value
+// HasDisplayUrl returns a boolean if a field has been set.
+func (o *DeviceType) HasDisplayUrl() bool {
+	if o != nil && !IsNil(o.DisplayUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayUrl gets a reference to the given string and assigns it to the DisplayUrl field.
 func (o *DeviceType) SetDisplayUrl(v string) {
-	o.DisplayUrl = v
+	o.DisplayUrl = &v
 }
 
 // GetDisplay returns the Display field value
@@ -1158,7 +1165,9 @@ func (o DeviceType) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["url"] = o.Url
-	toSerialize["display_url"] = o.DisplayUrl
+	if !IsNil(o.DisplayUrl) {
+		toSerialize["display_url"] = o.DisplayUrl
+	}
 	toSerialize["display"] = o.Display
 	toSerialize["manufacturer"] = o.Manufacturer
 	if o.DefaultPlatform.IsSet() {
@@ -1238,7 +1247,6 @@ func (o *DeviceType) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"url",
-		"display_url",
 		"display",
 		"manufacturer",
 		"model",

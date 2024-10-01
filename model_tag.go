@@ -23,7 +23,7 @@ var _ MappedNullable = &Tag{}
 type Tag struct {
 	Id int32 `json:"id"`
 	Url string `json:"url"`
-	DisplayUrl string `json:"display_url"`
+	DisplayUrl *string `json:"display_url,omitempty"`
 	Display string `json:"display"`
 	Name string `json:"name"`
 	Slug string `json:"slug"`
@@ -42,11 +42,10 @@ type _Tag Tag
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTag(id int32, url string, displayUrl string, display string, name string, slug string, taggedItems int64, created NullableTime, lastUpdated NullableTime) *Tag {
+func NewTag(id int32, url string, display string, name string, slug string, taggedItems int64, created NullableTime, lastUpdated NullableTime) *Tag {
 	this := Tag{}
 	this.Id = id
 	this.Url = url
-	this.DisplayUrl = displayUrl
 	this.Display = display
 	this.Name = name
 	this.Slug = slug
@@ -112,28 +111,36 @@ func (o *Tag) SetUrl(v string) {
 	o.Url = v
 }
 
-// GetDisplayUrl returns the DisplayUrl field value
+// GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *Tag) GetDisplayUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.DisplayUrl) {
 		var ret string
 		return ret
 	}
-
-	return o.DisplayUrl
+	return *o.DisplayUrl
 }
 
-// GetDisplayUrlOk returns a tuple with the DisplayUrl field value
+// GetDisplayUrlOk returns a tuple with the DisplayUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Tag) GetDisplayUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DisplayUrl) {
 		return nil, false
 	}
-	return &o.DisplayUrl, true
+	return o.DisplayUrl, true
 }
 
-// SetDisplayUrl sets field value
+// HasDisplayUrl returns a boolean if a field has been set.
+func (o *Tag) HasDisplayUrl() bool {
+	if o != nil && !IsNil(o.DisplayUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayUrl gets a reference to the given string and assigns it to the DisplayUrl field.
 func (o *Tag) SetDisplayUrl(v string) {
-	o.DisplayUrl = v
+	o.DisplayUrl = &v
 }
 
 // GetDisplay returns the Display field value
@@ -392,7 +399,9 @@ func (o Tag) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["url"] = o.Url
-	toSerialize["display_url"] = o.DisplayUrl
+	if !IsNil(o.DisplayUrl) {
+		toSerialize["display_url"] = o.DisplayUrl
+	}
 	toSerialize["display"] = o.Display
 	toSerialize["name"] = o.Name
 	toSerialize["slug"] = o.Slug
@@ -423,7 +432,6 @@ func (o *Tag) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"url",
-		"display_url",
 		"display",
 		"name",
 		"slug",

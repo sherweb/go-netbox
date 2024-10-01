@@ -23,7 +23,7 @@ var _ MappedNullable = &ModuleBay{}
 type ModuleBay struct {
 	Id int32 `json:"id"`
 	Url string `json:"url"`
-	DisplayUrl string `json:"display_url"`
+	DisplayUrl *string `json:"display_url,omitempty"`
 	Display string `json:"display"`
 	Device BriefDevice `json:"device"`
 	Module NullableBriefModule `json:"module,omitempty"`
@@ -47,11 +47,10 @@ type _ModuleBay ModuleBay
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModuleBay(id int32, url string, displayUrl string, display string, device BriefDevice, name string, created NullableTime, lastUpdated NullableTime) *ModuleBay {
+func NewModuleBay(id int32, url string, display string, device BriefDevice, name string, created NullableTime, lastUpdated NullableTime) *ModuleBay {
 	this := ModuleBay{}
 	this.Id = id
 	this.Url = url
-	this.DisplayUrl = displayUrl
 	this.Display = display
 	this.Device = device
 	this.Name = name
@@ -116,28 +115,36 @@ func (o *ModuleBay) SetUrl(v string) {
 	o.Url = v
 }
 
-// GetDisplayUrl returns the DisplayUrl field value
+// GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *ModuleBay) GetDisplayUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.DisplayUrl) {
 		var ret string
 		return ret
 	}
-
-	return o.DisplayUrl
+	return *o.DisplayUrl
 }
 
-// GetDisplayUrlOk returns a tuple with the DisplayUrl field value
+// GetDisplayUrlOk returns a tuple with the DisplayUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModuleBay) GetDisplayUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DisplayUrl) {
 		return nil, false
 	}
-	return &o.DisplayUrl, true
+	return o.DisplayUrl, true
 }
 
-// SetDisplayUrl sets field value
+// HasDisplayUrl returns a boolean if a field has been set.
+func (o *ModuleBay) HasDisplayUrl() bool {
+	if o != nil && !IsNil(o.DisplayUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayUrl gets a reference to the given string and assigns it to the DisplayUrl field.
 func (o *ModuleBay) SetDisplayUrl(v string) {
-	o.DisplayUrl = v
+	o.DisplayUrl = &v
 }
 
 // GetDisplay returns the Display field value
@@ -520,7 +527,9 @@ func (o ModuleBay) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["url"] = o.Url
-	toSerialize["display_url"] = o.DisplayUrl
+	if !IsNil(o.DisplayUrl) {
+		toSerialize["display_url"] = o.DisplayUrl
+	}
 	toSerialize["display"] = o.Display
 	toSerialize["device"] = o.Device
 	if o.Module.IsSet() {
@@ -562,7 +571,6 @@ func (o *ModuleBay) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"url",
-		"display_url",
 		"display",
 		"device",
 		"name",

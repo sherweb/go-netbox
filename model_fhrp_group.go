@@ -24,7 +24,7 @@ type FHRPGroup struct {
 	Id int32 `json:"id"`
 	Name *string `json:"name,omitempty"`
 	Url string `json:"url"`
-	DisplayUrl string `json:"display_url"`
+	DisplayUrl *string `json:"display_url,omitempty"`
 	Display string `json:"display"`
 	Protocol BriefFHRPGroupProtocol `json:"protocol"`
 	GroupId int32 `json:"group_id"`
@@ -46,11 +46,10 @@ type _FHRPGroup FHRPGroup
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFHRPGroup(id int32, url string, displayUrl string, display string, protocol BriefFHRPGroupProtocol, groupId int32, created NullableTime, lastUpdated NullableTime, ipAddresses []BriefIPAddress) *FHRPGroup {
+func NewFHRPGroup(id int32, url string, display string, protocol BriefFHRPGroupProtocol, groupId int32, created NullableTime, lastUpdated NullableTime, ipAddresses []BriefIPAddress) *FHRPGroup {
 	this := FHRPGroup{}
 	this.Id = id
 	this.Url = url
-	this.DisplayUrl = displayUrl
 	this.Display = display
 	this.Protocol = protocol
 	this.GroupId = groupId
@@ -148,28 +147,36 @@ func (o *FHRPGroup) SetUrl(v string) {
 	o.Url = v
 }
 
-// GetDisplayUrl returns the DisplayUrl field value
+// GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *FHRPGroup) GetDisplayUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.DisplayUrl) {
 		var ret string
 		return ret
 	}
-
-	return o.DisplayUrl
+	return *o.DisplayUrl
 }
 
-// GetDisplayUrlOk returns a tuple with the DisplayUrl field value
+// GetDisplayUrlOk returns a tuple with the DisplayUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FHRPGroup) GetDisplayUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DisplayUrl) {
 		return nil, false
 	}
-	return &o.DisplayUrl, true
+	return o.DisplayUrl, true
 }
 
-// SetDisplayUrl sets field value
+// HasDisplayUrl returns a boolean if a field has been set.
+func (o *FHRPGroup) HasDisplayUrl() bool {
+	if o != nil && !IsNil(o.DisplayUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayUrl gets a reference to the given string and assigns it to the DisplayUrl field.
 func (o *FHRPGroup) SetDisplayUrl(v string) {
-	o.DisplayUrl = v
+	o.DisplayUrl = &v
 }
 
 // GetDisplay returns the Display field value
@@ -527,7 +534,9 @@ func (o FHRPGroup) ToMap() (map[string]interface{}, error) {
 		toSerialize["name"] = o.Name
 	}
 	toSerialize["url"] = o.Url
-	toSerialize["display_url"] = o.DisplayUrl
+	if !IsNil(o.DisplayUrl) {
+		toSerialize["display_url"] = o.DisplayUrl
+	}
 	toSerialize["display"] = o.Display
 	toSerialize["protocol"] = o.Protocol
 	toSerialize["group_id"] = o.GroupId
@@ -567,7 +576,6 @@ func (o *FHRPGroup) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"url",
-		"display_url",
 		"display",
 		"protocol",
 		"group_id",

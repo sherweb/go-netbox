@@ -23,7 +23,7 @@ var _ MappedNullable = &L2VPNTermination{}
 type L2VPNTermination struct {
 	Id int32 `json:"id"`
 	Url string `json:"url"`
-	DisplayUrl string `json:"display_url"`
+	DisplayUrl *string `json:"display_url,omitempty"`
 	Display string `json:"display"`
 	L2vpn BriefL2VPN `json:"l2vpn"`
 	AssignedObjectType string `json:"assigned_object_type"`
@@ -42,11 +42,10 @@ type _L2VPNTermination L2VPNTermination
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewL2VPNTermination(id int32, url string, displayUrl string, display string, l2vpn BriefL2VPN, assignedObjectType string, assignedObjectId int64, assignedObject interface{}, created NullableTime, lastUpdated NullableTime) *L2VPNTermination {
+func NewL2VPNTermination(id int32, url string, display string, l2vpn BriefL2VPN, assignedObjectType string, assignedObjectId int64, assignedObject interface{}, created NullableTime, lastUpdated NullableTime) *L2VPNTermination {
 	this := L2VPNTermination{}
 	this.Id = id
 	this.Url = url
-	this.DisplayUrl = displayUrl
 	this.Display = display
 	this.L2vpn = l2vpn
 	this.AssignedObjectType = assignedObjectType
@@ -113,28 +112,36 @@ func (o *L2VPNTermination) SetUrl(v string) {
 	o.Url = v
 }
 
-// GetDisplayUrl returns the DisplayUrl field value
+// GetDisplayUrl returns the DisplayUrl field value if set, zero value otherwise.
 func (o *L2VPNTermination) GetDisplayUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.DisplayUrl) {
 		var ret string
 		return ret
 	}
-
-	return o.DisplayUrl
+	return *o.DisplayUrl
 }
 
-// GetDisplayUrlOk returns a tuple with the DisplayUrl field value
+// GetDisplayUrlOk returns a tuple with the DisplayUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *L2VPNTermination) GetDisplayUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DisplayUrl) {
 		return nil, false
 	}
-	return &o.DisplayUrl, true
+	return o.DisplayUrl, true
 }
 
-// SetDisplayUrl sets field value
+// HasDisplayUrl returns a boolean if a field has been set.
+func (o *L2VPNTermination) HasDisplayUrl() bool {
+	if o != nil && !IsNil(o.DisplayUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayUrl gets a reference to the given string and assigns it to the DisplayUrl field.
 func (o *L2VPNTermination) SetDisplayUrl(v string) {
-	o.DisplayUrl = v
+	o.DisplayUrl = &v
 }
 
 // GetDisplay returns the Display field value
@@ -387,7 +394,9 @@ func (o L2VPNTermination) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["url"] = o.Url
-	toSerialize["display_url"] = o.DisplayUrl
+	if !IsNil(o.DisplayUrl) {
+		toSerialize["display_url"] = o.DisplayUrl
+	}
 	toSerialize["display"] = o.Display
 	toSerialize["l2vpn"] = o.L2vpn
 	toSerialize["assigned_object_type"] = o.AssignedObjectType
@@ -418,7 +427,6 @@ func (o *L2VPNTermination) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"url",
-		"display_url",
 		"display",
 		"l2vpn",
 		"assigned_object_type",
