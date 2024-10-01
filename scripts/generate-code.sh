@@ -2,16 +2,13 @@
 
 set -euo pipefail
 
-# Remove generated files
-for F in $(cat .openapi-generator/files) ; do
-    rm -f "${F}"
-done
+rm -rf netbox/
 
 # Generate library
-docker run --rm --env JAVA_OPTS=-DmaxYamlCodePoints=9999999 -v "${PWD}:/local" openapitools/openapi-generator-cli:v7.6.0 \
+docker run --rm --env JAVA_OPTS=-DmaxYamlCodePoints=9999999 -v "${PWD}:/local" openapitools/openapi-generator-cli:v7.8.0 \
     generate \
     --config /local/.openapi-generator/config.yaml \
     --input-spec /local/api/openapi.yaml \
-    --output /local \
+    --output /local/netbox \
     --inline-schema-options RESOLVE_INLINE_ENUMS=true \
     --http-user-agent go-netbox/$(cat api/netbox_version)
